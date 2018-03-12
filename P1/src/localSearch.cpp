@@ -32,16 +32,27 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
    int n = fatherSolution.n;
    int neighbourSize = (n * (n - 1)) / 2;
 
-   for (int i = 0; i < n/2; i++) {
-      for (int j = i+1; j < n; j++) {
+   for (int r = 0; r < n/2; r++) {
+      for (int s = r+1; s < n; s++) {
          Solution* neighbour = new Solution(fatherSolution);
+         int movementCost = 0;
 
-         int tmp = neighbour->solutionRep[i];
-         neighbour->solutionRep[i] = neighbour->solutionRep[j];
-         neighbour->solutionRep[j] = tmp;
-         neighbour->CalcCost(this->distances, this->frequencies);
+         int tmp = neighbour->solutionRep[r];                     // t <- A(r)
+         neighbour->solutionRep[r] = neighbour->solutionRep[s];   // A(r) <- A(s)
+         neighbour->solutionRep[s] = tmp;                         // A(s) <- t
 
-         if (neighbour->score < fatherSolution.score) return neighbour;
+         // Calc movement cost which is C(a') - C(a)
+         for (int k = 0; k < n; k++) {
+            if (k == r || k == s) continue;
+
+            movementCost += this->frequencies[r][k]*(this->distances[fatherSolution.solutionRep[s]][fatherSolution.solutionRep[k]] - this->distances[fatherSolution.solutionRep[r]][fatherSolution.solutionRep[k]])
+                         +  this->frequencies[s][k]*(this->distances[fatherSolution.solutionRep[r]][fatherSolution.solutionRep[k]] - this->distances[fatherSolution.solutionRep[s]][fatherSolution.solutionRep[k]])
+                         +  this->frequencies[k][r]*(this->distances[fatherSolution.solutionRep[k]][fatherSolution.solutionRep[s]] - this->distances[fatherSolution.solutionRep[k]][fatherSolution.solutionRep[r]])  
+                         +  this->frequencies[k][s]*(this->distances[fatherSolution.solutionRep[k]][fatherSolution.solutionRep[r]] - this->distances[fatherSolution.solutionRep[k]][fatherSolution.solutionRep[s]]);
+         }
+
+         // If the diference is negative, then the cost of the neighbour is lower
+         if (movementCost < 0) return neighbour;
       }
    }
 
@@ -59,5 +70,6 @@ Solution LocalSearchSolver::Solve() {
 
    } while(nextBestSolution != NULL);
 
+   finalSolution.CalcCost(this->distances, this->frequencies);
    return finalSolution;
 }

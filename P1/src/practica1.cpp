@@ -2,10 +2,12 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <chrono>
 #include "greedy.hpp"
 #include "localSearch.hpp"
 
 using namespace std;
+using namespace std::chrono;
 
 // Read Input file. Format:
 // n
@@ -103,8 +105,13 @@ int main(int argc, char const* argv[]) {
     };
 
     for (auto& solver : solvers) {
-        cout << solver.first << endl;
-        cout << solver.second->Solve() << endl << endl;
+        auto start = high_resolution_clock::now();
+        Solution solution = solver.second->Solve();
+        auto finish = high_resolution_clock::now();
+        duration<double> elapsed = finish - start;
+
+        cout << solver.first << "\t\tElapsed: " << elapsed.count() << " s" << endl;
+        cout << solution << endl << endl;
     }
 
     return 0;
