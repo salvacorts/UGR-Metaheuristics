@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "greedy.hpp"
+#include "localSearch.hpp"
 
 using namespace std;
 
@@ -15,8 +16,8 @@ using namespace std;
 // 4 3
 // 2 1
 void ReadMatrixFromStream(istream &input, vector<vector<int> > &m1, vector<vector<int> > &m2) {
-   string line;
-   int n;
+    string line;
+    int n;
     input >> n;
 
     // Resize distances matrix
@@ -75,31 +76,38 @@ void WriteMatrixToStream(ostream& out, vector<vector<int> >& m1, vector<vector<i
 }
 
 int main(int argc, char const* argv[]) {
-   vector<vector<int> > distances;
-   vector<vector<int> > frequencies;
-   string line;
-   int n;
+    vector<vector<int> > distances;
+    vector<vector<int> > frequencies;
+    Solution solution;
+    string line;
+    int n;
 
-   if (argc != 3) {
-      cerr << "[!] Missing parameter" << endl;
-      cout << "Usage: " << argv[0] << " <input_file> <output_file>" << endl;
-      return 1;
-   }
 
-   // Open input file
-   ifstream inputFile(argv[1]);
-   if (!inputFile.is_open()) {
-      cerr << "[!] Cannot open " << argv[1] << endl;
-      return 1;
-   }
+    if (argc != 3) {
+        cerr << "[!] Missing parameter" << endl;
+        cout << "Usage: " << argv[0] << " <input_file> <output_file>" << endl;
+        return 1;
+    }
 
-   ReadMatrixFromStream(inputFile, distances, frequencies);
-   inputFile.close();
-   WriteMatrixToStream(cout, distances, frequencies);
+    // Open input file
+    ifstream inputFile(argv[1]);
+    if (!inputFile.is_open()) {
+        cerr << "[!] Cannot open " << argv[1] << endl;
+        return 1;
+    }
 
-   GreedySolver greedy(distances, frequencies);
-   greedy.Solve();
-   greedy.WriteSolutionToStream(cout);
+    ReadMatrixFromStream(inputFile, distances, frequencies);
+    inputFile.close();
 
-   return 0;
+    vector<pair<string, Solver*> > solvers = {
+        make_pair("Greedy", new GreedySolver(distances, frequencies)),
+        make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
+    };
+
+    for (auto& solver : solvers) {
+        cout << solver.first << endl;
+        cout << solver.second->Solve() << endl;
+    }
+
+    return 0;
 }

@@ -1,20 +1,20 @@
 #include <vector>
 #include <iostream>
+#include "solution.hpp"
 
 using namespace std;
 
+#ifndef SOLVER_H
+#define SOLVER_H
+
 class Solver {
 protected:
-   int n;
-   int score;
-   vector<int> solutionRep;
    vector<vector<int> > distances;
    vector<vector<int> > frequencies;
 
 public:
    Solver(vector<vector<int> >& distances, vector<vector<int> >& frequencies);
-   ~Solver();
-   void WriteSolutionToStream(ostream& out);
-   int GetSolutionCost();
-   virtual void Solve() = 0;
+   virtual Solution Solve() = 0;
 };
+
+#endif
