@@ -6,6 +6,8 @@
 
 class LocalSearchSolver : public Solver {
 private:
+   Solution GenerateRandomSolution();
+   Solution* GenerateBestNeighbour(Solution& fatherSolution);
 
 public:
    LocalSearchSolver(vector<vector<int> >& distances, vector<vector<int> >& frequencies)

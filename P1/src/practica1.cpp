@@ -8,13 +8,11 @@
 using namespace std;
 
 // Read Input file. Format:
-// 2
+// n
 //
-// 1 2
-// 3 4
+// n*n matrix
 //
-// 4 3
-// 2 1
+// n*n matrix
 void ReadMatrixFromStream(istream &input, vector<vector<int> > &m1, vector<vector<int> > &m2) {
     string line;
     int n;
@@ -106,7 +104,7 @@ int main(int argc, char const* argv[]) {
 
     for (auto& solver : solvers) {
         cout << solver.first << endl;
-        cout << solver.second->Solve() << endl;
+        cout << solver.second->Solve() << endl << endl;
     }
 
     return 0;

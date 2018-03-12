@@ -14,7 +14,7 @@ public:
    vector<int> solutionRep;
 
    Solution(int n=0);
-   int GetCost(vector<vector<int> >& distances, vector<vector<int> >& frequencies);
+   int CalcCost(vector<vector<int> >& distances, vector<vector<int> >& frequencies);
    friend ostream& operator<<(std::ostream& os, const Solution& sol);
 };
 

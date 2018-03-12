@@ -49,7 +49,7 @@ Solution GreedySolver::Solve() {
    }
 
    // Calc cost
-   solution.score = solution.GetCost(this->distances, this->frequencies);
+   solution.score = solution.CalcCost(this->distances, this->frequencies);
 
    return solution;
 }

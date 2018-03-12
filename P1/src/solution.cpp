@@ -2,11 +2,12 @@
 #include "solution.hpp"
 
 Solution::Solution(int n) {
+   this->score = -1;
    this->n = n;
    this->solutionRep.resize(n);
 }
 
-int Solution::GetCost(vector<vector<int> >& distances, vector<vector<int> >& frequencies) {
+int Solution::CalcCost(vector<vector<int> >& distances, vector<vector<int> >& frequencies) {
    int unitIndex, locIndex, locNeighbough;
    int cost = 0;
 
@@ -21,6 +22,8 @@ int Solution::GetCost(vector<vector<int> >& distances, vector<vector<int> >& fre
          cost += frequencies[unitIndex][j] * distances[locIndex][locNeighbough];
       }
    }
+
+   this->score = cost;
    
    return cost;
 }
