@@ -31,9 +31,10 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
    // Size is (n*(n-1))/2
    int n = fatherSolution.n;
    int neighbourSize = (n * (n - 1)) / 2;
+   bool dlbMask[neighbourSize] = {false};
 
    for (int r = 0; r < n/2; r++) {
-      for (int s = r+1; s < n; s++) {
+      for (int s = r+1; s < n && !dlbMask[r]; s++) {
          Solution* neighbour = new Solution(fatherSolution);
          int movementCost = 0;
 
@@ -54,6 +55,9 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
          // If the diference is negative, then the cost of the neighbour is lower
          if (movementCost < 0) return neighbour;
       }
+
+      // If it hasnt returned, this movement is not good
+      dlbMask[r] = true;
    }
 
    return NULL;
