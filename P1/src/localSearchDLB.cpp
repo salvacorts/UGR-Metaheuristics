@@ -1,38 +1,18 @@
-#include "localSearch.hpp"
+#include "localSearchDLB.hpp"
 #include <vector>
 #include <utility>
 #include <climits>
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
-Solution LocalSearchSolver::GenerateRandomSolution() {
-   int n = this->distances.size();
-   bool assigned[n] = {false};
-   Solution solution(n);
-
-   for (int i = 0; i < solution.solutionRep.size(); i++) {
-      int rndLoc;
-
-      do {
-         rndLoc = rand() % n;
-      } while (assigned[rndLoc]);
-      
-      solution.solutionRep[i] = rndLoc;
-      assigned[rndLoc] = true;
-   }
-
-   solution.CalcCost(this->distances, this->frequencies);
-
-   return solution;
-}
-
-Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
+Solution* LocalSearchSolverDLB::GenerateBestNeighbour(Solution& fatherSolution) {
    // Size is (n*(n-1))/2
    int n = fatherSolution.n;
 
-   for (int r = 0; r < n/2; r++) {
-      for (int s = r+1; s < n; s++) {
+   for (int r = 0; r < n; r++) {
+      for (int s = 0; s < n && !this->dlbMask[r]; s++) {
          Solution* neighbour = new Solution(fatherSolution);
          int movementCost = 0;
 
@@ -51,24 +31,15 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
          }
 
          // If the diference is negative, then the cost of the neighbour is lower
-         if (movementCost < 0) return neighbour;
+         if (movementCost < 0) {
+            this->dlbMask[r] = this->dlbMask[s] = false;
+            return neighbour;
+         } 
       }
+
+      // If it hasnt returned yet, this movement is not good. Blacklist it
+      dlbMask[r] = true;
    }
 
    return NULL;
-}
-
-Solution LocalSearchSolver::Solve() {
-   Solution finalSolution = GenerateRandomSolution();
-   Solution* nextBestSolution;
-
-   do {
-      nextBestSolution = GenerateBestNeighbour(finalSolution);
-
-      if (nextBestSolution != NULL) finalSolution = *nextBestSolution;
-
-   } while(nextBestSolution != NULL);
-
-   finalSolution.CalcCost(this->distances, this->frequencies);
-   return finalSolution;
 }

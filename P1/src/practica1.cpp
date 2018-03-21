@@ -5,6 +5,8 @@
 #include <chrono>
 #include "greedy.hpp"
 #include "localSearch.hpp"
+#include "localSearchDLB.hpp"
+
 
 using namespace std;
 using namespace std::chrono;
@@ -102,6 +104,7 @@ int main(int argc, char const* argv[]) {
     vector<pair<string, Solver*> > solvers = {
         make_pair("Greedy", new GreedySolver(distances, frequencies)),
         make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
+        make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
     };
 
     for (auto& solver : solvers) {

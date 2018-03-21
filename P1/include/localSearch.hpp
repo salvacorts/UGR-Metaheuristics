@@ -5,15 +5,15 @@
 #define LOCALSEARCH_H
 
 class LocalSearchSolver : public Solver {
-private:
+protected:
    Solution GenerateRandomSolution();
-   Solution* GenerateBestNeighbour(Solution& fatherSolution);
+   virtual Solution* GenerateBestNeighbour(Solution& fatherSolution);
 
 public:
    LocalSearchSolver(vector<vector<int> >& distances, vector<vector<int> >& frequencies)
    : Solver(distances, frequencies){}
 
-   Solution Solve() final;
+   Solution Solve();
 };
 
 #endif

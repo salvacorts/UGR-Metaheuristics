@@ -8,7 +8,7 @@ public:
    GreedySolver(vector<vector<int> >& distances, vector<vector<int> >& frequencies)
    : Solver(distances, frequencies){}
 
-   Solution Solve() final;
+   Solution Solve();
 };
 
 #endif
