@@ -84,6 +84,8 @@ int main(int argc, char const* argv[]) {
     string line;
     int n;
 
+    // For reproduction
+    srand(7);
 
     if (argc != 3) {
         cerr << "[!] Missing parameter" << endl;
