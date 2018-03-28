@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Descripci\IeC {\'o}n del problema}{3}
+\contentsline {section}{\numberline {2}Consideraciones comunes a los algoritmos utilizados}{4}
+\contentsline {section}{\numberline {3}Algoritmo Greedy}{6}
+\contentsline {section}{\numberline {4}Algoritmo de B\IeC {\'u}squeda Local}{7}
+\contentsline {section}{\numberline {5}Procedimiento considerado para desarrollar la pr\IeC {\'a}ctica}{10}
+\contentsline {section}{\numberline {6}Experimentos y an\IeC {\'a}lisis de resultados}{12}

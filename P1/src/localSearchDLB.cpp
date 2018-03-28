@@ -13,12 +13,7 @@ Solution* LocalSearchSolverDLB::GenerateBestNeighbour(Solution& fatherSolution) 
 
    for (int r = 0; r < n; r++) {
       for (int s = 0; s < n && !this->dlbMask[r]; s++) {
-         Solution* neighbour = new Solution(fatherSolution);
          int movementCost = 0;
-
-         int tmp = neighbour->solutionRep[r];                     // t <- A(r)
-         neighbour->solutionRep[r] = neighbour->solutionRep[s];   // A(r) <- A(s)
-         neighbour->solutionRep[s] = tmp;                         // A(s) <- t
 
          // Calc movement cost which is C(a') - C(a)
          for (int k = 0; k < n; k++) {
@@ -32,7 +27,13 @@ Solution* LocalSearchSolverDLB::GenerateBestNeighbour(Solution& fatherSolution) 
 
          // If the diference is negative, then the cost of the neighbour is lower
          if (movementCost < 0) {
+            Solution* neighbour = new Solution(fatherSolution);
             this->dlbMask[r] = this->dlbMask[s] = false;
+
+            int tmp = neighbour->solutionRep[r];                     // t <- A(r)
+            neighbour->solutionRep[r] = neighbour->solutionRep[s];   // A(r) <- A(s)
+            neighbour->solutionRep[s] = tmp;                         // A(s) <- t
+            
             return neighbour;
          } 
       }

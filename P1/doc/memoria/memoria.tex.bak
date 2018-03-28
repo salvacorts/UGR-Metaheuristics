@@ -315,23 +315,6 @@ algoritmo para resolver cada caso del problema.
       \item Se compilara con parametro \textbf{debug} a fin de contrastar aún mas los resultados del tiempo.
    \end{itemize}
 }      
-
-      
-      \newpage
-      \subsection*{Resultados Greedy}
-      a\\
-      
-      \newpage
-      \subsection*{Resultados Búsqueda Local}
-      b\\
-      
-      \newpage
-      \subsection*{Resultados Búsqueda Local con \textit{Don't Look Bits}}
-      d\\
-      
-      \newpage
-      \subsection*{Comparación de los resultados. Conclusiones.}
-      abc\\
       
       
    
