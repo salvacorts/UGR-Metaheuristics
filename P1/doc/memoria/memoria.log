@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.28)  28 MAR 2018 19:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.28)  28 MAR 2018 21:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -537,9 +537,17 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks25
 \@floatcapt=\box55
 )
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen133
+\WF@size=\dimen134
+\c@WF@wrappedlines=\count114
+\WF@box=\box56
+\WF@everypar=\toks26
+Package: wrapfig 2003/01/31  v 3.6
+)
 (/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count114
+\c@AlgoLine=\count115
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
@@ -548,7 +556,7 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count115
+\c@checkoddpage=\count116
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -564,33 +572,33 @@ Package: relsize 2013/03/29 ver 4.1
 \skiplength=\skip63
 \algomargin=\skip64
 \skipalgocfslide=\skip65
-\algowidth=\dimen133
-\inoutsize=\dimen134
-\inoutindent=\dimen135
-\interspacetitleruled=\dimen136
-\interspacealgoruled=\dimen137
-\interspacetitleboxruled=\dimen138
+\algowidth=\dimen135
+\inoutsize=\dimen136
+\inoutindent=\dimen137
+\interspacetitleruled=\dimen138
+\interspacealgoruled=\dimen139
+\interspacetitleboxruled=\dimen140
 \algocf@ruledwidth=\skip66
-\algocf@inoutbox=\box56
-\algocf@inputbox=\box57
+\algocf@inoutbox=\box57
+\algocf@inputbox=\box58
 \AlCapSkip=\skip67
 \AlCapHSkip=\skip68
 \algoskipindent=\skip69
-\algocf@nlbox=\box58
-\algocf@hangingbox=\box59
-\algocf@untilbox=\box60
+\algocf@nlbox=\box59
+\algocf@hangingbox=\box60
+\algocf@untilbox=\box61
 \algocf@skipuntil=\skip70
-\algocf@capbox=\box61
+\algocf@capbox=\box62
 \algocf@lcaptionbox=\skip71
 \algoheightruledefault=\skip72
 \algoheightrule=\skip73
 \algotitleheightruledefault=\skip74
 \algotitleheightrule=\skip75
-\c@algocfline=\count116
-\c@algocfproc=\count117
-\c@algocf=\count118
-\algocf@algoframe=\box62
-\algocf@algobox=\box63
+\c@algocfline=\count117
+\c@algocfproc=\count118
+\c@algocf=\count119
+\algocf@algoframe=\box63
+\algocf@algobox=\box64
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -610,24 +618,24 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count119
-\lst@gtempboxa=\box64
-\lst@token=\toks26
-\lst@length=\count120
-\lst@currlwidth=\dimen139
-\lst@column=\count121
-\lst@pos=\count122
-\lst@lostspace=\dimen140
-\lst@width=\dimen141
-\lst@newlines=\count123
-\lst@lineno=\count124
-\lst@maxwidth=\dimen142
+\lst@mode=\count120
+\lst@gtempboxa=\box65
+\lst@token=\toks27
+\lst@length=\count121
+\lst@currlwidth=\dimen141
+\lst@column=\count122
+\lst@pos=\count123
+\lst@lostspace=\dimen142
+\lst@width=\dimen143
+\lst@newlines=\count124
+\lst@lineno=\count125
+\lst@maxwidth=\dimen144
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count125
-\lst@skipnumbers=\count126
-\lst@framebox=\box65
+\c@lstnumber=\count126
+\lst@skipnumbers=\count127
+\lst@framebox=\box66
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -636,11 +644,11 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 35.
+less on input line 36.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 36.
+less on input line 37.
 
 \memoria@idxfile=\write3
 \openout3 = `memoria.idx'.
@@ -662,31 +670,31 @@ LaTeX Warning: Label `my-label' multiply defined.
 )
 \openout1 = `memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count127
-\scratchdimen=\dimen143
-\scratchbox=\box66
-\nofMPsegments=\count128
-\nofMParguments=\count129
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count130
-\MPscratchDim=\dimen144
-\MPnumerator=\count131
-\makeMPintoPDFobject=\count132
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count128
+\scratchdimen=\dimen145
+\scratchbox=\box67
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen146
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
+\everyMPtoPDFconversion=\toks29
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -738,7 +746,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count133
+\c@lstlisting=\count134
 
 [1
 
@@ -754,36 +762,36 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 64.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 65.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 65.
  [3] [4]
 <solRep.png, id=25, 1389.19pt x 447.6725pt>
 File: solRep.png Graphic file (type png)
 <use solRep.png>
-Package pdftex.def Info: solRep.png  used on input line 90. on input line 90.
+Package pdftex.def Info: solRep.png  used on input line 91. on input line 91.
 Package pdftex.def Info: Requested size: 194.48528pt x 62.67372pt on input line
- 90.
+ 91.
  [5 <./solRep.png>] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--212
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
@@ -796,50 +804,106 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 <execOutDiagram.png, id=52, 527.9725pt x 282.05376pt>
 File: execOutDiagram.png Graphic file (type png)
 <use execOutDiagram.png>
-Package pdftex.def Info: execOutDiagram.png  used on input line 295. on input l
-ine 295.
+Package pdftex.def Info: execOutDiagram.png  used on input line 296. on input l
+ine 296.
 Package pdftex.def Info: Requested size: 369.57823pt x 197.43626pt on input lin
-e 295.
+e 296.
  [11 <./execOutDiagram.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
 
  []
 
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 318.
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 376--377
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 319.
+[12]
+<boxplot-greedy-desv.png, id=62, 451.6875pt x 195.73125pt>
+File: boxplot-greedy-desv.png Graphic file (type png)
+<use boxplot-greedy-desv.png>
+Package pdftex.def Info: boxplot-greedy-desv.png  used on input line 354. on in
+put line 354.
+Package pdftex.def Info: Requested size: 189.70744pt x 82.20656pt on input line
+ 354.
+<boxplot-greedy-time.png, id=63, 451.6875pt x 195.73125pt>
+File: boxplot-greedy-time.png Graphic file (type png)
+<use boxplot-greedy-time.png>
+Package pdftex.def Info: boxplot-greedy-time.png  used on input line 355. on in
+put line 355.
+Package pdftex.def Info: Requested size: 189.70744pt x 82.20656pt on input line
+ 355.
+ [13 <./boxplot-greedy-desv.png> <./boxplot-greedy-time.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
 
  []
 
-[14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
+<boxplot-bl-desv.png, id=70, 451.6875pt x 195.73125pt>
+File: boxplot-bl-desv.png Graphic file (type png)
+<use boxplot-bl-desv.png>
+Package pdftex.def Info: boxplot-bl-desv.png  used on input line 387. on input 
+line 387.
+Package pdftex.def Info: Requested size: 225.84319pt x 97.86537pt on input line
+ 387.
+<boxplot-bl-time.png, id=71, 451.6875pt x 195.73125pt>
+File: boxplot-bl-time.png Graphic file (type png)
+<use boxplot-bl-time.png>
+Package pdftex.def Info: boxplot-bl-time.png  used on input line 388. on input 
+line 388.
+Package pdftex.def Info: Requested size: 225.84319pt x 97.86537pt on input line
+ 388.
+[14 <./boxplot-bl-desv.png> <./boxplot-bl-time.png>]
+<boxplot-bldlb-desv.png, id=77, 451.6875pt x 195.73125pt>
+File: boxplot-bldlb-desv.png Graphic file (type png)
+<use boxplot-bldlb-desv.png>
+Package pdftex.def Info: boxplot-bldlb-desv.png  used on input line 419. on inp
+ut line 419.
+Package pdftex.def Info: Requested size: 271.01459pt x 117.43964pt on input lin
+e 419.
+<boxplot-bldlb-time.png, id=78, 451.6875pt x 195.73125pt>
+File: boxplot-bldlb-time.png Graphic file (type png)
+<use boxplot-bldlb-time.png>
+Package pdftex.def Info: boxplot-bldlb-time.png  used on input line 420. on inp
+ut line 420.
+Package pdftex.def Info: Requested size: 271.01459pt x 117.43964pt on input lin
+e 420.
+ [15 <./boxplot-bldlb-desv.png> <./boxplot-bldlb-time.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
+
+ []
+
+<bl-vs-dlb.png, id=84, 602.25pt x 372.39125pt>
+File: bl-vs-dlb.png Graphic file (type png)
+<use bl-vs-dlb.png>
+Package pdftex.def Info: bl-vs-dlb.png  used on input line 427. on input line 4
+27.
+Package pdftex.def Info: Requested size: 361.35278pt x 223.43646pt on input lin
+e 427.
+[16 <./bl-vs-dlb.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--428
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
 
  []
 
 
-Overfull \hbox (4.45941pt too wide) in paragraph at lines 431--432
+Overfull \hbox (4.45941pt too wide) in paragraph at lines 453--454
 \OT1/cmr/m/n/12 (\OT1/cmr/bx/it/12 Debug\OT1/cmr/m/n/12 ). La re-al-i-dad es qu
 e con un nivel m^^Saximo de op-ti-mizaci^^Son (\OT1/cmr/bx/it/12 Release\OT1/cm
 r/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--432
+Underfull \hbox (badness 10000) in paragraph at lines 453--454
 
  []
 
-[16]
+[17]
 runsystem(makeindex memoria.idx)...executed safely (allowed).
 
  (./memoria.ind) (./memoria.aux)
@@ -848,10 +912,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6379 strings out of 494813
- 85751 string characters out of 6178109
- 191386 words of memory out of 5000000
- 9588 multiletter control sequences out of 15000+600000
+ 6476 strings out of 494813
+ 87375 string characters out of 6178109
+ 193631 words of memory out of 5000000
+ 9674 multiletter control sequences out of 15000+600000
  12010 words of font info for 43 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  47i,22n,99p,641b,1167s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -871,10 +935,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (16 pages, 294488 bytes).
+Output written on memoria.pdf (17 pages, 331827 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 145 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

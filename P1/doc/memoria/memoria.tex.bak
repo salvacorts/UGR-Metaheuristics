@@ -6,6 +6,7 @@
 \usepackage{imakeidx}
 \usepackage{dirtree}
 \usepackage{float}
+\usepackage{wrapfig}
 
 \usepackage[linesnumbered]{algorithm2e}
 \SetKwRepeat{Do}{do}{while}%
@@ -243,7 +244,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
          .2 bin/         \DTcomment{Archivos ejecutables}.
          .3 practica1   \DTcomment{Ejecutable principal de la práctica}.
          .2 build/       \DTcomment{Directorio para compilación con CMake}.
-         .2 doc/         \DTcomment{Otra documentación y codigo LaTeX de este documento}.
+         .2 doc/         \DTcomment{Otra documentación y código LaTeX de este documento}.
          .2 include/     \DTcomment{Cabeceras}.
          .2 instancias/  \DTcomment{Instancias de problemas sobre QAP}.
          .3 *.dat   \DTcomment{Definición de un problema}.
@@ -341,14 +342,19 @@ algoritmo para resolver cada caso del problema.
 \end{tabular}
 \end{table}
 
-      Como podiamos esperar, el algoritmo greedy es muy rápido, aunque las soluciones ontenidas distan bastante de la mejor conocida. Podríamos discutir su utilidad desde un punto de vista práctico; ¿En qué escenarios puede sernos útil una búsqueda greedy?
+      Como podríamos esperar, el algoritmo greedy es muy rápido, aunque las soluciones obtenidas distan bastante de la mejor conocida. Podríamos discutir su utilidad desde un punto de vista práctico; ¿En qué escenarios puede sernos útil una búsqueda greedy?
       
       \begin{enumerate}
          \item Si ofrecemos un servicio donde la optimalidad de la solución a un problema es lo de menos y tenemos que responder muchas solicitudes con pocos recursos de manera muy rápida.
          
          \item Como algoritmo auxiliar de cara a obtener una solución inicial para posteriormente tratar de mejorarla mediante el uso de algoritmos mas complejos. No obstante, esto no siempre es buena idea pues corremos el riesgo de caer en óptimos locales. Hay que usarlos con algoritmos que sean capaces de esquivar con relativa facilidad óptimos locales.         
       \end{enumerate}
-
+      
+      \begin{center}
+         \includegraphics[scale=0.42]{boxplot-greedy-desv}
+         \includegraphics[scale=0.42]{boxplot-greedy-time}
+      \end{center}
+      
       
       \newpage
       \subsection*{Resultados Búsqueda Local}
@@ -377,6 +383,10 @@ algoritmo para resolver cada caso del problema.
       
       Sin embargo, en combinación con otros algoritmos como los Genéticos podemos obtener resultados aún mejores y en un tiempo mas aceptable dado que restringimos el espacio de búsqueda para este algoritmo.
 
+      \begin{center}
+         \includegraphics[scale=0.5]{boxplot-bl-desv}
+         \includegraphics[scale=0.5]{boxplot-bl-time}
+      \end{center}
 
       
       \newpage
@@ -402,10 +412,22 @@ algoritmo para resolver cada caso del problema.
 \end{tabular}
 \end{table}
 
-      Podemos observar que la técnica de \textit{Don't look bits} empeora ligeramente los resultados respecto a la búsqueda local básica. No obstante, mejora significativamente los tiempos de ejecución de esta. 
+      Podemos observar que la técnica de \textit{Don't look bits} mejora significativamente los tiempos de ejecución de la versión básica de la búsqueda local.
       
+      \vspace*{1cm}
+      \begin{center}
+         \includegraphics[scale=0.6]{boxplot-bldlb-desv}
+         \includegraphics[scale=0.6]{boxplot-bldlb-time}
+      \end{center}
       
+      \newpage
+         En el siguiente gráfico podemos ver como evoluciona el tiempo de ejecución en función del tamaño tanto de la Búsqueda Local (rojo) como de su variante con \textit{Don't Look Bits} (azul). \\
+          
+      \begin{center}
+         \includegraphics[scale=0.6]{bl-vs-dlb}
+      \end{center}
       
+      Se puede ver como el tamaño del problema no es lo único que afecta al tiempo de ejecución; La dificultad del problema en si (que es mucho mas difícil de medir) influye también. Por ejemplo, para la búsqueda local básica, se tarda más en \textit{Tai150b} de tamaño 150 (24,83 segundos) que en \textit{Tai256c} de tamaño 256 (5,15 segundos).
       
       
       \newpage
@@ -422,13 +444,13 @@ algoritmo para resolver cada caso del problema.
 \end{tabular}
 \end{table}
       
-      Como podemos ver, el tiempo de ejecución del algoritmo greedy es varias magnitudes menor que los tiempos de los otros dos algoritmos. Sin embargo, la poca calidad de sus soluciones hace que, por si sola, no sea una herramienta idonea de cara a resolver problemas.\\
+      Como podemos ver, el tiempo de ejecución del algoritmo greedy es varias magnitudes menor que los tiempos de los otros dos algoritmos. Sin embargo, la poca calidad de sus soluciones hace que, por si sola, no sea una herramienta idónea de cara a resolver problemas.\\
       
-      Tanto la Busqueda Local básica como su variante con \textit{Dont't look bits} nos ofrecen resultados mucho mas ótimos que el greedy. \\
+      Tanto la Búsqueda Local básica como su variante con \textit{Dont't look bits} nos ofrecen resultados mucho mas óptimos que el greedy. \\
       
-      Como la desviación de BL y BL con DLB es similar, debemos fijarnos en el tiempo medio de ejecución. La variante \textit{DLB} es 8.5\footnote{$2.80/0.33 = 8.\overline{48}$} veces más rapida que la original. Aunque la variante \textit{Don't Look Bits} ofrece resultados ligeramente mejores, esto no debe ser tomado como referencia, pues la naturaleza aleatoria de cara a generar la solución de partida hace que no podamos asegurar que uno encuentra siempre una solución mejor que la otra.\\
+      Como la desviación de BL y BL con DLB es similar, debemos fijarnos en el tiempo medio de ejecución. La variante \textit{DLB} es 8.5 veces más rápida\footnote{$2.80/0.33 = 8.\overline{48}$} que la original. Aunque la variante \textit{Don't Look Bits} ofrece resultados ligeramente mejores, esto no debe ser tomado como referencia, pues la naturaleza aleatoria de cara a generar la solución de partida hace que no podamos asegurar que uno encuentra siempre una solución mejor que la otra.\\
       
-      Cabe destacar que el experimento ha sido compilado sin optimización (\textbf{\textit{Debug}}). La realidad es que con un nivel maximo de optimización (\textbf{\textit{Release}}), aún en problemas de mayor tamaño y complejidad como \textbf{\textit{Tai150b}} obtenemos unos tiempos mucho menores que hace que utilizar un greedy en producción sea aun menos viable.\\
+      Cabe destacar que el experimento ha sido compilado sin optimización (\textbf{\textit{Debug}}). La realidad es que con un nivel máximo de optimización (\textbf{\textit{Release}}), aún en problemas de mayor tamaño y complejidad como \textbf{\textit{Tai150b}} obtenemos unos tiempos mucho menores que hace que utilizar un greedy en producción sea aun menos viable.\\
       
       Un ejemplo ilustrativo de la diferencia de tiempos en función del nivel de optimización:
       
