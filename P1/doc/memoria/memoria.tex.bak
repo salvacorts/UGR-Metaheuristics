@@ -1,5 +1,6 @@
 \documentclass[a4paper, 12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} 
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
@@ -75,15 +76,6 @@ min\\
    \section{Consideraciones comunes a los algoritmos utilizados}
    Esta práctica ha sido diseñada como una librería de metaheurísticas per se. Es decir, existe un tipo de objeto \textbf{Solution} y un tipo de objeto \textbf{Solver} del cual heredarán los objetos que implementan las diversas metaheurísticas. Cada metaheurística deberá implementar la función \textit{Solve} que devuelve un objeto \textbf{Solution}.
    
-   \subsection*{Clase Solver}
-   Esta clase debe ser heredada por las metaheurísticas a implementar. Su representación consta de dos matrices:
-   \begin{itemize}
-      \item \textbf{Distancias}: Matriz de distancias entre un punto $i$ y otro $j$.
-      \item \textbf{Frecuencias}: Matriz de flujo entre un objeto $i$ y otro $j$. 
-   \end{itemize}
-   Tiene una función virtual llamada \textit{Solve} que ha de ser implementada por los objetos que hereden de \textbf{Solver}. Es la interfaz común a todos los objetos de tipo Solver para obtener una Solución.
-   
-   \newpage
    \subsection*{Clase Solution}
    Sirve para representar una solución, la cual, se implementa como un vector donde cada posición $i$ representa un objeto y alberga la localización $j$ donde debe ser colocado dicho objeto $i$. 
    
@@ -103,6 +95,22 @@ min\\
    \end{itemize}\vspace*{0.5cm}
    
    Dado que el cálculo del coste de la solución es bastante costoso, $O(n^{2})$, Esta función debe llamarse manualmente al menos una vez para obtener el coste y que este se guarde en la representación de la clase.
+   
+   
+   \newpage
+   \subsection*{Clase Solver}
+   Esta clase debe ser heredada por las metaheurísticas a implementar. Su representación consta de dos matrices:
+   \begin{itemize}
+      \item \textbf{Distancias}: Matriz de distancias entre un punto $i$ y otro $j$.
+      \item \textbf{Frecuencias}: Matriz de flujo entre un objeto $i$ y otro $j$. 
+   \end{itemize}
+   Tiene una función virtual llamada \textit{Solve} que ha de ser implementada por los objetos que hereden de \textbf{Solver}. Es la interfaz común a todos los objetos de tipo Solver para obtener una Solución.
+   
+   \vspace*{1cm}
+   \begin{figure}[H]
+      \includegraphics[scale=0.55]{clases}
+      \caption{Diagrama de clases}
+   \end{figure}
    
    
    \newpage
@@ -279,16 +287,14 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
       \end{lstlisting}
       
       \newpage
-      La sintaxis de ejecución es la siguiente\footnote{Todo en la misma línea. El parámetro semilla es opcional, por defecto $semilla = 7$}:
+      La sintaxis de ejecución es la siguiente\footnote{El parámetro semilla es opcional, por defecto $semilla = 7$}:
       \begin{lstlisting}[language=bash]
-./bin/practica1 instancias/<problema>.dat 
-                <ruta_escribir_solucion> 
-                <semilla>
+./bin/practica1 instancias/<problema>.dat <semilla>
       \end{lstlisting}
       
       Por ejemplo:
       \begin{lstlisting}[language=bash]
-./bin/practica1 instancias/chr22a.dat prueba.sln 12
+./bin/practica1 instancias/chr22a.dat 12
       \end{lstlisting}
       
       La salida del programa tiene la siguiente estructura:

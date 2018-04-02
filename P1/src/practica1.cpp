@@ -84,15 +84,15 @@ int main(int argc, char const* argv[]) {
     string line;
     int n;
 
-    if (argc < 3) {
+    if (argc < 2) {
         cerr << "[!] Missing parameter" << endl;
-        cout << "Usage: " << argv[0] << " <input_file> <output_file> <seed>" << endl;
+        cout << "Usage: " << argv[0] << " <input_file> <seed>" << endl;
         cout << "\tNote: <seed> is optional" << endl;
         return 1;
     }
 
     // Initialize seed from parameter
-    if (argc == 4) srand(atoi(argv[3]));
+    if (argc == 3) srand(atoi(argv[2]));
     else srand(7);
 
     // Open input file
