@@ -6,27 +6,6 @@
 
 using namespace std;
 
-Solution LocalSearchSolver::GenerateRandomSolution() {
-   int n = this->distances.size();
-   bool assigned[n] = {false};
-   Solution solution(n);
-
-   for (int i = 0; i < solution.solutionRep.size(); i++) {
-      int rndLoc;
-
-      do {
-         rndLoc = rand() % n;
-      } while (assigned[rndLoc]);
-      
-      solution.solutionRep[i] = rndLoc;
-      assigned[rndLoc] = true;
-   }
-
-   solution.CalcCost(this->distances, this->frequencies);
-
-   return solution;
-}
-
 Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
    // Size is (n*(n-1))/2
    int n = fatherSolution.n;
@@ -62,7 +41,7 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
 }
 
 Solution LocalSearchSolver::Solve() {
-   Solution finalSolution = GenerateRandomSolution();
+   Solution finalSolution = Solution::GenerateRandomSolution(this->distances, this->frequencies);
    Solution* nextBestSolution;
 
    do {

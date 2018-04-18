@@ -6,7 +6,6 @@
 
 class LocalSearchSolver : public Solver {
 protected:
-   Solution GenerateRandomSolution();
    virtual Solution* GenerateBestNeighbour(Solution& fatherSolution);
 
 public:

@@ -35,7 +35,9 @@
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/include",
                 "${workspaceRoot}",
-                "${workspaceRoot}/P1/include"
+                "${workspaceRoot}/P1/include",
+                "${workspaceRoot}/include",
+                "${workspaceFolder}/include"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

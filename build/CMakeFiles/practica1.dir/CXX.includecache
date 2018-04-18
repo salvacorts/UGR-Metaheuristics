@@ -1,10 +1,22 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
 #IncludeRegexComplain: ^$
 
 #IncludeRegexTransform: 
+
+../include/age.hpp
+genetico.hpp
+../include/genetico.hpp
+
+../include/agg.hpp
+genetico.hpp
+../include/genetico.hpp
+
+../include/genetico.hpp
+solver.hpp
+../include/solver.hpp
 
 ../include/greedy.hpp
 solver.hpp
@@ -36,9 +48,21 @@ iostream
 solution.hpp
 ../include/solution.hpp
 
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/greedy.cpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/age.cpp
+age.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/age.hpp
+
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/agg.cpp
+agg.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/agg.hpp
+
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.cpp
+genetico.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.hpp
+
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/greedy.cpp
 greedy.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/greedy.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/greedy.hpp
 vector
 -
 utility
@@ -46,9 +70,9 @@ utility
 climits
 -
 
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/localSearch.cpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearch.cpp
 localSearch.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/localSearch.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearch.hpp
 vector
 -
 utility
@@ -58,9 +82,9 @@ climits
 cstdlib
 -
 
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/localSearchDLB.cpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearchDLB.cpp
 localSearchDLB.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/localSearchDLB.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearchDLB.hpp
 vector
 -
 utility
@@ -72,7 +96,7 @@ cstdlib
 iostream
 -
 
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/practica1.cpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/practica1.cpp
 iostream
 -
 fstream
@@ -84,21 +108,21 @@ vector
 chrono
 -
 greedy.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/greedy.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/greedy.hpp
 localSearch.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/localSearch.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearch.hpp
 localSearchDLB.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/localSearchDLB.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearchDLB.hpp
 
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/solution.cpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solution.cpp
 assert.h
 -
 solution.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/solution.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solution.hpp
 
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/solver.cpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solver.cpp
 assert.h
 -
 solver.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/src/solver.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solver.hpp
 

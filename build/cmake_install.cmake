@@ -1,4 +1,4 @@
-# Install script for directory: /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1
+# Install script for directory: /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/P1/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
