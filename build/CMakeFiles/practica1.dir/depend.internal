@@ -3,21 +3,21 @@
 
 CMakeFiles/practica1.dir/src/age.cpp.o
  ../include/age.hpp
- ../include/genetico.hpp
+ ../include/genetic.hpp
  ../include/solution.hpp
  ../include/solver.hpp
  /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/age.cpp
 CMakeFiles/practica1.dir/src/agg.cpp.o
  ../include/agg.hpp
- ../include/genetico.hpp
+ ../include/genetic.hpp
  ../include/solution.hpp
  ../include/solver.hpp
  /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/agg.cpp
-CMakeFiles/practica1.dir/src/genetico.cpp.o
- ../include/genetico.hpp
+CMakeFiles/practica1.dir/src/genetic.cpp.o
+ ../include/genetic.hpp
  ../include/solution.hpp
  ../include/solver.hpp
- /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.cpp
+ /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.cpp
 CMakeFiles/practica1.dir/src/greedy.cpp.o
  ../include/greedy.hpp
  ../include/solution.hpp

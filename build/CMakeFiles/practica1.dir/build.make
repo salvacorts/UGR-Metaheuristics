@@ -177,33 +177,9 @@ CMakeFiles/practica1.dir/src/age.cpp.o.provides: CMakeFiles/practica1.dir/src/ag
 CMakeFiles/practica1.dir/src/age.cpp.o.provides.build: CMakeFiles/practica1.dir/src/age.cpp.o
 
 
-CMakeFiles/practica1.dir/src/genetico.cpp.o: CMakeFiles/practica1.dir/flags.make
-CMakeFiles/practica1.dir/src/genetico.cpp.o: ../src/genetico.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/practica1.dir/src/genetico.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/practica1.dir/src/genetico.cpp.o -c /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.cpp
-
-CMakeFiles/practica1.dir/src/genetico.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/practica1.dir/src/genetico.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.cpp > CMakeFiles/practica1.dir/src/genetico.cpp.i
-
-CMakeFiles/practica1.dir/src/genetico.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/practica1.dir/src/genetico.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.cpp -o CMakeFiles/practica1.dir/src/genetico.cpp.s
-
-CMakeFiles/practica1.dir/src/genetico.cpp.o.requires:
-
-.PHONY : CMakeFiles/practica1.dir/src/genetico.cpp.o.requires
-
-CMakeFiles/practica1.dir/src/genetico.cpp.o.provides: CMakeFiles/practica1.dir/src/genetico.cpp.o.requires
-	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetico.cpp.o.provides.build
-.PHONY : CMakeFiles/practica1.dir/src/genetico.cpp.o.provides
-
-CMakeFiles/practica1.dir/src/genetico.cpp.o.provides.build: CMakeFiles/practica1.dir/src/genetico.cpp.o
-
-
 CMakeFiles/practica1.dir/src/solution.cpp.o: CMakeFiles/practica1.dir/flags.make
 CMakeFiles/practica1.dir/src/solution.cpp.o: ../src/solution.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/practica1.dir/src/solution.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/practica1.dir/src/solution.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/practica1.dir/src/solution.cpp.o -c /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solution.cpp
 
 CMakeFiles/practica1.dir/src/solution.cpp.i: cmake_force
@@ -227,7 +203,7 @@ CMakeFiles/practica1.dir/src/solution.cpp.o.provides.build: CMakeFiles/practica1
 
 CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o: CMakeFiles/practica1.dir/flags.make
 CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o: ../src/localSearchDLB.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o -c /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearchDLB.cpp
 
 CMakeFiles/practica1.dir/src/localSearchDLB.cpp.i: cmake_force
@@ -247,6 +223,30 @@ CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o.provides: CMakeFiles/practica1
 .PHONY : CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o.provides
 
 CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o.provides.build: CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o
+
+
+CMakeFiles/practica1.dir/src/genetic.cpp.o: CMakeFiles/practica1.dir/flags.make
+CMakeFiles/practica1.dir/src/genetic.cpp.o: ../src/genetic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/practica1.dir/src/genetic.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/practica1.dir/src/genetic.cpp.o -c /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.cpp
+
+CMakeFiles/practica1.dir/src/genetic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/practica1.dir/src/genetic.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.cpp > CMakeFiles/practica1.dir/src/genetic.cpp.i
+
+CMakeFiles/practica1.dir/src/genetic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/practica1.dir/src/genetic.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.cpp -o CMakeFiles/practica1.dir/src/genetic.cpp.s
+
+CMakeFiles/practica1.dir/src/genetic.cpp.o.requires:
+
+.PHONY : CMakeFiles/practica1.dir/src/genetic.cpp.o.requires
+
+CMakeFiles/practica1.dir/src/genetic.cpp.o.provides: CMakeFiles/practica1.dir/src/genetic.cpp.o.requires
+	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetic.cpp.o.provides.build
+.PHONY : CMakeFiles/practica1.dir/src/genetic.cpp.o.provides
+
+CMakeFiles/practica1.dir/src/genetic.cpp.o.provides.build: CMakeFiles/practica1.dir/src/genetic.cpp.o
 
 
 CMakeFiles/practica1.dir/src/solver.cpp.o: CMakeFiles/practica1.dir/flags.make
@@ -280,9 +280,9 @@ practica1_OBJECTS = \
 "CMakeFiles/practica1.dir/src/practica1.cpp.o" \
 "CMakeFiles/practica1.dir/src/localSearch.cpp.o" \
 "CMakeFiles/practica1.dir/src/age.cpp.o" \
-"CMakeFiles/practica1.dir/src/genetico.cpp.o" \
 "CMakeFiles/practica1.dir/src/solution.cpp.o" \
 "CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o" \
+"CMakeFiles/practica1.dir/src/genetic.cpp.o" \
 "CMakeFiles/practica1.dir/src/solver.cpp.o"
 
 # External object files for target practica1
@@ -293,9 +293,9 @@ practica1_EXTERNAL_OBJECTS =
 ../bin/practica1: CMakeFiles/practica1.dir/src/practica1.cpp.o
 ../bin/practica1: CMakeFiles/practica1.dir/src/localSearch.cpp.o
 ../bin/practica1: CMakeFiles/practica1.dir/src/age.cpp.o
-../bin/practica1: CMakeFiles/practica1.dir/src/genetico.cpp.o
 ../bin/practica1: CMakeFiles/practica1.dir/src/solution.cpp.o
 ../bin/practica1: CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o
+../bin/practica1: CMakeFiles/practica1.dir/src/genetic.cpp.o
 ../bin/practica1: CMakeFiles/practica1.dir/src/solver.cpp.o
 ../bin/practica1: CMakeFiles/practica1.dir/build.make
 ../bin/practica1: CMakeFiles/practica1.dir/link.txt
@@ -312,9 +312,9 @@ CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/agg.cpp.o.requir
 CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/practica1.cpp.o.requires
 CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/localSearch.cpp.o.requires
 CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/age.cpp.o.requires
-CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/genetico.cpp.o.requires
 CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/solution.cpp.o.requires
 CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/localSearchDLB.cpp.o.requires
+CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/genetic.cpp.o.requires
 CMakeFiles/practica1.dir/requires: CMakeFiles/practica1.dir/src/solver.cpp.o.requires
 
 .PHONY : CMakeFiles/practica1.dir/requires

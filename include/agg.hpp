@@ -9,12 +9,12 @@ private:
    Population Cross(Population originalP);
    Population Mutate(Population originalP);
    Population Replace(Population originalP);
-   
+
 public:
    AGG(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, int pCross, int pMutate, int maxIters)
    : GeneticAlg(distances, frequencies, populationSize, pCross, pMutate, maxIters){}
-
-   Solution Solve();
 };
 
 #endif
+
+// TODO: Implement other Cross with PMX order

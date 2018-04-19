@@ -177,32 +177,32 @@ src/agg.cpp.s:
 	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/agg.cpp.s
 .PHONY : src/agg.cpp.s
 
-src/genetico.o: src/genetico.cpp.o
+src/genetic.o: src/genetic.cpp.o
 
-.PHONY : src/genetico.o
+.PHONY : src/genetic.o
 
 # target to build an object file
-src/genetico.cpp.o:
-	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetico.cpp.o
-.PHONY : src/genetico.cpp.o
+src/genetic.cpp.o:
+	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetic.cpp.o
+.PHONY : src/genetic.cpp.o
 
-src/genetico.i: src/genetico.cpp.i
+src/genetic.i: src/genetic.cpp.i
 
-.PHONY : src/genetico.i
+.PHONY : src/genetic.i
 
 # target to preprocess a source file
-src/genetico.cpp.i:
-	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetico.cpp.i
-.PHONY : src/genetico.cpp.i
+src/genetic.cpp.i:
+	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetic.cpp.i
+.PHONY : src/genetic.cpp.i
 
-src/genetico.s: src/genetico.cpp.s
+src/genetic.s: src/genetic.cpp.s
 
-.PHONY : src/genetico.s
+.PHONY : src/genetic.s
 
 # target to generate assembly for a file
-src/genetico.cpp.s:
-	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetico.cpp.s
-.PHONY : src/genetico.cpp.s
+src/genetic.cpp.s:
+	$(MAKE) -f CMakeFiles/practica1.dir/build.make CMakeFiles/practica1.dir/src/genetic.cpp.s
+.PHONY : src/genetic.cpp.s
 
 src/greedy.o: src/greedy.cpp.o
 
@@ -381,9 +381,9 @@ help:
 	@echo "... src/agg.o"
 	@echo "... src/agg.i"
 	@echo "... src/agg.s"
-	@echo "... src/genetico.o"
-	@echo "... src/genetico.i"
-	@echo "... src/genetico.s"
+	@echo "... src/genetic.o"
+	@echo "... src/genetic.i"
+	@echo "... src/genetic.s"
 	@echo "... src/greedy.o"
 	@echo "... src/greedy.i"
 	@echo "... src/greedy.s"

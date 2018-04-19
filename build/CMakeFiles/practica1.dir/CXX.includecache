@@ -7,16 +7,18 @@
 #IncludeRegexTransform: 
 
 ../include/age.hpp
-genetico.hpp
-../include/genetico.hpp
+genetic.hpp
+../include/genetic.hpp
 
 ../include/agg.hpp
-genetico.hpp
-../include/genetico.hpp
+genetic.hpp
+../include/genetic.hpp
 
-../include/genetico.hpp
+../include/genetic.hpp
 solver.hpp
 ../include/solver.hpp
+utility
+-
 
 ../include/greedy.hpp
 solver.hpp
@@ -55,10 +57,16 @@ age.hpp
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/agg.cpp
 agg.hpp
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/agg.hpp
+cstdlib
+-
+algorithm
+-
 
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.cpp
-genetico.hpp
-/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetico.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.cpp
+genetic.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.hpp
+climits
+-
 
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/greedy.cpp
 greedy.hpp
@@ -115,8 +123,6 @@ localSearchDLB.hpp
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearchDLB.hpp
 
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solution.cpp
-assert.h
--
 solution.hpp
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solution.hpp
 
