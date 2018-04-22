@@ -6,6 +6,7 @@
 GeneticAlg::Population AGG::Select(Population originalP) {
    Population newP(originalP.size());
 
+
    for (int i = 0; i < newP.size(); i++) {
       int rnd1 = rand() % newP.size();
       int rnd2 = rand() % newP.size();
@@ -31,7 +32,7 @@ GeneticAlg::Population AGG::Cross(Population originalP) {
    // y cruzarla si u <= Pc , se estima a priori el número
    // de cruces a hacer en cada generación (esperanza matemática)
    int crossNumber = this->crossProb * (originalP.size());
-   Population newP(originalP); // a copy of the original
+   Population newP = originalP; // a copy of the original
 
    // We will cross the first crossNumber pairs
    for (int i = 0; i < crossNumber; i+=2) {
@@ -48,7 +49,7 @@ GeneticAlg::Population AGG::Cross(Population originalP) {
       
       // Check which gens are equals and which are not
       for (int j = 0; j < s1->n; j++) {
-         if (s1->solutionRep[j] = s2->solutionRep[j]) {
+         if (s1->solutionRep[j] == s2->solutionRep[j]) {
             equals[j] = true;
             son.solutionRep[j] = s1->solutionRep[j];
          } else {
@@ -59,7 +60,7 @@ GeneticAlg::Population AGG::Cross(Population originalP) {
       // Shuffle nonEquals vector and put each value on son where
       // parents values werent equal
       random_shuffle(nonEquals.begin(), nonEquals.end());
-      for (int j, k = 0; j < son.n; j++) {
+      for (int j = 0, k = 0; j < son.n; j++) {
          if (!equals[j]) {
             son.solutionRep[j] = nonEquals[k];
             k++;
@@ -75,15 +76,18 @@ GeneticAlg::Population AGG::Cross(Population originalP) {
 }
 
 GeneticAlg::Population AGG::Mutate(Population originalP) {
-   Population newP(originalP);
+   Population newP = originalP;
    int mutationNumber = this->mutationProb * newP.size() * newP[0].n;
 
    // We will mutate the first mutationNumber cromosomes
    for (int i = 0; i < mutationNumber; i++) {
-      int rnd1 = rand() % newP.size();
-      int rnd2 = rand() % newP.size();
+      int rnd1 = rand() % newP[0].n;
+      int rnd2 = rand() % newP[0].n;
 
-      Solution originalSolution(newP[i]); // Make a copy to CalcRelativeCost
+      // We need it for CalcRerlativeCost
+      if (newP[i].score == -1) newP[i].CalcCost(this->distances, this->frequencies);
+
+      Solution originalSolution = newP[i]; // Make a copy to CalcRelativeCost
       
       // Swap gens
       int tmp = newP[i].solutionRep[rnd1];
@@ -97,6 +101,18 @@ GeneticAlg::Population AGG::Mutate(Population originalP) {
    return newP;
 }
 
-GeneticAlg::Population AGG::Replace(Population originalP) {
+GeneticAlg::Population AGG::Replace(Population originalP, Population newP) {
 
+   auto lessCmp = [this](Solution& a, Solution& b) {
+      if (a.score == -1) a.CalcCost(this->distances, this->frequencies);
+      if (b.score == -1) b.CalcCost(this->distances, this->frequencies);
+
+      return a.score < b.score;
+   };
+   
+   sort(originalP.begin(), originalP.end(), lessCmp);
+
+   Solution bestSolution = *originalP.begin();
+
+   return newP;
 }

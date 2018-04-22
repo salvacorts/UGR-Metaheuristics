@@ -6,7 +6,9 @@
 #include "greedy.hpp"
 #include "localSearch.hpp"
 #include "localSearchDLB.hpp"
-
+#include "genetic.hpp"
+#include "agg.hpp"
+#include "age.hpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -109,6 +111,7 @@ int main(int argc, char const* argv[]) {
         make_pair("Greedy", new GreedySolver(distances, frequencies)),
         make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
         make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
+        make_pair("AGG OX", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000))
     };
 
     for (auto& solver : solvers) {
@@ -118,7 +121,8 @@ int main(int argc, char const* argv[]) {
         duration<double> elapsed = finish - start;
 
         cout << solver.first << "\t\tElapsed: " << elapsed.count() << " s" << endl;
-        cout << solution << endl << endl;
+        cout << solution << endl;
+        cout << "Valid: " << solution.isValid() << endl << endl;
     }
 
     return 0;

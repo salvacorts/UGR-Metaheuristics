@@ -12,6 +12,20 @@ Solution::Solution(const Solution& copy) {
    this->solutionRep = copy.solutionRep;
 }
 
+bool Solution::isValid() {
+   bool matched[this->n] = {false};
+
+   for (int i = 0; i < solutionRep.size(); i++) {
+      int num = solutionRep[i];
+
+      if (matched[num]) return false;
+
+      matched[num] = true;
+   }
+
+   return true;
+}
+
 Solution Solution::GenerateRandomSolution(vector<vector<int> >& distances, vector<vector<int> >& frequencies) {
    int n = distances.size();
    bool assigned[n] = {false};

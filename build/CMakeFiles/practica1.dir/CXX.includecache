@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -65,6 +65,8 @@ algorithm
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.cpp
 genetic.hpp
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.hpp
+algorithm
+-
 climits
 -
 
@@ -121,6 +123,12 @@ localSearch.hpp
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearch.hpp
 localSearchDLB.hpp
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/localSearchDLB.hpp
+genetic.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/genetic.hpp
+agg.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/agg.hpp
+age.hpp
+/home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/age.hpp
 
 /home/salva/Dropbox/UGR/3/2nd/MH/Practicas/UGR-MH/src/solution.cpp
 solution.hpp
