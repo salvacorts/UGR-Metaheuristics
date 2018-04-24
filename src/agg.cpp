@@ -2,6 +2,10 @@
 #include <cstdlib>
 #include <algorithm>
 
+// TODO: Si no tengo ordenada la poblacion, y estoy haciendo
+// que crucen y muten los primeros, puede que los mejores se queden abajo?
+
+
 // Binary tounament
 GeneticAlg::Population AGG::Select(Population originalP) {
    Population newP(originalP.size());
@@ -68,8 +72,8 @@ GeneticAlg::Population AGG::Cross(Population originalP) {
       }
 
       // TODO: Is it right????? maybe we should create another son with other random nonEquals
-      newP[i] = son;
-      newP[i+1] = son;  
+      if (newP[i].score < newP[i+1].score) newP[i+1] = son;
+      else newP[i] = son;
    }
 
    return newP;
@@ -112,7 +116,10 @@ GeneticAlg::Population AGG::Replace(Population originalP, Population newP) {
    
    sort(originalP.begin(), originalP.end(), lessCmp);
 
-   Solution bestSolution = *originalP.begin();
+   // Keep the best solution in the poblation
+   if (this->bestSolution != NULL && originalP.front().score != this->bestSolution->score) {
+      newP.back() = Solution(*this->bestSolution);
+   }
 
    return newP;
 }
