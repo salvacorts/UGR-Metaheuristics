@@ -50,9 +50,8 @@ Solution GeneticAlg::Solve() {
       newPopulation = Cross(newPopulation);
       newPopulation = Mutate(newPopulation);
 
-      population = Replace(population, newPopulation);
+      population = Replace(newPopulation);
       evaluateResult = Evaluate(population);
-      
 
       if (this->bestSolution == NULL || evaluateResult.second.score < this->bestSolution->score) {
          this->bestSolution = new Solution(evaluateResult.second);

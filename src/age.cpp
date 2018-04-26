@@ -12,6 +12,6 @@ GeneticAlg::Population AGE::Mutate(Population originalP) {
    
 }
 
-GeneticAlg::Population AGE::Replace(Population originalP, Population newP) {
+GeneticAlg::Population AGE::Replace(Population originalP) {
    
 }

@@ -1,8 +1,8 @@
 #include "solution.hpp"
 
 Solution::Solution(int n) {
-   this->score = -1;
    this->n = n;
+   this->score = -1;
    this->solutionRep.resize(n);
 }
 

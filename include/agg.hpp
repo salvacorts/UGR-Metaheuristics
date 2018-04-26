@@ -4,17 +4,24 @@
 #define AGG_H
 
 class AGG : public GeneticAlg {
-private:
-   virtual Population Select(Population originalP);
-   virtual Population Cross(Population originalP);
-   virtual Population Mutate(Population originalP);
-   virtual Population Replace(Population originalP, Population newP);
+protected:
+   Population Select(Population originalP) override;
+   Population Cross(Population originalP) override;
+   Population Mutate(Population originalP) override;
+   Population Replace(Population originalP) override;
 
 public:
    AGG(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)
    : GeneticAlg(distances, frequencies, populationSize, pCross, pMutate, maxIters){}
 };
 
-#endif
 
-// TODO: Implement other Cross with PMX order
+class AGG_PMX : public AGG {
+protected:
+   Population Cross(Population originalP) override;
+public:
+   AGG_PMX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)
+   : AGG(distances, frequencies, populationSize, pCross, pMutate, maxIters){}
+};
+
+#endif

@@ -17,7 +17,7 @@ protected:
    virtual Population Select(Population originalP) = 0;
    virtual Population Cross(Population originalP) = 0;
    virtual Population Mutate(Population originalP) = 0;
-   virtual Population Replace(Population originalP, Population newP) = 0;
+   virtual Population Replace(Population originalP) = 0;
 
    Population CreateRandomPopulation();
    Population CopyPopulation(const Population& p);
