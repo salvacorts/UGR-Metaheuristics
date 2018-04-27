@@ -82,7 +82,6 @@ void WriteMatrixToStream(ostream& out, vector<vector<int> >& m1, vector<vector<i
 int main(int argc, char const* argv[]) {
     vector<vector<int> > distances;
     vector<vector<int> > frequencies;
-    Solution solution;
     string line;
     int n;
 
@@ -111,8 +110,8 @@ int main(int argc, char const* argv[]) {
         make_pair("Greedy", new GreedySolver(distances, frequencies)),
         make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
         make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
-        make_pair("AGG OX", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),
-        make_pair("AGG PMX", new AGG_PMX(distances, frequencies, 50, 0.7, 0.001, 50000))
+        make_pair("AGG OX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        make_pair("AGG PMX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000))
     };
 
     for (auto& solver : solvers) {

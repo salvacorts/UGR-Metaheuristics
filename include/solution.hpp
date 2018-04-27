@@ -16,6 +16,7 @@ public:
    Solution(int n=0);
    Solution(const Solution& copy);
    bool isValid();
+
    int CalcCost(vector<vector<int> >& distances, vector<vector<int> >& frequencies);
    int CalcRelativeCost(vector<vector<int> >& distances, vector<vector<int> >& frequencies, const Solution& orig, int r, int s);
    friend ostream& operator<<(std::ostream& os, const Solution& sol);

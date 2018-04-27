@@ -3,10 +3,13 @@
 
 #ifndef GENETIC__H
 #define GENETIC__H
+
+typedef vector<Solution> Population;
+Population CrossPMX(const Population& originalP, double crossProb);
+Population CrossOX(const Population& originalP, double crossProb);
+
 class GeneticAlg : public Solver {
 protected:
-   typedef vector<Solution> Population;
-
    Solution* bestSolution;
    double crossProb;
    double mutationProb;
@@ -15,9 +18,9 @@ protected:
    int evals;
 
    virtual Population Select(Population originalP) = 0;
-   virtual Population Cross(Population originalP) = 0;
-   virtual Population Mutate(Population originalP) = 0;
    virtual Population Replace(Population originalP) = 0;
+   virtual Population Mutate(const Population& originalP);
+   virtual Population Cross(const Population& originalP);
 
    Population CreateRandomPopulation();
    Population CopyPopulation(const Population& p);

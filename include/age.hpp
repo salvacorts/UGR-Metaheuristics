@@ -6,8 +6,6 @@
 class AGE : public GeneticAlg {
 private:
    Population Select(Population originalP) override;
-   Population Cross(Population originalP) override;
-   Population Mutate(Population originalP) override;
    Population Replace(Population originalP) override;
 
 public:
