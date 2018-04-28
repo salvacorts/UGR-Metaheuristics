@@ -5,8 +5,8 @@
 #include <chrono>
 #include "greedy.hpp"
 #include "localSearch.hpp"
-#include "localSearchDLB.hpp"
 #include "genetic.hpp"
+#include "memetic.hpp"
 #include "agg.hpp"
 #include "age.hpp"
 
@@ -118,7 +118,9 @@ int main(int argc, char const* argv[]) {
         
         make_pair("AGE", new AGE(distances, frequencies, 50, 0.001, 50000)),
         make_pair("AGE OX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
-        make_pair("AGE PMX", new AGE_OX(distances, frequencies, 50, 0.001, 50000))
+        make_pair("AGE PMX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
+
+        make_pair("AM(10, 0.1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400))
     };
 
     for (auto& solver : solvers) {

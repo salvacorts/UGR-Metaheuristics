@@ -37,7 +37,7 @@ public:
       this->evals = 0;
    }
 
-   Solution Solve();
+   Solution Solve() override;
 };
 
 #endif

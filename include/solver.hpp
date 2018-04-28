@@ -14,6 +14,7 @@ protected:
 
 public:
    Solver(vector<vector<int> >& distances, vector<vector<int> >& frequencies);
+   
    virtual Solution Solve() = 0;
 };
 

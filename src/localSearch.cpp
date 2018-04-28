@@ -31,14 +31,44 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(Solution& fatherSolution) {
 Solution LocalSearchSolver::Solve() {
    Solution finalSolution = Solution::GenerateRandomSolution(this->distances, this->frequencies);
    Solution* nextBestSolution;
+   int evals = 0;
 
    do {
       nextBestSolution = GenerateBestNeighbour(finalSolution);
+      evals++;
 
       if (nextBestSolution != NULL) finalSolution = *nextBestSolution;
 
-   } while(nextBestSolution != NULL);
+   } while(nextBestSolution != NULL || evals == this->maxNeighbourEvals);
 
    finalSolution.CalcCost(this->distances, this->frequencies);
    return finalSolution;
+}
+
+Solution* LocalSearchSolverDLB::GenerateBestNeighbour(Solution& fatherSolution) {
+   // Size is (n*(n-1))/2
+   int n = fatherSolution.n;
+
+   for (int r = 0; r < n; r++) {
+      for (int s = 0; s < n && !this->dlbMask[r]; s++) {
+         Solution* neighbour = new Solution(fatherSolution);
+
+         int tmp = neighbour->solutionRep[r];                    // t <- A(r)
+         neighbour->solutionRep[r] = neighbour->solutionRep[s];   // A(r) <- A(s)
+         neighbour->solutionRep[s] = tmp;                        // A(s) <- t
+
+         int movementCost = neighbour->CalcRelativeCost(this->distances, this->frequencies, fatherSolution, r, s);
+
+         // If the diference is negative, then the cost of the neighbour is lower
+         if (movementCost < 0) {
+            this->dlbMask[r] = this->dlbMask[s] = false;            
+            return neighbour;
+         } 
+      }
+
+      // If it hasnt returned yet, this movement is not good. Blacklist it
+      dlbMask[r] = true;
+   }
+
+   return NULL;
 }
