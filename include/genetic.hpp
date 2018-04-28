@@ -17,8 +17,8 @@ protected:
    int maxIters;
    int evals;
 
-   virtual Population Select(Population originalP) = 0;
-   virtual Population Replace(Population originalP) = 0;
+   virtual Population Replace(const Population& originalP, Population& toReplaceP) = 0;
+   virtual Population Select(const Population& originalP) = 0;
    virtual Population Mutate(const Population& originalP);
    virtual Population Cross(const Population& originalP);
 

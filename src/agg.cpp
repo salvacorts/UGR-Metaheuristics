@@ -7,7 +7,7 @@
 // que crucen y muten los primeros, puede que los mejores se queden abajo?
 
 // Binary tounament
-Population AGG::Select(Population originalP) {
+Population AGG::Select(const Population& originalP) {
    Population newP(originalP.size());
 
    for (int i = 0; i < newP.size(); i++) {
@@ -38,8 +38,8 @@ Population AGG::Select(Population originalP) {
    return newP;
 }
 
-Population AGG::Replace(Population originalP) {   
-   Population newP = originalP;
+Population AGG::Replace(const Population& originalP, Population& toReplaceP) {   
+   Population newP = toReplaceP;
    int worst_score, worst_index;
    worst_score = worst_index = 0;
 

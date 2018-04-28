@@ -5,8 +5,8 @@
 
 class AGG : public GeneticAlg {
 protected:
-   Population Select(Population originalP) override;
-   Population Replace(Population originalP) override;
+   Population Replace(const Population& originalP, Population& toReplaceP) override;
+   Population Select(const Population& originalP) override;
 
 public:
    AGG(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)

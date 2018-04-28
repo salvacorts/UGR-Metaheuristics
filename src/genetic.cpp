@@ -52,7 +52,7 @@ Solution GeneticAlg::Solve() {
       Population newPopulation = Select(population);
       newPopulation = Cross(newPopulation);
       newPopulation = Mutate(newPopulation);
-      population = Replace(newPopulation);
+      population = Replace(population, newPopulation);
       evaluateResult = Evaluate(population);
 
       if (evaluateResult.second.score < this->bestSolution->score) {
@@ -94,7 +94,53 @@ Population GeneticAlg::Mutate(const Population& originalP) {
 }
 
 Population GeneticAlg::Cross(const Population& originalP) {
-   // TODO: Add here
+   // n vez de generar un aleatorio u en [0,1] para cada pareja
+   // y cruzarla si u <= Pc , se estima a priori el número
+   // de cruces a hacer en cada generación (esperanza matemática)
+   int crossNumber = crossProb * (originalP.size());
+   Population newP = originalP; // a copy of the original
+
+   // We will cross the first crossNumber pairs
+   for (int i = 0; i < crossNumber; i+=2) {
+      const Solution* s1 = &originalP[i];
+      const Solution* s2 = &originalP[i+1];
+      Solution son1(s1->n);
+      Solution son2(s1->n);
+
+      // Aquellas posiciones que contengan el mismo valor en 
+      // ambos padres se mantienen en el hijo.
+      // Las asignaciones restantes se seleccionan en un orden
+      // aleatorio para completar el hijo
+      bool equals[s1->n] = {false};
+      vector<int> nonEquals;
+      
+      // Check which gens are equals and which are not
+      for (int j = 0; j < s1->n; j++) {
+         if (s1->solutionRep[j] == s2->solutionRep[j]) {
+            son1.solutionRep[j] = s1->solutionRep[j];
+            son2.solutionRep[j] = s1->solutionRep[j];
+            equals[j] = true;
+         } else {
+            nonEquals.push_back(s1->solutionRep[j]);
+         }
+      }
+
+      // Shuffle nonEquals vector and put each value on son where
+      // parents values werent equal
+      random_shuffle(nonEquals.begin(), nonEquals.end());
+      for (int j = 0, k = 0; j < son1.n; j++) {
+         if (!equals[j]) {
+            son1.solutionRep[j] = nonEquals[k];
+            son2.solutionRep[j] = nonEquals[nonEquals.size()-1-k];
+            k++;
+         }
+      }
+
+      newP[i] = son1;
+      newP[i+1] = son2;
+   }
+   
+   return newP;
 }
 
 Population CrossOX(const Population& originalP, double crossProb) {
@@ -140,10 +186,10 @@ Population CrossOX(const Population& originalP, double crossProb) {
          }
       }
 
-      // TODO: Is it right????? maybe we should create another son with other random nonEquals
       newP[i] = son1;
       newP[i+1] = son2;
    }
+
    return newP;
 }
 
