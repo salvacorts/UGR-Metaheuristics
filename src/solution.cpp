@@ -12,6 +12,10 @@ Solution::Solution(const Solution& copy) {
    this->solutionRep = copy.solutionRep;
 }
 
+Solution::~Solution() {
+   this->solutionRep.clear();
+}
+
 bool Solution::isValid() {
    bool matched[this->n] = {false};
 

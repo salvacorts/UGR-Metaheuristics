@@ -56,6 +56,7 @@ Solution GeneticAlg::Solve() {
       evaluateResult = Evaluate(population);
 
       if (evaluateResult.second.score < this->bestSolution->score) {
+         delete this->bestSolution;
          this->bestSolution = new Solution(evaluateResult.second);
       }
    }
@@ -102,26 +103,26 @@ Population GeneticAlg::Cross(const Population& originalP) {
 
    // We will cross the first crossNumber pairs
    for (int i = 0; i < crossNumber; i+=2) {
-      const Solution* s1 = &originalP[i];
-      const Solution* s2 = &originalP[i+1];
-      Solution son1(s1->n);
-      Solution son2(s1->n);
+      const Solution s1 = originalP[i];
+      const Solution s2 = originalP[i+1];
+      Solution son1(s1.n);
+      Solution son2(s1.n);
 
       // Aquellas posiciones que contengan el mismo valor en 
       // ambos padres se mantienen en el hijo.
       // Las asignaciones restantes se seleccionan en un orden
       // aleatorio para completar el hijo
-      bool equals[s1->n] = {false};
+      bool equals[s1.n] = {false};
       vector<int> nonEquals;
       
       // Check which gens are equals and which are not
-      for (int j = 0; j < s1->n; j++) {
-         if (s1->solutionRep[j] == s2->solutionRep[j]) {
-            son1.solutionRep[j] = s1->solutionRep[j];
-            son2.solutionRep[j] = s1->solutionRep[j];
+      for (int j = 0; j < s1.n; j++) {
+         if (s1.solutionRep[j] == s2.solutionRep[j]) {
+            son1.solutionRep[j] = s1.solutionRep[j];
+            son2.solutionRep[j] = s1.solutionRep[j];
             equals[j] = true;
          } else {
-            nonEquals.push_back(s1->solutionRep[j]);
+            nonEquals.push_back(s1.solutionRep[j]);
          }
       }
 

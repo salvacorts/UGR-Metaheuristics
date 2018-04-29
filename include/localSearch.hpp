@@ -15,7 +15,7 @@ public:
       this->maxNeighbourEvals = maxNeighbourEvals;
    }
 
-   virtual Solution* GenerateBestNeighbour(Solution& fatherSolution);
+   virtual Solution GenerateBestNeighbour(const Solution& fatherSolution);
    Solution Solve() override;
 };
 
@@ -24,7 +24,7 @@ private:
    bool *dlbMask;
 
 protected:
-   Solution* GenerateBestNeighbour(Solution& fatherSolution) override;
+   Solution GenerateBestNeighbour(const Solution& fatherSolution) override;
 
 public:
    LocalSearchSolverDLB(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int maxNeighbourEvals=-1) 

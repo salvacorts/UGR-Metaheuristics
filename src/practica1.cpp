@@ -107,20 +107,22 @@ int main(int argc, char const* argv[]) {
     inputFile.close();
 
     vector<pair<string, Solver*> > solvers = {
-        make_pair("Greedy", new GreedySolver(distances, frequencies)),
+        // make_pair("Greedy", new GreedySolver(distances, frequencies)),
 
-        make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
-        make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
+        // make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
+        // make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
 
-        make_pair("AGG", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),
-        make_pair("AGG OX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
-        make_pair("AGG PMX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        // make_pair("AGG", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        // make_pair("AGG OX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        // make_pair("AGG PMX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
         
-        make_pair("AGE", new AGE(distances, frequencies, 50, 0.001, 50000)),
-        make_pair("AGE OX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
-        make_pair("AGE PMX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
+        // make_pair("AGE", new AGE(distances, frequencies, 50, 0.001, 50000)),
+        // make_pair("AGE OX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
+        // make_pair("AGE PMX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
 
-        make_pair("AM(10, 0.1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400))
+        // make_pair("AM(10, 1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 1, 400)),
+        make_pair("AM(10, 0.1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400)),
+        make_pair("AM(10, 0.1mej)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400, true))
     };
 
     for (auto& solver : solvers) {

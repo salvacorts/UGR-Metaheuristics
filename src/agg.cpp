@@ -47,9 +47,16 @@ Population AGG::Replace(const Population& originalP, Population& toReplaceP) {
    if (this->bestSolution != NULL) {
 
       for (int i = 0; i < newP.size(); i++) {
+
+
          if (newP[i].score == -1) {
             newP[i].CalcCost(distances, frequencies);
             this->evals++;
+         }
+         
+         if (newP[i].score == 0) {
+            cout << "Problemass" << endl;
+            cin.get();
          }
 
          if (worst_score < newP[i].score) {
