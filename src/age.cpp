@@ -1,5 +1,6 @@
 #include "age.hpp"
 #include <climits>
+#include <set>
 
 Population AGE::Select(const Population& originalP) {
    Population newP(2);
@@ -35,39 +36,42 @@ Population AGE::Select(const Population& originalP) {
 
 Population AGE::Replace(const Population& originalP, Population& toReplaceP) {
    Population newP = originalP;
-   int worst_score, worst_index;
-   int best_score, best_index;
-   worst_score = worst_index = 0;
-   best_score = INT_MAX;
 
-   // Keep the best solution in the poblation
-   if (this->bestSolution != NULL) {
+   auto iterLessCmp = [=](Population::iterator a, Population::iterator b) {
+      return a->score < b->score;
+   };
 
-      for (int i = 0; i < newP.size(); i++) {
-         if (newP[i].score == -1) {
-            newP[i].CalcCost(distances, frequencies);
-            this->evals++;
-         }
+   auto worsts = set<Population::iterator, decltype(iterLessCmp)>(iterLessCmp);
 
-         if (worst_score < newP[i].score) {
-            worst_score = newP[i].score;
-            worst_index = i;
-         }
+   // search the worst of the original population
+   for (auto it = newP.begin(); it != newP.end(); it++) {
+      if (it->score == -1) {
+         it->CalcCost(distances, frequencies);
+         this->evals++;
       }
 
-      for (int i = 0; i < toReplaceP.size(); i++) {
-         if (toReplaceP[i].score == -1) {
-            toReplaceP[i].CalcCost(distances, frequencies);
-            this->evals++;
+      if (worsts.empty() || it->score > (*worsts.begin())->score) {
+         if (worsts.size() >= toReplaceP.size()) {
+            worsts.erase(worsts.begin());
          }
 
-         if (best_score > toReplaceP[i].score) {
-            best_score =  toReplaceP[i].score;
-            best_index = i;
-         }
+         worsts.insert(it);
+      }
+   }
+
+   // Replace the worst of the original by the sons if they are better
+   for (int i = 0; i < toReplaceP.size(); i++) {
+      if (toReplaceP[i].score == -1) {
+         toReplaceP[i].CalcCost(distances, frequencies);
+         this->evals++;
       }
 
-      newP[worst_index] = Solution(toReplaceP[best_index]);
+      for (auto it = worsts.begin(); it != worsts.end(); it++) {
+         if ((*it)->score > toReplaceP[i].score) {
+            *(*it) = toReplaceP[i];
+            worsts.erase(it);
+         }
+      }
    }
 
    return newP;
