@@ -3,6 +3,7 @@
 #include <climits>
 #include <cmath>
 #include <cstdlib>
+#include <set>
 
 Population GeneticAlg::CreateRandomPopulation() {
    Population population(this->populationSize);
@@ -66,7 +67,7 @@ Solution GeneticAlg::Solve() {
 
 Population GeneticAlg::Mutate(const Population& originalP) {
    Population newP = originalP;
-   int mutationNumber = this->mutationProb * newP.size() * newP[0].n;
+   int mutationNumber = ceil(this->mutationProb * newP.size() * newP[0].n);
    int start = rand() % newP.size();
 
    // We will mutate the first mutationNumber cromosomes starting from start
@@ -98,13 +99,13 @@ Population GeneticAlg::Cross(const Population& originalP) {
    // n vez de generar un aleatorio u en [0,1] para cada pareja
    // y cruzarla si u <= Pc , se estima a priori el número
    // de cruces a hacer en cada generación (esperanza matemática)
-   int crossNumber = crossProb * (originalP.size());
+   int crossNumber = ceil(crossProb * (originalP.size()));
    Population newP = originalP; // a copy of the original
 
    // We will cross the first crossNumber pairs
    for (int i = 0; i < crossNumber; i+=2) {
-      const Solution s1 = originalP[i];
-      const Solution s2 = originalP[i+1];
+      Solution s1 = originalP[i];
+      Solution s2 = originalP[i+1];
       Solution son1(s1.n);
       Solution son2(s1.n);
 
@@ -150,42 +151,60 @@ Population CrossOX(const Population& originalP, double crossProb) {
    // de cruces a hacer en cada generación (esperanza matemática)
    int crossNumber = crossProb * (originalP.size());
    Population newP = originalP; // a copy of the original
+   double step = originalP[0].n / 3;
+   int start = floor(step);
+   int end = floor(step) + ceil(step);
 
    // We will cross the first crossNumber pairs
    for (int i = 0; i < crossNumber; i+=2) {
-      const Solution* s1 = &originalP[i];
-      const Solution* s2 = &originalP[i+1];
-      Solution son1(s1->n);
-      Solution son2(s1->n);
+      Solution s1 = originalP[i];
+      Solution s2 = originalP[i+1];
+      Solution son1(s1.n);
+      Solution son2(s1.n);
 
-      // Aquellas posiciones que contengan el mismo valor en 
-      // ambos padres se mantienen en el hijo.
-      // Las asignaciones restantes se seleccionan en un orden
-      // aleatorio para completar el hijo
-      bool equals[s1->n] = {false};
-      vector<int> nonEquals;
-      
-      // Check which gens are equals and which are not
-      for (int j = 0; j < s1->n; j++) {
-         if (s1->solutionRep[j] == s2->solutionRep[j]) {
-            son1.solutionRep[j] = s1->solutionRep[j];
-            son2.solutionRep[j] = s1->solutionRep[j];
-            equals[j] = true;
-         } else {
-            nonEquals.push_back(s1->solutionRep[j]);
+      vector<int> positionsS1(s1.n), positionsS2(s2.n);
+
+      // Make son 1 and son2 central positions and store the rest for later
+      for (int j = 0; j < s1.n; j++) {
+         positionsS1[s1.solutionRep[j]] = j;
+         positionsS2[s2.solutionRep[j]] = j;
+
+         if (j >= start && j <= end) {
+            son1.solutionRep[j] = s1.solutionRep[j];
+            son2.solutionRep[j] = s2.solutionRep[j];
          }
       }
 
-      // Shuffle nonEquals vector and put each value on son where
-      // parents values werent equal
-      random_shuffle(nonEquals.begin(), nonEquals.end());
-      for (int j = 0, k = 0; j < son1.n; j++) {
-         if (!equals[j]) {
-            son1.solutionRep[j] = nonEquals[k];
-            son2.solutionRep[j] = nonEquals[nonEquals.size()-1-k];
-            k++;
+      auto lessCmpS1 = [=](int a, int b) { return positionsS1[a] < positionsS1[b]; };
+      auto lessCmpS2 = [=](int a, int b) { return positionsS2[a] < positionsS2[b]; };
+      auto setOrderedByS1 = set<int, decltype(lessCmpS1)>(lessCmpS1);
+      auto setOrderedByS2 = set<int, decltype(lessCmpS2)>(lessCmpS2);
+
+      // Order the sons by the parents
+      for (int j = 0; j < s1.n; j++) {
+         if (j == start) {
+            j = end;
+            continue;
          }
+         
+         setOrderedByS1.insert(s2.solutionRep[j]);
+         setOrderedByS2.insert(s1.solutionRep[j]);
       }
+
+      // Add them ordered to the sons
+      auto itS1 = setOrderedByS1.begin();
+      auto itS2 = setOrderedByS2.begin();
+      for (int j = end+1; j != start; j = (j+1)%s1.n) {
+         if (j == start) {
+            j = end;
+            continue;
+         }
+         
+         son1.solutionRep[j] = *itS2;
+         son2.solutionRep[j] = *itS1;
+         itS1++;
+         itS2++;
+      } 
 
       newP[i] = son1;
       newP[i+1] = son2;

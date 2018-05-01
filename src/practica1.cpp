@@ -114,11 +114,11 @@ int main(int argc, char const* argv[]) {
 
         make_pair("AGG", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),
         make_pair("AGG OX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
-        make_pair("AGG PMX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        make_pair("AGG PMX", new AGG_PMX(distances, frequencies, 50, 0.7, 0.001, 50000)),
         
         make_pair("AGE", new AGE(distances, frequencies, 50, 0.001, 50000)),
         make_pair("AGE OX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
-        make_pair("AGE PMX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
+        make_pair("AGE PMX", new AGE_PMX(distances, frequencies, 50, 0.001, 50000)),
 
         make_pair("AM(10, 1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 1, 400)),
         make_pair("AM(10, 0.1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400)),
