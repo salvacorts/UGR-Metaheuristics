@@ -15,16 +15,6 @@ Population GeneticAlg::CreateRandomPopulation() {
    return population;
 }
 
-Population GeneticAlg::CopyPopulation(const Population& p) {
-   Population newP(p.size());
-
-   for (int i = 0; i < p.size(); i++) {
-      newP[i] = p[i];
-   }
-
-   return newP;
-}
-
 pair<int, Solution> GeneticAlg::Evaluate(Population& population) {
    int bestScore = INT_MAX;
    Solution bestSolution;
@@ -71,7 +61,7 @@ Population GeneticAlg::Mutate(const Population& originalP) {
    int start = rand() % newP.size();
 
    // We will mutate the first mutationNumber cromosomes starting from start
-   for (int i = start; i < mutationNumber; i = (i+1) % newP.size()) {
+   for (int i = start, j = 0; j < mutationNumber; i = (i+1) % newP.size(), j++) {
       int rnd1 = rand() % newP[0].n;
       int rnd2 = rand() % newP[0].n;
 

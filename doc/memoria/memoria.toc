@@ -1,7 +1,18 @@
-\select@language {spanish}
+\babel@toc {spanish}{}
 \contentsline {section}{\numberline {1}Descripci\IeC {\'o}n del problema}{3}
 \contentsline {section}{\numberline {2}Consideraciones comunes a los algoritmos utilizados}{4}
+\contentsline {subsection}{\numberline {2.1}Clase Solver}{4}
+\contentsline {subsection}{\numberline {2.2}Clase Solution}{5}
 \contentsline {section}{\numberline {3}Algoritmo Greedy}{6}
 \contentsline {section}{\numberline {4}Algoritmo de B\IeC {\'u}squeda Local}{7}
-\contentsline {section}{\numberline {5}Procedimiento considerado para desarrollar la pr\IeC {\'a}ctica}{10}
-\contentsline {section}{\numberline {6}Experimentos y an\IeC {\'a}lisis de resultados}{12}
+\contentsline {subsection}{\numberline {4.1}B\IeC {\'u}squeda Local con \textit {Don't Look Bits}}{9}
+\contentsline {section}{\numberline {5}Algor\IeC {\'\i }tmos Gen\IeC {\'e}ticos}{10}
+\contentsline {subsection}{\numberline {5.1}Algor\IeC {\'\i }tmo Gen\IeC {\'e}tico Generacional \textit {(AGG)}}{17}
+\contentsline {subsection}{\numberline {5.2}Algor\IeC {\'\i }tmo Gen\IeC {\'e}tico Estacionario \textit {(AGE)}}{20}
+\contentsline {section}{\numberline {6}Algor\IeC {\'\i }tmos Mem\IeC {\'e}ticos}{23}
+\contentsline {section}{\numberline {7}Procedimiento considerado para desarrollar la pr\IeC {\'a}ctica}{24}
+\contentsline {section}{\numberline {8}Experimentos y an\IeC {\'a}lisis de resultados}{26}
+\contentsline {subsection}{\numberline {8.1}Resultados Greedy}{27}
+\contentsline {subsection}{\numberline {8.2}Resultados B\IeC {\'u}squeda Local}{28}
+\contentsline {subsection}{\numberline {8.3}Resultados B\IeC {\'u}squeda Local con \textit {Don't Look Bits}}{29}
+\contentsline {subsection}{\numberline {8.4}Comparaci\IeC {\'o}n de los resultados. Conclusiones.}{31}

@@ -7,7 +7,8 @@
 \usepackage{imakeidx}
 \usepackage{dirtree}
 \usepackage{float}
-\usepackage{wrapfig}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
 
 \usepackage[linesnumbered]{algorithm2e}
 \SetKwRepeat{Do}{do}{while}%
@@ -22,8 +23,8 @@
 
 
 \title{
-\textbf{Metaheurística - Práctica 1.a} \\
-Técnicas de Búsqueda Local y Algoritmos Greedy para el Problema de la Asignación Cuadrática
+\textbf{Metaheurística - Práctica 2.a} \\
+Técnicas de Búsqueda basadas en Poblaciones para el Problema de la Asignación Cuadrática
 }
 
 \author{
@@ -35,9 +36,11 @@ salvacorts@correo.ugr.es
 \date{}
 
 \fancyhead[LE,RO]{Salvador Corts Sánchez, 75935233C}
-\fancyhead[RE,LO]{QAP: Práctica 1}
+\fancyhead[RE,LO]{QAP: Práctica 2}
 \pagestyle{fancy}
 
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
 \makeindex
 
 \begin{document}
@@ -83,7 +86,7 @@ min\\
       \caption{Diagrama de clases}
    \end{figure}
    
-   \subsection*{Clase Solver}
+   \subsection{Clase Solver}
    Esta clase debe ser heredada por las metaheurísticas a implementar. Su representación consta de dos matrices:
    \begin{itemize}
       \item \textbf{Distancias}: Matriz de distancias entre un punto $i$ y otro $j$.
@@ -93,7 +96,7 @@ min\\
 
    
    \newpage
-   \subsection*{Clase Solution}
+   \subsection{Clase Solution}
    Sirve para representar una solución, la cual, se implementa como un vector donde cada posición $i$ representa un objeto y alberga la localización $j$ donde debe ser colocado dicho objeto $i$. 
    
    \begin{center}
@@ -123,9 +126,11 @@ min\\
    
    El algoritmo irá seleccionando la unidad $i$ libre con mayor $\hat{f}_i$ y le asignará la localización $j$ libre con menor $\hat{d}_j$. Su implementación en pseudocódigo es la siguiente:  
       \begin{algorithm}
+      	\caption{greedy.cpp - GreedySolver::Solve}
+      	
           \# Calcula los potenciales\\
           $dp = fp = vector(n)$\\
-          \For{$i=0$ \KwTo $n$}{
+          \For{$i=1$ \KwTo $n$}{
              $\hat{f}_i = \hat{d}_i = 0$\\
              \For{$j=0$ \KwTo $n$}{
                 $\hat{f}_i = \hat{f}_i + f_{ij}$\\
@@ -133,11 +138,11 @@ min\\
              }
              $dp_i = \hat{d}_i$\\
              $fp_i = \hat{f}_i$\\
-          }\vspace*{0.5cm}
+          }\vspace*{0.1cm}
           
           \# Calcula la mejor combinación. $\pi$ es la representación de la solución\\
           $locAssigned = unitAssigned = vector(n)\{0\}$\\
-          \For{$i=0$ \KwTo $n$}{
+          \For{$i=1$ \KwTo $n$}{
              $best\hat{f} = -\infty$;\hspace*{0.5cm}$best\hat{f}_{index}=0$\\
              $best\hat{d} = \infty$;\hspace*{0.5cm}$best\hat{d}_{index}=0$\\
              \For{$j=0$ \KwTo $n$}{
@@ -161,6 +166,8 @@ min\\
       \section{Algoritmo de Búsqueda Local}
       Vamos a utilizar una \textbf{búsqueda local del primer mejor}. Cuando se genera una solución vecina que mejora a la actual, se toma esta como solución y se pasa a la siguiente iteración. Se detiene la búsqueda cuando no se genera ningún vecino mejor que la solución actual. La implementación de dicha idea, que será la función \textit{Solve}, se puede ver como:
       \begin{algorithm}
+		\caption{localSearch.cpp - LocalSearchSolver::Solve}      
+      
          $\pi = GenerateInitialSolution()$ \# Será aleatoria\\
          \Do{$\exists \pi'$}{
             $\pi' = GenerateBestNeighbour(\pi)$
@@ -171,8 +178,9 @@ min\\
       
       A fin de minimizar el riesgo de quedarnos en un óptimo local, vamos a partir de una solución aleatoria en vez de partir de una solución greedy. Dicha solución aleatoria se genera de la siguiente manera:
       \begin{algorithm}
-         $assigned = vector(n){0}$\\
-         \For{$i=0$ \KwTo $n$}{
+      	\caption{solution.cpp - Solution::GenerateRandomsolution}
+         $assigned = vector(n)\{0\}$\\
+         \For{$i=1$ \KwTo $n$}{
             \Do{$assigned_r \neq 0$}{
                $r = random() \ mod\ n$\\
              }
@@ -190,13 +198,15 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
 \end{bmatrix} 
       $$
       
+      \newpage
       Si $\Delta C(\pi,r,s) < 0$, el resultado de cambiar $r$ por $s$ es favorable, es decir, el costo es menor por lo que tomaremos el vecino resultante de este cambio como solución actual y generamos nuevos vecinos a partir de este.\\
       
       La función que hace uso de esta factorización para explorar los vecinos de una solución se implementaría como:
       \begin{algorithm}
+      	\caption*{localSearch.cpp-LocalSearchSolver::GenerateBestNeighbour}
          \SetKwProg{Def}{def}{:}{end}
          \Def{GenerateBestNeighbour($\pi$)}{
-            \For{$r=0$ \KwTo $n/2$}{
+            \For{$r=1$ \KwTo $n/2$}{
                \For{$s=r+1$ \KwTo $n$}{                  
                   \If{$\Delta C(\pi,r,s) < 0$}{
                      $\pi' = \pi$\\
@@ -215,7 +225,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
      
       
       \newpage
-      \subsection*{Búsqueda Local con \textit{Don't Look Bits}}
+      \subsection{Búsqueda Local con \textit{Don't Look Bits}}
       Como estamos utilizando una \textbf{búsqueda local del primer mejor}, podemos definir una lista de candidatos a la que llamamos \textbf{\textit{Don't Look Bits}} que reducirá significativamente el tiempo de ejecución.\\
       
       Se trata de un un vector de bits inicialmente a 0, esto nos indica que todos los movimientos pueden ser considerados. Si tras probar todos los movimientos asociados un bit no hemos encontrado ninguna mejora, cambiaremos el valor de dicho bit a 1, indicando que esta unidad no debe ser tenida en cuenta hasta que dicha unidad asociada a ese bit se vea implicada en un movimiento que mejora la solución actual, en cuyo caso el bit será nuevamente 0.\\
@@ -225,9 +235,9 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
          $dlbMask = vector(n)\{0\}$ \# Don't look bits\\
          \SetKwProg{Def}{def}{:}{end}
          \Def{GenerateBestNeighbour($\pi$)}{
-            \For{$r=0$ \KwTo $n$}{
+            \For{$r=1$ \KwTo $n$}{
                \lIf{$dlbMask_r \neq 0$}{\textbf{continue}}
-               \For{$s=0$ \KwTo $n$}{                  
+               \For{$s=1$ \KwTo $n$}{                  
                   \If{$\Delta C(\pi,r,s) < 0$}{
                      $\pi' = \pi$\\
                      $t = \pi'(r)$\\
@@ -242,6 +252,460 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
             }         
          }
       \end{algorithm}
+      
+      
+      \newpage
+      \section{Algorítmos Genéticos}      
+      Se han implementado dos tipos de algorítmos genéticos:
+      \begin{itemize}
+      	\item Generacionales.
+      	\item Estacionarios.
+      \end{itemize}
+       
+       Ambos comparten los operadores de \textbf{Mutación}, \textbf{Cruce} y \textbf{Evaluación} así como la del \textbf{método de búsqueda}. La diferencia entre ambos está en los operadores de \textbf{Selección} y \textbf{Remplazo} que se explicarán a fondo mas tarde.\\
+       
+       Estos operadores actuan sobre una Población compuesta de $n$ cromosomas. Es decir, un conjunto (vector) de $n$ soluciones diferentes que modificaremos, mezclaremos y compararemos a fin de encontrar la solución más óptima posible sorteando óptimos locales. 
+       
+       \subsubsection*{Método de búsqueda de un algorítmo genético}
+       Partiremos de una población generada aleatoriamente creando, con la función descrita en el apartado 4. (Búsqueda Local), tantos cromosomas soluciones como tamaño de la población deseemos.
+       \begin{algorithm}
+       	\caption{\textit{genetic.cpp} - GeneticAlg::CreateRandomPopulation}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{GenerateRandomPopulation()}{
+         	$P = Population(n)\{0\}$ \# Población de $n$ cromosolmas\\
+            \For{$i=1$ \KwTo $n$}{
+            	\# $P_i$ es el cromosoma $i$ de la población $P$\\
+              	$P_i = GenerateRandomSolution()$
+            }         
+            
+            \textbf{return} $p$
+         }
+      \end{algorithm}
+      
+      \newpage
+      Sobre esta población inicial aplicaremos los operadores hasta que se haya alcanzado el número máximo de evaluaciones definidas.
+       \begin{algorithm}
+       	\caption{\textit{genetic.cpp} - GeneticAlg::Solve}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Solve()}{
+         	$P = GenerateRandomPopulation()$\\
+         	$\pi = Evaluate(P)$\\
+         	$\pi_{best} = r$\\
+            \While{evaluaciones $\neq$ limite}{
+            	$P' = Select(P)$\\
+            	$P' = Cross(P')$\\
+            	$P' = Mutate(P')$\\
+            	$P' = Replace(P, P')$\\
+            	$\pi = Evaluate(P)$\\
+            	
+            	\If{$\pi$ mejor que $\pi_{best}$}{
+            		$\pi_{best} = \pi$\\
+            	}
+            }         
+            
+            \textbf{return} $\pi_{best}$\\
+         }
+      \end{algorithm}
+      
+      \newpage
+      \subsubsection*{Operador de Mutación}    
+      Para el problema de \textit{QAP}, la mutación consiste en intercambiar el valor de dos genes de un cromosoma, es decir, cambiar el valor de dos posiciones de una solución.\\
+      
+      Para evitar el coste computacional de generar una gran cantidad de números aleatorios, a partir de una probabilidad $p_{mutar}$, vamos a calcular la esperanza del número $n_{mutar}$ de cromosomas que mutarán de nuestra población como:
+      $$n_{mutar} = \lceil  n \cdot p_{mutar} \cdot len(\pi) \rceil$$
+      Donde:
+      \begin{itemize}
+      	\item $n$: Tamaño de la población.
+      	\item $len(\pi)$: Tamaño de la solución.
+      \end{itemize}
+      
+      Empezaremos a mutar los $n_{mutar}$ cromosomas contigüos desde un cromosoma aleatroio de nuestra población.
+      \begin{algorithm}
+       	\caption{\textit{genetic.cpp} - GeneticAlg::Mutate}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Mutate($P$)}{
+         	$P' = P$\\
+         	$n_{mutar} = \lceil  n \cdot p_{mutar} \cdot len(P_0) \rceil$\\
+         	$i = $ random in $[0, n)$\\
+            \For{$j = 1$ \KwTo $n_{mutar}$}{
+            	$r1 = $ random in $[0, len(P'_0))$\\
+            	$r2 = $ random in $[0, len(P'_0))$\\
+            	
+            	\If{coste $P_i$ desconocido}{
+            		Calcula coste $P_i$\\
+            		evaluaciones++\\
+            	}
+            	
+            	$\pi_o = P'_i$\\
+            	$t = P'_i(r1)$\\
+                $P'_i(r1) = P'_i(r2)$\\
+                $P'_i(r2) = t$\\
+                
+                coste $P'_i(s) =$ coste $\pi_o + \Delta C(\pi_o,r1,r2)$\\
+            	
+            }         
+            
+            \textbf{return} $P'$\\
+         }
+      \end{algorithm}
+      
+      \newpage
+      \subsubsection*{Operador de Evaluación}
+      Con este operador calcularemos los costes de los cromosomas de una población $P$ que no hayan sido calculados aún. Trás calcular los costes de todos los cromosomas, devolveremos la solución mas óptima de la población, es decir, el cromósoma con el menor coste asociado.
+      \begin{algorithm}
+       	\caption{\textit{genetic.cpp} - GeneticAlg::Evaluate}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Evaluate($P$)}{
+         	$best\_score = \infty$\\
+         	\For{$i = 1$ \KwTo $n$}{
+         		\If{coste $P_i$ desconocido}{
+            		Calcula coste $P_i$\\
+            		evaluaciones++\\
+            	}
+            	
+            	\If{coste $P_i < best\_score$}{
+            		$best\_score =$ coste $P_i$\\
+            		$\pi_{best} = P_i$\\
+            	}
+         	}
+                    
+            
+            \textbf{return} $\pi_{best}$\\
+         }
+      \end{algorithm}
+      
+      
+      \subsubsection*{Operador de Cruce}
+      Gracias a este operador, podremos simpular el cruce de genes que se da en la naturaleza. A partir de dos cromosomas padres, combinaremos sus genes para crear dos nuevos cromosomas hijos.\\
+
+	  De nuevo, a fin de minimizar el coste computacional de generar números aleatorios, a partir de una probabilidad $p_{cruce}$, vamos a calcular la esperanza del número $n_{cruce}$ de cromosomas consecutivos que se cruzarán entre si como:
+      $$n_{cruce} = \lceil  n \cdot p_{cruce} \rceil$$
+      Se han desarrollado dos tipos de cruces distintos: \textbf{basado en posición} y \textbf{OX}.
+      
+      \begin{itemize}
+      	\newpage
+      	\item \textbf{Cruce basado en posición}
+      	
+      	Aquellas posiciones que contengan el mismo valor en ambos padres se mantienen en el hijo. Las asignaciones restantes se seleccionan en un orden aleatorio para completar el hijo. Por ejemplo:
+		\begin{align*}
+		Padre_1 &= (1, 2, 3, 4, 5, 6, 7, 8, 9) \quad Padre_2 = (4, 5, 3, 1, 8, 7, 6, 9, 2)\\
+		coincidencias &= (*, *, 3, *, *, 7, 6, *, *)\\
+		resto\_Padre_1 &= (1,2,4,5,8,9) \rightarrow Barajamos: (9,1,2,4,8,5)\\
+		resto\_Padre_2 &= (4,5,1,8,9,2) \rightarrow Barajamos: (5,1,4,2,9,8)\\
+		hijo_1 &= (9,1,3,2,4,7,6,8,5)\quad hijo_2 = (5,1,3,4,2,7,6,9,8)
+		\end{align*}
+		
+		La implementación es la siguiente:\\
+		\begin{algorithm}[H]
+       	\caption{\textit{genetic.cpp} - GeneticAlg::Cross}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Cross($P$)}{
+         	$P' = P$;\hspace*{0.5cm}$n_{cruce} = \lceil  n \cdot p_{cruce} \rceil$\\
+         	
+         	\For{$i = 1$ \KwTo $n_{cruce}$}{
+         		$equals = vector(len(P_i))\{0\}$;\hspace*{0.5cm}$nonEquals = \O$\\
+				
+				\For{$j = 1$ \KwTo $len(P_i)$}{
+					\If{$P_i(j) == P_{i+1}(j)$}{
+						$\pi'(j) = \pi''(j) = P_i(j)$\\
+						$equals_j = 1$\\					
+					} \Else {
+						$nonEquals = nonEquals \cup P_i(j)$\\					
+					}				
+				}  
+				
+				\textit{\textbf{shuffle($nonEquals$)}} \\
+				$k = 0$\\
+				\For{$j=1$ \KwTo $len(P_i)$}{
+					\If{$equals_j \neq 1$}{
+						$\pi'(j) = nonEquals_k$\\
+						$\pi''(j) = nonEquals_{len(nonEquals)-1-k}$\\			
+						$k = k + 1$\\	
+					}
+				}	
+				
+				$P'_i = \pi'$;\hspace*{0.5cm} $P'_{i+1} = \pi''$\\
+         		
+         		$i = i + 2$\\
+         	}
+                    
+            
+            \textbf{return} $P'$\\
+         }
+      \end{algorithm}
+
+  		\newpage
+      	\item \textbf{Cruce OX}
+      	
+      	Los dos hijos comparten los centros de los padres. El resto de elementos que no estan en la parte central, se ordenan segun el otro padre.
+      	\begin{align*}
+		Padre_1 &= (7,3,1,8,2,4,6,5) \quad Padre_2 = (4,3,2,8,6,7,1,5)\\
+		centro\_padre_1 &= (*, *, 1, 8, 2, *, *, *) \quad centro\_padre_2 = (*, *, 2, 8, 6, *, *, *)\\
+		resto\_Padre_1 &= (7,3,4,6,5) \rightarrow Odenamos\ segun\ Padre_2: (4,3,6,7,5)\\
+		resto\_Padre_2 &= (4,3,7,1,5) \rightarrow Odenamos\ segun\ Padre_1: (7,3,1,4,5)\\
+		hijo_1 &= (7,5,1,8,2,4,3,6)\quad hijo_2 = (4,5,2,8,6,7,3,1)
+		\end{align*}
+		
+		La implementación mas sencilla consiste en un bucle anidado con complejidad $O(n^2)$, sin embargo, sacrificando un poco de espacio en memoria, podemos conseguir hacer esta operación con una complejidad lineal, es decir $O(n)$.\\
+		
+		Para ello, utilizaremos dos tipos de estructuras de datos auxiliares:
+		\begin{itemize}
+			\item Dos vectores de tamaño igual al tamaño de la solución del problema ($len(\pi)$). Nos servirá como tabla hash para asociar a cada valor del padre el índice en el que se encuentra en la solución de este. Utilizaremos un vector por padre.
+			
+			\item Dos sets que se ordenarán a partir de los vectores decritos arriba. En el primer set, meteremos los valores externos al centro del segundo padre y se ordenarán en función del índice que tengan en el vector de índices del primer padre. En el segundo, haremos lo mismo pero al contrario.\\
+		\end{itemize}
+		
+		Una vez hayamos completado ambas estructuras de datos, copiamos los valores ordenados de los sets en cada hijo.
+		
+		
+		\newpage
+		Su implementación es la siguiente:\\
+		\begin{algorithm}[H]
+       	\caption{\textit{genetic.cpp} - CrossOX}
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{CrossOX($P$)}{
+         	$P' = P$;\hspace*{0.5cm}$n_{cruce} = \lceil  n \cdot p_{cruce} \rceil$;\hspace*{0.5cm}$step = len(P_0) / 3$\\
+			$start = \lfloor step \rfloor$;\hspace*{0.5cm}$end = \lfloor step \rfloor + \lceil step \rceil$\\
+         	\For{$i = 1$ \KwTo $n$}{
+         		$S1 = vector(len(P_i))$;\hspace*{0.5cm}$S2 = vector(len(P_{i+1}))$\\
+         		
+         		\For{$j=1$ \KwTo $len(P_i)$}{
+         			$S1_{P_{i_j}} = j$;\hspace*{0.5cm}$S2_{P_{{i+1}_j}} = j$\\
+         			
+         			\If{$j \geq start $ \textbf{and} $j \leq end$}{
+         				$\pi'_j = P_{i_j}$;\hspace*{0.5cm}$\pi''_j = P_{i+1_j}$\\
+         			}
+         		}
+         		
+         		\# Ordena de menor a mayor con $S1$ y $S2$\\
+         		$orderedByS1 = set()$;\hspace*{0.5cm}$orderedByS2 = set()$\\
+         		\For{$j=1$ \KwTo $len(P_i)$}{         			
+         			\If{$j == start$}{
+         				$j = end$;\hspace*{0.5cm}\textbf{continue}\\
+         			}
+         			
+         			$orderedByS1 = orderedByS1 \cup P_{i+1_j}$\\
+         			$orderedByS2 = orderedByS2 \cup P_{i_j}$\\
+         		}
+         		
+         		$k = 0$
+         		\For{$j=end+1$ \textbf{;} $j \neq start$ \textbf{;} $j = (j+1)\ mod\ len(P_i)$}{         			
+         			\If{$j == start$}{
+         				$j = end$;\hspace*{0.5cm}\textbf{continue}\\
+         			}
+         			
+         			$\pi'_j = orderedByS2_k$;\hspace*{0.5cm}$\pi''_j = orderedByS1_k$
+         			$k = k+1$\\
+         		}
+         		
+         		$P'_i = \pi'$;\hspace*{0.5cm}$P'_{i+1} = \pi''$
+         		$i = i + 2$
+         	}
+                    
+            
+            \textbf{return} $P'$\\
+         }
+      \end{algorithm}
+      	
+      \end{itemize}
+       
+      
+      \newpage
+      \subsection{Algorítmo Genético Generacional \textit{(AGG)}}
+      Durante cada iteración, se crea una población completa con nuevos candidatos. La nueva población reemplaza directamente a la población anterior. Al ser elitista, se mantiene la mejor solución obtenida hasta el momento intercambiando dicha solución por la peor de la nueva población.\\
+      
+      \begin{center}
+      	\includegraphics[scale=0.3]{esquema-agg}
+      \end{center}
+      
+      
+      Se ha desarrollado dos variantes elitistas: una con el operador de cruce basado en posición, y otra con el operador de cruce OX.\\
+      
+      Solo varían los operadores de selección y remplazo que se describen a continuación. El resto de operadores son los descritos anteriormente.
+      
+      \newpage
+      \subsubsection*{Operador de Selección}
+      Se usará un torneo binario, consistente en elegir aleatoriamente dos individuos de la población y seleccionar el mejor de ellos. Se aplicarán tantos torneos como individuos existan en la población.\\
+      
+      La implementación es la siguiente:\\
+      \begin{algorithm}[H]
+       	\caption{\textit{agg.cpp} - AGG::Select}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Select($P$)}{
+         	\For{$i = 1$ \KwTo $n$}{
+				$r1 = $ random in $[0, n)$\\
+            	$r2 = $ random in $[0, n)$\\        	
+         	
+         		\If{coste $P_{r1}$ desconocido}{
+            		Calcula coste $P_{r1}$\\
+            		evaluaciones++\\
+            	}
+            	\If{coste $P_{r2}$ desconocido}{
+            		Calcula coste $P_{r2}$\\
+            		evaluaciones++\\
+            	}
+            	
+            	\If{coste $P_{r1} \leq P_{r2}$}{
+            		$P'_i = P_{r1}$\\
+            	} \Else {
+					$P'_i = P_{r2}$\\
+            	}
+         	}
+                    
+            
+            \textbf{return} $P'$\\
+         }
+      \end{algorithm}
+      
+      
+      \newpage
+      \subsubsection*{Operador de Remplazo}
+      Se remplaza la anterior población por la nueva manteniendo la mejor solución obtenida hasta el momento. El pseudocódigo que implementa dicha funcionalidad es:\\
+      
+      \begin{algorithm}[H]
+       	\caption{\textit{agg.cpp} - AGG::Replace}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Replace($P, P'$)}{
+         	$P'' = P'$\\
+         	$peor\_coste = peor\_indice = 0$\\
+         	
+         	\If{$\exists \pi_{best}$}{
+         		\For{$i = 1$ \KwTo $n$}{      	
+         	
+         			\If{coste $P''_i$ desconocido}{
+            			Calcula coste $P''_i$\\
+            			evaluaciones++\\
+            		}
+            		\textit{(AGG)}
+            		\If{$peor\_coste < coste P''_i$}{
+            			$peor\_coste = coste P''_i$\\
+            			$peor\_indice = i$\\
+            		}
+         		}
+         		
+         		$P''_{peor\_indice} = \pi_{best}$\\
+         	}
+                    
+            
+            \textbf{return} $P''$\\
+         }
+      \end{algorithm}
+      
+      
+      
+      
+      
+      
+      \newpage
+      \subsection{Algorítmo Genético Estacionario \textit{(AGE)}}
+      Durante cada iteración se escogen dos padres de la población y se les aplican los operadores genéticos. Este modelo es elitista. Además, produce una convergencia rápida ya que se remplazan los peores cromosomas de la población por los dos padres escogidos y modificados anteriormente, solo si estos mejoran a los peores de la población anterior.
+      \begin{center}
+      	\includegraphics[scale=0.3]{esquema-age}
+      \end{center}
+      
+      De nuevo, se han implementados dos variantes; una que utiliza un cruce basado en posición y otra en cruce OX.\\
+      
+      Al igual que en el AGG, solo cambian los operadores de selección y remplazo. No obstante notese que los padres escogidos siempre cruzan ya que la probabilidad de cruce es 1 en los AGE.
+      
+      \newpage
+      \subsubsection*{Operador de Selección}
+      De nuevo se utiliza un torneo binario. Se aplicarán 2 torneos para escoger dos padres con los que operar posteriormente.\\
+      
+      La implementación es la siguiente:\\
+      
+      \begin{algorithm}[H]
+       	\caption{\textit{age.cpp} - AGE::Select}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Select($P$)}{
+         	\For{$i = 1$ \KwTo $2$}{
+				$r1 = $ random in $[0, n)$\\
+            	$r2 = $ random in $[0, n)$\\        	
+         	
+         		\If{coste $P_{r1}$ desconocido}{
+            		Calcula coste $P_{r1}$\\
+            		evaluaciones++\\
+            	}
+            	\If{coste $P_{r2}$ desconocido}{
+            		Calcula coste $P_{r2}$\\
+            		evaluaciones++\\
+            	}
+            	
+            	\If{coste $P_{r1} \leq P_{r2}$}{
+            		$P'_i = P_{r1}$\\
+            	} \Else {
+					$P'_i = P_{r2}$\\
+            	}
+         	}
+                    
+            
+            \textbf{return} $P'$\\
+         }
+      \end{algorithm}
+      
+      \newpage
+      \subsubsection*{Operador de Remplazo}
+      Se remplazan los (dos) peores cromosomas de la población original por los cromosomas de la nueva población solo si los segundos mejoran los primeros.\\
+      
+      Partiendo de una implementación básica con complejidad temporal $O(n^2)$; De nuevo se ha conseguido una implementación que sacrificando espacio consigue una eficiencia $O(n)$. \\
+      
+      La representación en pseudocódigo de este operador es la siguiente:\\
+      
+      \begin{algorithm}[H]
+       	\caption{\textit{age.cpp} - AGE::Replace}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Replace($P, P'$)}{
+         	$P'' = P$\\
+         	$peores = set()$ \# Se ordenan los valores en función del coste\\
+         	
+         	\For{$i = 1$ \KwTo $len(P'')$}{
+         		\If{coste $P''_i$ desconocido}{
+            		Calcula coste $P''_i$\\
+            		evaluaciones++\\
+            	}
+            	
+            	\If{$peores == \O$ \textbf{or} $coste P''_i > coste peores_0$}{
+            		\If{$len(peores) \geq len(P')$}{
+            			Elimina $peores_0$ de $peores$\\ 
+            		}
+            		
+            		$peores = peores \cup P''_i$
+            	}
+         	}
+         	
+         	\For{$i = 1$ \KwTo $len(P')$}{
+         		\If{coste $P'_i$ desconocido}{
+            		Calcula coste $P'_i$\\
+            		evaluaciones++\\
+            	}
+            	
+            	\For{$j = 1$ \KwTo $len(peores)$}{
+            		\If{coste $peores_j >$ coste $P'_i$}{
+            			cambiar el cromosoma $peores_j$ de $P''$ por $P_i$\\
+            			eliminar $peores_j$ de $peores$\\
+            		}
+            	}
+         	}
+                    
+            
+            \textbf{return} $P''$\\
+         }
+      \end{algorithm}
+      
+      
+      
+      
+      \newpage
+      \section{Algorítmos Meméticos}
+      Explicar solve
       
       
       \newpage
@@ -290,12 +754,12 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
       \newpage
       La sintaxis de ejecución es la siguiente\footnote{El parámetro semilla es opcional, por defecto $semilla = 7$}:
       \begin{lstlisting}[language=bash]
-./bin/practica1 instancias/<problema>.dat <semilla>
+./bin/main instancias/<problema>.dat <semilla>
       \end{lstlisting}
       
       Por ejemplo:
       \begin{lstlisting}[language=bash]
-./bin/practica1 instancias/chr22a.dat 12
+./bin/main instancias/chr22a.dat 12
       \end{lstlisting}
       
       La salida del programa tiene la siguiente estructura:
@@ -327,7 +791,7 @@ algoritmo para resolver cada caso del problema.
 
       
       \newpage
-      \subsection*{Resultados Greedy}
+      \subsection{Resultados Greedy}
 \begin{table}[H]
 \centering
 \caption{goo.gl/yr6uN9}
@@ -364,7 +828,7 @@ algoritmo para resolver cada caso del problema.
       
       
       \newpage
-      \subsection*{Resultados Búsqueda Local}
+      \subsection{Resultados Búsqueda Local}
 \begin{table}[H]
 \centering
 \caption{goo.gl/SJJh1a}
@@ -397,7 +861,7 @@ algoritmo para resolver cada caso del problema.
 
       
       \newpage
-      \subsection*{Resultados Búsqueda Local con \textit{Don't Look Bits}}
+      \subsection{Resultados Búsqueda Local con \textit{Don't Look Bits}}
 \begin{table}[H]
 \caption{goo.gl/9frEmN}
 \centering
@@ -438,7 +902,7 @@ algoritmo para resolver cada caso del problema.
       
       
       \newpage
-      \subsection*{Comparación de los resultados. Conclusiones.}
+      \subsection{Comparación de los resultados. Conclusiones.}
 \begin{table}[H]
 \centering
 \label{my-label}

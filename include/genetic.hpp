@@ -23,7 +23,6 @@ protected:
    virtual Population Cross(const Population& originalP);
 
    Population CreateRandomPopulation();
-   Population CopyPopulation(const Population& p);
    pair<int, Solution> Evaluate(Population& population);   
 
 public:

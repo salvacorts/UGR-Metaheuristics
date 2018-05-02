@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.9)
-project(practica1)
+project(main)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
@@ -15,4 +15,4 @@ include(CMakeToolsHelpers OPTIONAL)
 include_directories(include)
 file(GLOB SOURCES "src/*.cpp")
 
-add_executable(practica1 ${SOURCES})
+add_executable(main ${SOURCES})
