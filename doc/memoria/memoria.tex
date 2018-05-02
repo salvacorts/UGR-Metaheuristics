@@ -292,7 +292,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
          \Def{Solve()}{
          	$P = GenerateRandomPopulation()$\\
          	$\pi = Evaluate(P)$\\
-         	$\pi_{best} = r$\\
+         	$\pi_{best} = \pi$\\
             \While{evaluaciones $\neq$ limite}{
             	$P' = Select(P)$\\
             	$P' = Cross(P')$\\
@@ -345,7 +345,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
                 $P'_i(r2) = t$\\
                 
                 coste $P'_i(s) =$ coste $\pi_o + \Delta C(\pi_o,r1,r2)$\\
-            	
+                evaluaciones++\\            	
             }         
             
             \textbf{return} $P'$\\
@@ -442,10 +442,10 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
   		\newpage
       	\item \textbf{Cruce OX}
       	
-      	Los dos hijos comparten los centros de los padres. El resto de elementos que no estan en la parte central, se ordenan segun el otro padre.
+      	Los dos hijos comparten un tercio de los valores de los padres. El resto de elementos que no estan en la parte central, se ordenan segun el otro padre.
       	\begin{align*}
 		Padre_1 &= (7,3,1,8,2,4,6,5) \quad Padre_2 = (4,3,2,8,6,7,1,5)\\
-		centro\_padre_1 &= (*, *, 1, 8, 2, *, *, *) \quad centro\_padre_2 = (*, *, 2, 8, 6, *, *, *)\\
+		comparte\_padre_1 &= (*, *, 1, 8, 2, *, *, *) \quad comparte\_padre_2 = (*, *, 2, 8, 6, *, *, *)\\
 		resto\_Padre_1 &= (7,3,4,6,5) \rightarrow Odenamos\ segun\ Padre_2: (4,3,6,7,5)\\
 		resto\_Padre_2 &= (4,3,7,1,5) \rightarrow Odenamos\ segun\ Padre_1: (7,3,1,4,5)\\
 		hijo_1 &= (7,5,1,8,2,4,3,6)\quad hijo_2 = (4,5,2,8,6,7,3,1)
@@ -457,7 +457,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
 		\begin{itemize}
 			\item Dos vectores de tamaño igual al tamaño de la solución del problema ($len(\pi)$). Nos servirá como tabla hash para asociar a cada valor del padre el índice en el que se encuentra en la solución de este. Utilizaremos un vector por padre.
 			
-			\item Dos sets que se ordenarán a partir de los vectores decritos arriba. En el primer set, meteremos los valores externos al centro del segundo padre y se ordenarán en función del índice que tengan en el vector de índices del primer padre. En el segundo, haremos lo mismo pero al contrario.\\
+			\item Dos sets que se ordenarán a partir de los vectores decritos arriba. En el primer set, meteremos los valores externos a la parte compartida del segundo padre y se ordenarán en función del índice que tengan en el vector de índices del primer padre. En el segundo, haremos lo mismo pero al contrario.\\
 		\end{itemize}
 		
 		Una vez hayamos completado ambas estructuras de datos, copiamos los valores ordenados de los sets en cada hijo.
@@ -470,7 +470,8 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
          \SetKwProg{Def}{def}{:}{end}
          \Def{CrossOX($P$)}{
          	$P' = P$;\hspace*{0.5cm}$n_{cruce} = \lceil  n \cdot p_{cruce} \rceil$;\hspace*{0.5cm}$step = len(P_0) / 3$\\
-			$start = \lfloor step \rfloor$;\hspace*{0.5cm}$end = \lfloor step \rfloor + \lceil step \rceil$\\
+			$start = $ random entre $(0, n- \lfloor step \rfloor)$\\
+			$end = start + \lceil step \rceil$\\
          	\For{$i = 1$ \KwTo $n$}{
          		$S1 = vector(len(P_i))$;\hspace*{0.5cm}$S2 = vector(len(P_{i+1}))$\\
          		
@@ -705,7 +706,72 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
       
       \newpage
       \section{Algorítmos Meméticos}
-      Explicar solve
+      Partiremos de un AGG con operador de cruce basado en posición sobre el cual, pasado un determinado número de iteraciones ($blN$), ejecutaremos una búsqueda local sobre un número de elementos calculado a partir de una probabilidad $P_{bl}$ y el tamaño de la población como:\\
+      $$blExecN = \lceil P_{bl} \cdot n \rceil$$
+      
+      La búsqueda local se detiene cuando sobre un cromosoma no se ha encontrado un vecino mejor, cuando se explora todo el entorno sin encontrar una solucion mejor, o bien, cuando se alcanza un número máximo de evaluaciones sobre vecinos.\\
+      	
+      Gracias a esta hibridación de tecnicas, tenemos la ventaja de alcanzar rapidamente un óptimo local gracias a la búsqueda local, y la capacidad de aceptar soluciones peores como válidas a fin de evitar quedarnos atrapados en óptimos locales.\\
+      
+      Además, podemos elegir si aplicar la búsqueda local sobre los mejores de la población.\\
+      
+      La única función que cambia respecto a un algorítmo génetico es el método de búsqueda, cuya implementación es la siguiente:\\
+      
+      \begin{algorithm}
+       	\caption{\textit{memetic.cpp} - MemeticAlg::Solve}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Solve()}{
+         	$P = GenerateRandomPopulation()$\\
+         	$\pi = Evaluate(P)$\\
+         	$\pi_{best} = \pi$\\
+         	$generations = 0$\\
+            \While{evaluaciones $\neq$ limite}{
+            	$P' = Select(P)$\\
+            	$P' = Cross(P')$\\
+            	$P' = Mutate(P')$\\
+            	$P' = Replace(P, P')$\\
+            	
+				\If{$generations == blN$}{
+					$generations = 0$\\
+				
+					\If{aplicar en los mejores}{
+						$P'' = P$\\
+						Ordena los cromosomas de $P''$ con el coste de cada uno\\
+						
+						\For{$i=0$ \KwTo $blExecN$}{
+							$\pi' = BusquedaLocalSobre(P''_i)$\\
+							
+							\If{$\exists \pi'$}{
+								$P''_i = \pi'$\\
+							}
+						}
+						
+						Remplaza los modificados en $P''$ en $P'$\\
+				
+					} \Else {
+						\For{$i=0$ \KwTo $blExecN$}{
+							$\pi' = BusquedaLocalSobre(P'_i)$\\
+							
+							\If{$\exists \pi'$}{
+								$P'_i = \pi'$\\
+							}
+						}					
+					}
+				
+				
+				}            	
+            	
+            	$\pi = Evaluate(P)$\\
+            	
+            	\If{$\pi$ mejor que $\pi_{best}$}{
+            		$\pi_{best} = \pi$\\
+            	}
+            }         
+            
+            \textbf{return} $\pi_{best}$\\
+         }
+      \end{algorithm}
       
       
       \newpage

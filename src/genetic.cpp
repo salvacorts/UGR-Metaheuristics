@@ -80,6 +80,7 @@ Population GeneticAlg::Mutate(const Population& originalP) {
 
       // Calc relative cost of mutated solution
       newP[i].CalcRelativeCost(this->distances, this->frequencies, originalSolution, rnd1, rnd2);
+      this->evals++;
    }
 
    return newP;
@@ -142,8 +143,8 @@ Population CrossOX(const Population& originalP, double crossProb) {
    int crossNumber = crossProb * (originalP.size());
    Population newP = originalP; // a copy of the original
    double step = originalP[0].n / 3;
-   int start = floor(step);
-   int end = floor(step) + ceil(step);
+   int start = rand() % (int)(originalP[0].n - ceil(step)-1);
+   int end = start + ceil(step);
 
    // We will cross the first crossNumber pairs
    for (int i = 0; i < crossNumber; i+=2) {

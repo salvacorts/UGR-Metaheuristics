@@ -10,9 +10,9 @@
 \contentsline {subsection}{\numberline {5.1}Algor\IeC {\'\i }tmo Gen\IeC {\'e}tico Generacional \textit {(AGG)}}{17}
 \contentsline {subsection}{\numberline {5.2}Algor\IeC {\'\i }tmo Gen\IeC {\'e}tico Estacionario \textit {(AGE)}}{20}
 \contentsline {section}{\numberline {6}Algor\IeC {\'\i }tmos Mem\IeC {\'e}ticos}{23}
-\contentsline {section}{\numberline {7}Procedimiento considerado para desarrollar la pr\IeC {\'a}ctica}{24}
-\contentsline {section}{\numberline {8}Experimentos y an\IeC {\'a}lisis de resultados}{26}
-\contentsline {subsection}{\numberline {8.1}Resultados Greedy}{27}
-\contentsline {subsection}{\numberline {8.2}Resultados B\IeC {\'u}squeda Local}{28}
-\contentsline {subsection}{\numberline {8.3}Resultados B\IeC {\'u}squeda Local con \textit {Don't Look Bits}}{29}
-\contentsline {subsection}{\numberline {8.4}Comparaci\IeC {\'o}n de los resultados. Conclusiones.}{31}
+\contentsline {section}{\numberline {7}Procedimiento considerado para desarrollar la pr\IeC {\'a}ctica}{25}
+\contentsline {section}{\numberline {8}Experimentos y an\IeC {\'a}lisis de resultados}{27}
+\contentsline {subsection}{\numberline {8.1}Resultados Greedy}{28}
+\contentsline {subsection}{\numberline {8.2}Resultados B\IeC {\'u}squeda Local}{29}
+\contentsline {subsection}{\numberline {8.3}Resultados B\IeC {\'u}squeda Local con \textit {Don't Look Bits}}{30}
+\contentsline {subsection}{\numberline {8.4}Comparaci\IeC {\'o}n de los resultados. Conclusiones.}{32}

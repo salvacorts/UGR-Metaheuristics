@@ -1,12 +1,13 @@
 #include "memetic.hpp"
 #include <algorithm>
 #include <list>
+#include <cmath>
 
 Solution MemeticAlg::Solve() {
    Population population = CreateRandomPopulation();
    pair<int, Solution> evaluateResult = Evaluate(population);
    this->bestSolution = new Solution(evaluateResult.second);
-   int blExecN = this->blProb * population.size();
+   int blExecN = ceil(this->blProb * population.size());
    int generations = 0;
 
    while (this->evals <= this->maxIters ) {
@@ -20,12 +21,18 @@ Solution MemeticAlg::Solve() {
       if (generations == this->blRate) {
          generations = 0;
 
-         // TODO: Add if execute on best
          if (this->applyOnBest) {
 
             auto lessCmp = [this](Solution& a, Solution& b) {
-               if (a.score == -1) a.CalcCost(distances, frequencies);
-               if (b.score == -1) b.CalcCost(distances, frequencies);
+               if (a.score == -1) {
+                  a.CalcCost(distances, frequencies);
+                  this->evals++;
+               } 
+
+               if (b.score == -1) {
+                  b.CalcCost(distances, frequencies);
+                  this->evals++;
+               } 
 
                return a.score < b.score;
             };
@@ -36,7 +43,9 @@ Solution MemeticAlg::Solve() {
             sort(copy.begin(), copy.end(), lessCmp);
 
             for (int i = 0, j = 0; i < blExecN && j < copy.size(); i++) {
-               Solution blSolution = this->localSearch->GenerateBestNeighbour(copy[j]);
+               int evals = 0;
+               Solution blSolution = this->localSearch->GenerateBestNeighbour(copy[j], evals, this->maxNeighbourEvals);
+               this->evals += evals;
                
                // If no better neighbour, exit
                if (blSolution.n == 0) {
@@ -66,7 +75,9 @@ Solution MemeticAlg::Solve() {
 
          } else {
             for (int i = 0; i < blExecN; i++) {
-               Solution blSolution = this->localSearch->GenerateBestNeighbour(population[i]);
+               int evals = 0;
+               Solution blSolution = this->localSearch->GenerateBestNeighbour(population[i], evals, this->maxNeighbourEvals);
+               this->evals += evals;
                
                if (blSolution.n != 0) population[i] = blSolution;
             }

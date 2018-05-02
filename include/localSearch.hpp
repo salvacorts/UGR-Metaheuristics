@@ -5,17 +5,11 @@
 #define LOCALSEARCH_H
 
 class LocalSearchSolver : public Solver {
-protected:
-   int maxNeighbourEvals;
-
-
 public:
-   LocalSearchSolver(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int maxNeighbourEvals=-1)
-   : Solver(distances, frequencies){
-      this->maxNeighbourEvals = maxNeighbourEvals;
-   }
+   LocalSearchSolver(vector<vector<int> >& distances, vector<vector<int> >& frequencies)
+   : Solver(distances, frequencies){}
 
-   virtual Solution GenerateBestNeighbour(const Solution& fatherSolution);
+   virtual Solution GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals=-1);
    Solution Solve() override;
 };
 
@@ -23,16 +17,15 @@ class LocalSearchSolverDLB : public LocalSearchSolver {
 private:
    bool *dlbMask;
 
-protected:
-   Solution GenerateBestNeighbour(const Solution& fatherSolution) override;
-
 public:
-   LocalSearchSolverDLB(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int maxNeighbourEvals=-1) 
-   : LocalSearchSolver(distances, frequencies, maxNeighbourEvals) {
+   LocalSearchSolverDLB(vector<vector<int> >& distances, vector<vector<int> >& frequencies) 
+   : LocalSearchSolver(distances, frequencies) {
       this->dlbMask = new bool[distances.size()];
 
       for (int i = 0; i < distances.size(); i++) this->dlbMask[i] = false;
    }
+
+   Solution GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals=-1) override;
 };
 
 #endif
