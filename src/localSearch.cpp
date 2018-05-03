@@ -11,7 +11,7 @@ Solution LocalSearchSolver::GenerateBestNeighbour(const Solution& fatherSolution
    int n = fatherSolution.n;
    int evals = 0;
 
-   for (int r = 0; r < n/2 || evals == maxNeighbourEvals; r++) {
+   for (int r = 0; r < n/2 && evals != maxNeighbourEvals; r++) {
       for (int s = r+1; s < n; s++) {
          Solution neighbour = fatherSolution;
 
@@ -54,7 +54,7 @@ Solution LocalSearchSolverDLB::GenerateBestNeighbour(const Solution& fatherSolut
    int n = fatherSolution.n;
    int evals = 0;
 
-   for (int r = 0; r < n || evals == maxNeighbourEvals; r++) {
+   for (int r = 0; r < n && evals != maxNeighbourEvals; r++) {
       for (int s = 0; s < n && !this->dlbMask[r]; s++) {
          Solution neighbour = Solution(fatherSolution);
 

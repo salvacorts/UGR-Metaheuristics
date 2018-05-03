@@ -517,7 +517,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
        
       
       \newpage
-      \subsection{Algorítmo Genético Generacional \textit{(AGG)}}
+      \subsection{Algorítmo Genético Generacional. \textit{AGG}}
       Durante cada iteración, se crea una población completa con nuevos candidatos. La nueva población reemplaza directamente a la población anterior. Al ser elitista, se mantiene la mejor solución obtenida hasta el momento intercambiando dicha solución por la peor de la nueva población.\\
       
       \begin{center}
@@ -605,7 +605,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
       
       
       \newpage
-      \subsection{Algorítmo Genético Estacionario \textit{(AGE)}}
+      \subsection{Algorítmo Genético Estacionario. \textit{AGE}}
       Durante cada iteración se escogen dos padres de la población y se les aplican los operadores genéticos. Este modelo es elitista. Además, produce una convergencia rápida ya que se remplazan los peores cromosomas de la población por los dos padres escogidos y modificados anteriormente, solo si estos mejoran a los peores de la población anterior.
       \begin{center}
       	\includegraphics[scale=0.3]{esquema-age}
@@ -715,17 +715,16 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
       
       Además, podemos elegir si aplicar la búsqueda local sobre los mejores de la población.\\
       
+      \newpage
       La única función que cambia respecto a un algorítmo génetico es el método de búsqueda, cuya implementación es la siguiente:\\
       
-      \begin{algorithm}
+      \begin{algorithm}[H]
        	\caption{\textit{memetic.cpp} - MemeticAlg::Solve}
        	
          \SetKwProg{Def}{def}{:}{end}
          \Def{Solve()}{
          	$P = GenerateRandomPopulation()$\\
-         	$\pi = Evaluate(P)$\\
-         	$\pi_{best} = \pi$\\
-         	$generations = 0$\\
+         	$\pi = Evaluate(P)$;\hspace*{0.5cm}$\pi_{best} = \pi$;\hspace*{0.5cm}$generations = 0$\\
             \While{evaluaciones $\neq$ limite}{
             	$P' = Select(P)$\\
             	$P' = Cross(P')$\\
@@ -742,8 +741,8 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
 						\For{$i=0$ \KwTo $blExecN$}{
 							$\pi' = BusquedaLocalSobre(P''_i)$\\
 							
-							\If{$\exists \pi'$}{
-								$P''_i = \pi'$\\
+							\lIf{$\exists \pi'$}{
+								$P''_i = \pi'$
 							}
 						}
 						
@@ -753,8 +752,8 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
 						\For{$i=0$ \KwTo $blExecN$}{
 							$\pi' = BusquedaLocalSobre(P'_i)$\\
 							
-							\If{$\exists \pi'$}{
-								$P'_i = \pi'$\\
+							\lIf{$\exists \pi'$}{
+								$P'_i = \pi'$
 							}
 						}					
 					}
@@ -764,8 +763,8 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
             	
             	$\pi = Evaluate(P)$\\
             	
-            	\If{$\pi$ mejor que $\pi_{best}$}{
-            		$\pi_{best} = \pi$\\
+            	\lIf{$\pi$ mejor que $\pi_{best}$}{
+            		$\pi_{best} = \pi$
             	}
             }         
             
@@ -851,7 +850,8 @@ algoritmo para resolver cada caso del problema.
 \emph{\textbf{Parámetros del experimento:} 
    \begin{itemize}
       \item El valor de la semilla para este experimento es 7.
-      \item Se compilara con parámetro \textbf{debug} a fin de contrastar aún mas los resultados del tiempo.
+      \item Se compilara con parámetro \textbf{debug} a fin de contrastar aún mas los resultados del tiempo entre los algorimos greedy y búsqueda local.
+      \item Los tiempos para los algoŕimos genéticos y meméticos se han tomado con compilación \textbf{Release}, por lo tanto, se compará con el tiempo medio del greedy y búsqueda local compilados en \textbf{Release}.
    \end{itemize}
 }      
 
@@ -860,7 +860,6 @@ algoritmo para resolver cada caso del problema.
       \subsection{Resultados Greedy}
 \begin{table}[H]
 \centering
-\caption{goo.gl/yr6uN9}
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
@@ -897,7 +896,6 @@ algoritmo para resolver cada caso del problema.
       \subsection{Resultados Búsqueda Local}
 \begin{table}[H]
 \centering
-\caption{goo.gl/SJJh1a}
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
@@ -929,7 +927,6 @@ algoritmo para resolver cada caso del problema.
       \newpage
       \subsection{Resultados Búsqueda Local con \textit{Don't Look Bits}}
 \begin{table}[H]
-\caption{goo.gl/9frEmN}
 \centering
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|l|l|}
@@ -966,6 +963,162 @@ algoritmo para resolver cada caso del problema.
       
       Se puede ver como el tamaño del problema no es lo único que afecta al tiempo de ejecución; La dificultad del problema en si (que es mucho mas difícil de medir) influye también. Por ejemplo, para la búsqueda local básica, se tarda más en \textit{Tai150b} de tamaño 150 (24,83 segundos) que en \textit{Tai256c} de tamaño 256 (5,15 segundos).
       
+      \newpage
+      \subsection{Resultados AGG con cruce basado en posición}
+      \begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Algoritmo AGG-Posición}}                                                                                                                                                                                                             \\ \hline
+\multicolumn{1}{|c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22a}                     & 11,86                              & 0,08                                 &                                & \textbf{Sko100a}                   & 4,34                               & 0,61                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22b}                     & 14,79                              & 0,05                                 &                                & \textbf{Sko100f}                   & 3,58                               & 0,62                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr25a}                     & 52,85                              & 0,06                                 &                                & \textbf{Tai100a}                   & 5,09                               & 0,76                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Esc128}                     & 25,00                              & 0,95                                 &                                & \textbf{Tai100b}                   & 10,52                              & 0,71                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Had20}                      & 0,46                               & 0,05                                 &                                & \textbf{Tai150b}                   & 12,81                              & 1,31                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa60b}                    & 20,94                              & 0,26                                 &                                & \textbf{Tai256c}                   & 2,25                               & 3,14                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa80b}                    & 22,68                              & 0,40                                 &                                & \textbf{Tho40}                     & 2,75                               & 0,13                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Nug28}                      & 5,92                               & 0,07                                 &                                & \textbf{Tho150}                    & 7,22                               & 1,22                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko81}                      & 4,20                               & 0,40                                 &                                & \textbf{Wil50}                     & 2,31                               & 0,18                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko90}                      & 3,79                               & 0,49                                 &                                & \textbf{Wil100}                    & 2,30                               & 0,64                                 \\ \cline{1-3} \cline{5-7} 
+\end{tabular}
+\end{table}
+
+		
+	  \newpage
+      \subsection{Resultados AGG con cruce OX}
+      \begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Algoritmo AGG-OX}}                                                                                                                                                                                                                   \\ \hline
+\multicolumn{1}{|c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22a}                     & 34,73                              & 0,13                                 &                                & \textbf{Sko100a}                   & 10,21                              & 0,93                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22b}                     & 34,42                              & 0,13                                 &                                & \textbf{Sko100f}                   & 11,52                              & 0,89                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr25a}                     & 142,41                             & 0,14                                 &                                & \textbf{Tai100a}                   & 9,81                               & 0,89                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Esc128}                     & 90,63                              & 1,42                                 &                                & \textbf{Tai100b}                   & 25,56                              & 0,90                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Had20}                      & 3,24                               & 0,12                                 &                                & \textbf{Tai150b}                   & 19,43                              & 1,64                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa60b}                    & 25,54                              & 0,44                                 &                                & \textbf{Tai256c}                   & 4,85                               & 4,10                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa80b}                    & 25,98                              & 0,63                                 &                                & \textbf{Tho40}                     & 16,97                              & 0,25                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Nug28}                      & 11,73                              & 0,14                                 &                                & \textbf{Tho150}                    & 13,65                              & 1,70                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko81}                      & 10,78                              & 0,65                                 &                                & \textbf{Wil50}                     & 7,32                               & 0,34                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko90}                      & 11,14                              & 0,77                                 &                                & \textbf{Wil100}                    & 6,50                               & 0,87                                 \\ \cline{1-3} \cline{5-7} 
+\end{tabular}
+\end{table}
+      
+      
+      \newpage
+      \subsection{Resultados AGE con cruce basado en posición}
+      \begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Algoritmo AGE-Posición}}                                                                                                                                                                                                                   \\ \hline
+\multicolumn{1}{|c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22a}                     & 14,78                              & 0,09                                 &                                & \textbf{Sko100a}                   & 3,07                               & 0,63                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22b}                     & 14,40                              & 0,07                                 &                                & \textbf{Sko100f}                   & 3,63                               & 0,60                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr25a}                     & 48,52                              & 0,08                                 &                                & \textbf{Tai100a}                   & 4,57                               & 0,51                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Esc128}                     & 28,13                              & 0,86                                 &                                & \textbf{Tai100b}                   & 10,50                              & 0,51                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Had20}                      & 0,72                               & 0,08                                 &                                & \textbf{Tai150b}                   & 6,42                               & 1,02                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa60b}                    & 20,38                              & 0,28                                 &                                & \textbf{Tai256c}                   & 1,98                               & 3,13                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa80b}                    & 21,90                              & 0,46                                 &                                & \textbf{Tho40}                     & 5,08                               & 0,13                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Nug28}                      & 3,87                               & 0,10                                 &                                & \textbf{Tho150}                    & 4,48                               & 1,04                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko81}                      & 3,28                               & 0,37                                 &                                & \textbf{Wil50}                     & 2,46                               & 0,18                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko90}                      & 2,81                               & 0,48                                 &                                & \textbf{Wil100}                    & 1,23                               & 0,49                                 \\ \cline{1-3} \cline{5-7} 
+\end{tabular}
+\end{table}
+      
+      
+      \newpage
+      \subsection{Resultados AGE con cruce OX}
+      \begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Algoritmo AGE-OX}}                                                                                                                                                                                                                   \\ \hline
+\multicolumn{1}{|c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22a}                     & 25,41                              & 0,12                                 &                                & \textbf{Sko100a}                   & 12,82                              & 0,75                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22b}                     & 16,73                              & 0,12                                 &                                & \textbf{Sko100f}                   & 12,51                              & 0,73                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr25a}                     & 121,29                             & 0,12                                 &                                & \textbf{Tai100a}                   & 11,77                              & 0,80                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Esc128}                     & 93,75                              & 1,33                                 &                                & \textbf{Tai100b}                   & 28,43                              & 0,82                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Had20}                      & 0,17                               & 0,12                                 &                                & \textbf{Tai150b}                   & 23,62                              & 1,56                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa60b}                    & 26,33                              & 0,41                                 &                                & \textbf{Tai256c}                   & 3,76                               & 3,54                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa80b}                    & 27,79                              & 0,59                                 &                                & \textbf{Tho40}                     & 22,94                              & 0,25                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Nug28}                      & 7,70                               & 0,14                                 &                                & \textbf{Tho150}                    & 15,74                              & 1,38                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko81}                      & 13,50                              & 0,58                                 &                                & \textbf{Wil50}                     & 7,70                               & 0,31                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko90}                      & 13,54                              & 0,66                                 &                                & \textbf{Wil100}                    & 7,35                               & 0,77                                 \\ \cline{1-3} \cline{5-7} 
+\end{tabular}
+\end{table}
+      
+      \newpage
+      \subsection{Resultados Memético (10, 1)}
+      \begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Algoritmo AM(10, 1)}}                                                                                                                                                                                                                \\ \hline
+\multicolumn{1}{|c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22a}                     & 16,73                              & 0,05                                 &                                & \textbf{Sko100a}                   & 2,24                               & 0,61                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22b}                     & 19,66                              & 0,04                                 &                                & \textbf{Sko100f}                   & 1,79                               & 0,60                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr25a}                     & 57,59                              & 0,05                                 &                                & \textbf{Tai100a}                   & 3,63                               & 0,57                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Esc128}                     & 18,75                              & 0,85                                 &                                & \textbf{Tai100b}                   & 3,98                               & 0,68                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Had20}                      & 0,46                               & 0,04                                 &                                & \textbf{Tai150b}                   & 3,19                               & 1,87                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa60b}                    & 20,49                              & 0,24                                 &                                & \textbf{Tai256c}                   & 0,52                               & 3,74                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa80b}                    & 21,68                              & 0,40                                 &                                & \textbf{Tho40}                     & 3,78                               & 0,12                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Nug28}                      & 6,85                               & 0,06                                 &                                & \textbf{Tho150}                    & 2,96                               & 1,67                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko81}                      & 1,85                               & 0,46                                 &                                & \textbf{Wil50}                     & 0,73                               & 0,17                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko90}                      & 1,58                               & 0,60                                 &                                & \textbf{Wil100}                    & 0,72                               & 0,58                                 \\ \cline{1-3} \cline{5-7} 
+\end{tabular}
+\end{table}
+      
+      \newpage
+      \subsection{Resultados Memético (10, 0.1)}
+      \begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Algoritmo AM(10, 0.1)}}                                                                                                                                                                                                              \\ \hline
+\multicolumn{1}{|c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22a}                     & 11,57                              & 0,08                                 &                                & \textbf{Sko100a}                   & 2,00                               & 0,56                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22b}                     & 24,15                              & 0,05                                 &                                & \textbf{Sko100f}                   & 3,08                               & 0,55                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr25a}                     & 42,15                              & 0,05                                 &                                & \textbf{Tai100a}                   & 4,44                               & 0,53                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Esc128}                     & 0,00                               & 0,93                                 &                                & \textbf{Tai100b}                   & 4,99                               & 0,55                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Had20}                      & 3,15                               & 0,04                                 &                                & \textbf{Tai150b}                   & 4,24                               & 1,20                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa60b}                    & 19,52                              & 0,28                                 &                                & \textbf{Tai256c}                   & 0,71                               & 2,88                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa80b}                    & 22,46                              & 0,44                                 &                                & \textbf{Tho40}                     & 5,42                               & 0,12                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Nug28}                      & 7,47                               & 0,07                                 &                                & \textbf{Tho150}                    & 2,91                               & 1,15                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko81}                      & 3,30                               & 0,42                                 &                                & \textbf{Wil50}                     & 2,53                               & 0,17                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko90}                      & 3,30                               & 0,48                                 &                                & \textbf{Wil100}                    & 0,77                               & 0,53                                 \\ \cline{1-3} \cline{5-7} 
+\end{tabular}
+\end{table}
+      
+      \newpage
+      \subsection{Resultados Memético (10, 0.1 mejores)}
+      \begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Algoritmo AM(10, 0.1mej)}}                                                                                                                                                                                                           \\ \hline
+\multicolumn{1}{|c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Caso}} & \multicolumn{1}{c|}{\textbf{Desv}} & \multicolumn{1}{c|}{\textbf{Tiempo}} \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22a}                     & 10,23                              & 0,05                                 &                                & \textbf{Sko100a}                   & 1,52                               & 0,55                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr22b}                     & 13,98                              & 0,05                                 &                                & \textbf{Sko100f}                   & 2,11                               & 0,59                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Chr25a}                     & 48,05                              & 0,06                                 &                                & \textbf{Tai100a}                   & 4,16                               & 0,67                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Esc128}                     & 21,88                              & 0,97                                 &                                & \textbf{Tai100b}                   & 1,80                               & 0,61                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Had20}                      & 0,46                               & 0,04                                 &                                & \textbf{Tai150b}                   & 3,32                               & 1,24                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa60b}                    & 20,45                              & 0,27                                 &                                & \textbf{Tai256c}                   & 0,44                               & 3,17                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Lipa80b}                    & 21,67                              & 0,46                                 &                                & \textbf{Tho40}                     & 4,18                               & 0,12                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Nug28}                      & 5,46                               & 0,07                                 &                                & \textbf{Tho150}                    & 2,66                               & 1,18                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko81}                      & 2,54                               & 0,50                                 &                                & \textbf{Wil50}                     & 2,19                               & 0,17                                 \\ \cline{1-3} \cline{5-7} 
+\textbf{Sko90}                      & 1,79                               & 0,50                                 &                                & \textbf{Wil100}                    & 1,01                               & 0,55                                 \\ \cline{1-3} \cline{5-7} 
+\end{tabular}
+\end{table}
       
       \newpage
       \subsection{Comparación de los resultados. Conclusiones.}
@@ -1000,6 +1153,26 @@ algoritmo para resolver cada caso del problema.
 \multicolumn{1}{|c|}{\textbf{Algoritmo}}    & \textbf{Debug}          & \textbf{Release}          \\ \hline
 \multicolumn{1}{|l|}{\textbf{BL}}           & 24.174                  & 1.55584                   \\ \hline
 \multicolumn{1}{|l|}{\textbf{BL DLB}}       & 1.54554                 & 0.105939                  \\ \hline
+\end{tabular}
+\end{table}
+
+	\newpage
+	\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Algoritmo}            & \textbf{Desv} & \textbf{Tiempo} \\ \hline
+\textbf{Greedy}               & 61.08         & 0,0000609593    \\ \hline
+\textbf{BL}                   & 10.66         & 0.24            \\ \hline
+\textbf{BL. DLB}              & 8.26          & 0,03            \\ \hline
+\textbf{AGG. Posición}        & 10,78         & 0,61            \\ \hline
+\textbf{AGG. OX}              & 25,82         & 0,85            \\ \hline
+\textbf{AGE. Posición}        & 10,11         & 0,56            \\ \hline
+\textbf{AGE. OX}              & 24,64         & 0,76            \\ \hline
+\textbf{AM (10, 1)}           & 9,46          & 0,67            \\ \hline
+\textbf{AM (10, 0.1)}         & 8,41          & 0,55            \\ \hline
+\textbf{AM (10, 0.1 mejores)} & 8,50          & 0,59            \\ \hline
 \end{tabular}
 \end{table}
    

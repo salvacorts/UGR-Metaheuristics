@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.1)  2 MAY 2018 19:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.1)  3 MAY 2018 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -703,6 +703,27 @@ LaTeX Warning: Label `my-label' multiply defined.
 
 LaTeX Warning: Label `my-label' multiply defined.
 
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
 )
 \openout1 = `memoria.aux'.
 
@@ -985,13 +1006,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 716--717
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 718--719
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 719--720
 
  []
 
-[23] [24]
-Underfull \hbox (badness 10000) in paragraph at lines 779--780
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 778--779
 
  []
 
@@ -1004,10 +1025,10 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 <execOutDiagram.png, id=107, 527.9725pt x 282.05376pt>
 File: execOutDiagram.png Graphic file (type png)
 <use execOutDiagram.png>
-Package pdftex.def Info: execOutDiagram.png  used on input line 833.
+Package pdftex.def Info: execOutDiagram.png  used on input line 832.
 (pdftex.def)             Requested size: 369.57823pt x 197.43626pt.
  [26 <./execOutDiagram.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 849--850
+Underfull \hbox (badness 10000) in paragraph at lines 848--849
 
  []
 
@@ -1015,77 +1036,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 849--850
 <boxplot-greedy-desv.png, id=117, 451.6875pt x 195.73125pt>
 File: boxplot-greedy-desv.png Graphic file (type png)
 <use boxplot-greedy-desv.png>
-Package pdftex.def Info: boxplot-greedy-desv.png  used on input line 891.
+Package pdftex.def Info: boxplot-greedy-desv.png  used on input line 890.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-greedy-time.png, id=118, 451.6875pt x 195.73125pt>
 File: boxplot-greedy-time.png Graphic file (type png)
 <use boxplot-greedy-time.png>
-Package pdftex.def Info: boxplot-greedy-time.png  used on input line 892.
+Package pdftex.def Info: boxplot-greedy-time.png  used on input line 891.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [28 <./boxplot-greedy-desv.png> <./boxplot-greedy-time.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 919--920
+Underfull \hbox (badness 10000) in paragraph at lines 917--918
 
  []
 
 <boxplot-bl-desv.png, id=124, 451.6875pt x 195.73125pt>
 File: boxplot-bl-desv.png Graphic file (type png)
 <use boxplot-bl-desv.png>
-Package pdftex.def Info: boxplot-bl-desv.png  used on input line 924.
+Package pdftex.def Info: boxplot-bl-desv.png  used on input line 922.
 (pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
 <boxplot-bl-time.png, id=125, 451.6875pt x 195.73125pt>
 File: boxplot-bl-time.png Graphic file (type png)
 <use boxplot-bl-time.png>
-Package pdftex.def Info: boxplot-bl-time.png  used on input line 925.
+Package pdftex.def Info: boxplot-bl-time.png  used on input line 923.
 (pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
 [29 <./boxplot-bl-desv.png> <./boxplot-bl-time.png>]
 <boxplot-bldlb-desv.png, id=131, 451.6875pt x 195.73125pt>
 File: boxplot-bldlb-desv.png Graphic file (type png)
 <use boxplot-bldlb-desv.png>
-Package pdftex.def Info: boxplot-bldlb-desv.png  used on input line 956.
+Package pdftex.def Info: boxplot-bldlb-desv.png  used on input line 953.
 (pdftex.def)             Requested size: 271.01459pt x 117.43964pt.
 <boxplot-bldlb-time.png, id=132, 451.6875pt x 195.73125pt>
 File: boxplot-bldlb-time.png Graphic file (type png)
 <use boxplot-bldlb-time.png>
-Package pdftex.def Info: boxplot-bldlb-time.png  used on input line 957.
+Package pdftex.def Info: boxplot-bldlb-time.png  used on input line 954.
 (pdftex.def)             Requested size: 271.01459pt x 117.43964pt.
  [30 <./boxplot-bldlb-desv.png> <./boxplot-bldlb-time.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 961--962
+Underfull \hbox (badness 10000) in paragraph at lines 958--959
 
  []
 
 <bl-vs-dlb.png, id=138, 602.25pt x 372.39125pt>
 File: bl-vs-dlb.png Graphic file (type png)
 <use bl-vs-dlb.png>
-Package pdftex.def Info: bl-vs-dlb.png  used on input line 964.
+Package pdftex.def Info: bl-vs-dlb.png  used on input line 961.
 (pdftex.def)             Requested size: 361.35278pt x 223.43646pt.
-[31 <./bl-vs-dlb.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 984--985
+[31 <./bl-vs-dlb.png (PNG copy)>] [32] [33] [34] [35] [36] [37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 1137--1138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 986--987
+Underfull \hbox (badness 10000) in paragraph at lines 1139--1140
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 988--989
+Underfull \hbox (badness 10000) in paragraph at lines 1141--1142
 
  []
 
 
-Overfull \hbox (2.2913pt too wide) in paragraph at lines 990--991
+Overfull \hbox (2.2913pt too wide) in paragraph at lines 1143--1144
 \OT1/cmr/m/n/12 (\OT1/cmr/bx/it/12 Debug\OT1/cmr/m/n/12 ). La reali-dad es que 
 con un ni-vel m^^Saxi-mo de op-ti-mi-za-ci^^Son (\OT1/cmr/bx/it/12 Release\OT1/
 cmr/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 990--991
+Underfull \hbox (badness 10000) in paragraph at lines 1143--1144
 
  []
 
-[32]
+[39] [40]
 runsystem(makeindex memoria.idx)...executed safely (allowed).
 
  (./memoria.ind) (./memoria.aux
@@ -1097,13 +1118,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8368 strings out of 494747
- 117676 string characters out of 6176208
- 222603 words of memory out of 5000000
- 11555 multiletter control sequences out of 15000+600000
+ 8369 strings out of 494747
+ 117684 string characters out of 6176208
+ 222598 words of memory out of 5000000
+ 11556 multiletter control sequences out of 15000+600000
  12711 words of font info for 45 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
- 53i,27n,99p,641b,1165s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,24n,99p,641b,1165s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/tex
@@ -1121,10 +1142,10 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (32 pages, 517012 bytes).
+Output written on memoria.pdf (40 pages, 529567 bytes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
+ 231 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
