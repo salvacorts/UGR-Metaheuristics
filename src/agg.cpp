@@ -42,26 +42,21 @@ Population AGG::Replace(const Population& originalP, Population& toReplaceP) {
    int worst_score, worst_index;
    worst_score = worst_index = 0;
 
-   // Keep the best solution in the poblation
-   if (this->bestSolution != NULL) {
+   for (int i = 0; i < newP.size(); i++) {
 
-      for (int i = 0; i < newP.size(); i++) {
-
-         if (newP[i].score == -1) {
-            newP[i].CalcCost(distances, frequencies);
-            this->evals++;
-         }
-
-         if (worst_score < newP[i].score) {
-            worst_score = newP[i].score;
-            worst_index = i;
-         }
+      if (newP[i].score == -1) {
+         newP[i].CalcCost(distances, frequencies);
+         this->evals++;
       }
 
-      newP[worst_index] = *(this->bestSolution);
+      if (worst_score < newP[i].score) {
+         worst_score = newP[i].score;
+         worst_index = i;
+      }
    }
+
+   newP[worst_index] = *(this->bestSolution);
 
    return newP;
 }
-
 

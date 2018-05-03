@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.1)  3 MAY 2018 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.1)  3 MAY 2018 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -947,75 +947,75 @@ Underfull \hbox (badness 10000) in paragraph at lines 570--571
 <esquema-age.png, id=85, 1258.7025pt x 765.86125pt>
 File: esquema-age.png Graphic file (type png)
 <use esquema-age.png>
-Package pdftex.def Info: esquema-age.png  used on input line 611.
+Package pdftex.def Info: esquema-age.png  used on input line 610.
 (pdftex.def)             Requested size: 377.61366pt x 229.76015pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 614--615
+Underfull \hbox (badness 10000) in paragraph at lines 613--614
 
  []
 
 [20 <./esquema-age.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 620--621
+Underfull \hbox (badness 10000) in paragraph at lines 619--620
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--623
+Underfull \hbox (badness 10000) in paragraph at lines 621--622
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 656--657
+Underfull \hbox (badness 10000) in paragraph at lines 655--656
 
  []
 
 
-Overfull \hbox (0.1119pt too wide) in paragraph at lines 658--659
+Overfull \hbox (0.1119pt too wide) in paragraph at lines 657--658
 []\OT1/cmr/m/n/12 Partiendo de una im-ple-men-ta-ci^^Son b^^Sasi-ca con com-ple
 -ji-dad tem-po-ral $\OML/cmm/m/it/12 O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n[]\OT1
 /cmr/m/n/12 )$;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 658--659
+Underfull \hbox (badness 10000) in paragraph at lines 657--658
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 660--661
+Underfull \hbox (badness 10000) in paragraph at lines 659--660
 
  []
 
 
-LaTeX Warning: Command \O invalid in math mode on input line 702.
+LaTeX Warning: Command \O invalid in math mode on input line 701.
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 709--710
+Underfull \hbox (badness 10000) in paragraph at lines 708--709
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 712--713
+Underfull \hbox (badness 10000) in paragraph at lines 711--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 714--715
+Underfull \hbox (badness 10000) in paragraph at lines 713--714
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--717
+Underfull \hbox (badness 10000) in paragraph at lines 715--716
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 719--720
+Underfull \hbox (badness 10000) in paragraph at lines 718--719
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 778--779
+Underfull \hbox (badness 10000) in paragraph at lines 777--778
 
  []
 
@@ -1028,10 +1028,10 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 <execOutDiagram.png, id=107, 527.9725pt x 282.05376pt>
 File: execOutDiagram.png Graphic file (type png)
 <use execOutDiagram.png>
-Package pdftex.def Info: execOutDiagram.png  used on input line 832.
+Package pdftex.def Info: execOutDiagram.png  used on input line 831.
 (pdftex.def)             Requested size: 369.57823pt x 197.43626pt.
  [26 <./execOutDiagram.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 848--849
+Underfull \hbox (badness 10000) in paragraph at lines 847--848
 
  []
 
@@ -1039,153 +1039,153 @@ Underfull \hbox (badness 10000) in paragraph at lines 848--849
 <boxplot-greedy-desv.png, id=117, 451.6875pt x 195.73125pt>
 File: boxplot-greedy-desv.png Graphic file (type png)
 <use boxplot-greedy-desv.png>
-Package pdftex.def Info: boxplot-greedy-desv.png  used on input line 890.
+Package pdftex.def Info: boxplot-greedy-desv.png  used on input line 889.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-greedy-time.png, id=118, 451.6875pt x 195.73125pt>
 File: boxplot-greedy-time.png Graphic file (type png)
 <use boxplot-greedy-time.png>
-Package pdftex.def Info: boxplot-greedy-time.png  used on input line 891.
+Package pdftex.def Info: boxplot-greedy-time.png  used on input line 890.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [28 <./boxplot-greedy-desv.png> <./boxplot-greedy-time.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 917--918
+Underfull \hbox (badness 10000) in paragraph at lines 916--917
 
  []
 
 <boxplot-bl-desv.png, id=124, 451.6875pt x 195.73125pt>
 File: boxplot-bl-desv.png Graphic file (type png)
 <use boxplot-bl-desv.png>
-Package pdftex.def Info: boxplot-bl-desv.png  used on input line 922.
+Package pdftex.def Info: boxplot-bl-desv.png  used on input line 921.
 (pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
 <boxplot-bl-time.png, id=125, 451.6875pt x 195.73125pt>
 File: boxplot-bl-time.png Graphic file (type png)
 <use boxplot-bl-time.png>
-Package pdftex.def Info: boxplot-bl-time.png  used on input line 923.
+Package pdftex.def Info: boxplot-bl-time.png  used on input line 922.
 (pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
 [29 <./boxplot-bl-desv.png> <./boxplot-bl-time.png>]
 <boxplot-bldlb-desv.png, id=131, 451.6875pt x 195.73125pt>
 File: boxplot-bldlb-desv.png Graphic file (type png)
 <use boxplot-bldlb-desv.png>
-Package pdftex.def Info: boxplot-bldlb-desv.png  used on input line 953.
+Package pdftex.def Info: boxplot-bldlb-desv.png  used on input line 952.
 (pdftex.def)             Requested size: 271.01459pt x 117.43964pt.
 <boxplot-bldlb-time.png, id=132, 451.6875pt x 195.73125pt>
 File: boxplot-bldlb-time.png Graphic file (type png)
 <use boxplot-bldlb-time.png>
-Package pdftex.def Info: boxplot-bldlb-time.png  used on input line 954.
+Package pdftex.def Info: boxplot-bldlb-time.png  used on input line 953.
 (pdftex.def)             Requested size: 271.01459pt x 117.43964pt.
  [30 <./boxplot-bldlb-desv.png> <./boxplot-bldlb-time.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 958--959
+Underfull \hbox (badness 10000) in paragraph at lines 957--958
 
  []
 
 <bl-vs-dlb.png, id=138, 602.25pt x 372.39125pt>
 File: bl-vs-dlb.png Graphic file (type png)
 <use bl-vs-dlb.png>
-Package pdftex.def Info: bl-vs-dlb.png  used on input line 961.
+Package pdftex.def Info: bl-vs-dlb.png  used on input line 960.
 (pdftex.def)             Requested size: 361.35278pt x 223.43646pt.
 [31 <./bl-vs-dlb.png (PNG copy)>]
 <boxplot-aggpos-desv.png, id=143, 451.6875pt x 195.73125pt>
 File: boxplot-aggpos-desv.png Graphic file (type png)
 <use boxplot-aggpos-desv.png>
-Package pdftex.def Info: boxplot-aggpos-desv.png  used on input line 989.
+Package pdftex.def Info: boxplot-aggpos-desv.png  used on input line 988.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-aggpos-time.png, id=144, 451.6875pt x 195.73125pt>
 File: boxplot-aggpos-time.png Graphic file (type png)
 <use boxplot-aggpos-time.png>
-Package pdftex.def Info: boxplot-aggpos-time.png  used on input line 990.
+Package pdftex.def Info: boxplot-aggpos-time.png  used on input line 989.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [32 <./boxplot-aggpos-desv.png> <./boxplot-aggpos-time.png>]
 <boxplot-aggox-desv.png, id=150, 451.6875pt x 195.73125pt>
 File: boxplot-aggox-desv.png Graphic file (type png)
 <use boxplot-aggox-desv.png>
-Package pdftex.def Info: boxplot-aggox-desv.png  used on input line 1017.
+Package pdftex.def Info: boxplot-aggox-desv.png  used on input line 1016.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-aggox-time.png, id=151, 451.6875pt x 195.73125pt>
 File: boxplot-aggox-time.png Graphic file (type png)
 <use boxplot-aggox-time.png>
-Package pdftex.def Info: boxplot-aggox-time.png  used on input line 1018.
+Package pdftex.def Info: boxplot-aggox-time.png  used on input line 1017.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [33 <./boxplot-aggox-desv.png> <./boxplot-aggox-time.png>]
 <boxplot-agepos-desv.png, id=157, 451.6875pt x 195.73125pt>
 File: boxplot-agepos-desv.png Graphic file (type png)
 <use boxplot-agepos-desv.png>
-Package pdftex.def Info: boxplot-agepos-desv.png  used on input line 1045.
+Package pdftex.def Info: boxplot-agepos-desv.png  used on input line 1044.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-agepos-time.png, id=158, 451.6875pt x 195.73125pt>
 File: boxplot-agepos-time.png Graphic file (type png)
 <use boxplot-agepos-time.png>
-Package pdftex.def Info: boxplot-agepos-time.png  used on input line 1046.
+Package pdftex.def Info: boxplot-agepos-time.png  used on input line 1045.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 
 [34 <./boxplot-agepos-desv.png> <./boxplot-agepos-time.png>]
 <boxplot-ageox-desv.png, id=164, 451.6875pt x 195.73125pt>
 File: boxplot-ageox-desv.png Graphic file (type png)
 <use boxplot-ageox-desv.png>
-Package pdftex.def Info: boxplot-ageox-desv.png  used on input line 1073.
+Package pdftex.def Info: boxplot-ageox-desv.png  used on input line 1072.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-ageox-time.png, id=165, 451.6875pt x 195.73125pt>
 File: boxplot-ageox-time.png Graphic file (type png)
 <use boxplot-ageox-time.png>
-Package pdftex.def Info: boxplot-ageox-time.png  used on input line 1074.
+Package pdftex.def Info: boxplot-ageox-time.png  used on input line 1073.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [35 <./boxplot-ageox-desv.png> <./boxplot-ageox-time.png>]
 <boxplot-am(1-1)-desv.png, id=171, 451.6875pt x 195.73125pt>
 File: boxplot-am(1-1)-desv.png Graphic file (type png)
 <use boxplot-am(1-1)-desv.png>
-Package pdftex.def Info: boxplot-am(1-1)-desv.png  used on input line 1102.
+Package pdftex.def Info: boxplot-am(1-1)-desv.png  used on input line 1101.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-am(1-1)-time.png, id=172, 451.6875pt x 195.73125pt>
 File: boxplot-am(1-1)-time.png Graphic file (type png)
 <use boxplot-am(1-1)-time.png>
-Package pdftex.def Info: boxplot-am(1-1)-time.png  used on input line 1103.
+Package pdftex.def Info: boxplot-am(1-1)-time.png  used on input line 1102.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [36 <./boxplot-am(1-1)-desv.png> <./boxplot-am(1-1)-time.png>]
 <boxplot-am(1-01)-desv.png, id=178, 451.6875pt x 195.73125pt>
 File: boxplot-am(1-01)-desv.png Graphic file (type png)
 <use boxplot-am(1-01)-desv.png>
-Package pdftex.def Info: boxplot-am(1-01)-desv.png  used on input line 1131.
+Package pdftex.def Info: boxplot-am(1-01)-desv.png  used on input line 1130.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-am(1-01)-time.png, id=179, 451.6875pt x 195.73125pt>
 File: boxplot-am(1-01)-time.png Graphic file (type png)
 <use boxplot-am(1-01)-time.png>
-Package pdftex.def Info: boxplot-am(1-01)-time.png  used on input line 1132.
+Package pdftex.def Info: boxplot-am(1-01)-time.png  used on input line 1131.
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [37 <./boxplot-am(1-01)-desv.png> <./boxplot-am(1-01)-time.png>]
 <boxplot-am(1-01mej)-desv.png, id=186, 451.6875pt x 195.73125pt>
 File: boxplot-am(1-01mej)-desv.png Graphic file (type png)
 <use boxplot-am(1-01mej)-desv.png>
-Package pdftex.def Info: boxplot-am(1-01mej)-desv.png  used on input line 1158.
+Package pdftex.def Info: boxplot-am(1-01mej)-desv.png  used on input line 1157.
 
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
 <boxplot-am(1-01mej)-time.png, id=187, 451.6875pt x 195.73125pt>
 File: boxplot-am(1-01mej)-time.png Graphic file (type png)
 <use boxplot-am(1-01mej)-time.png>
-Package pdftex.def Info: boxplot-am(1-01mej)-time.png  used on input line 1159.
+Package pdftex.def Info: boxplot-am(1-01mej)-time.png  used on input line 1158.
 
 (pdftex.def)             Requested size: 189.70744pt x 82.20656pt.
  [38 <./boxplot-am(1-01mej)-desv.png> <./boxplot-am(1-01mej)-time.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1177
+Underfull \hbox (badness 10000) in paragraph at lines 1175--1176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1178--1179
+Underfull \hbox (badness 10000) in paragraph at lines 1177--1178
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1180--1181
+Underfull \hbox (badness 10000) in paragraph at lines 1179--1180
 
  []
 
 
-Overfull \hbox (2.2913pt too wide) in paragraph at lines 1182--1183
+Overfull \hbox (2.2913pt too wide) in paragraph at lines 1181--1182
 \OT1/cmr/m/n/12 (\OT1/cmr/bx/it/12 Debug\OT1/cmr/m/n/12 ). La reali-dad es que 
 con un ni-vel m^^Saxi-mo de op-ti-mi-za-ci^^Son (\OT1/cmr/bx/it/12 Release\OT1/
 cmr/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1182--1183
+Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
 
  []
 
@@ -1193,13 +1193,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 1182--1183
 <coste-vs-evaluaciones.png, id=196, 602.25pt x 372.39125pt>
 File: coste-vs-evaluaciones.png Graphic file (type png)
 <use coste-vs-evaluaciones.png>
-Package pdftex.def Info: coste-vs-evaluaciones.png  used on input line 1219.
+Package pdftex.def Info: coste-vs-evaluaciones.png  used on input line 1218.
 (pdftex.def)             Requested size: 301.12425pt x 186.19516pt.
- [40 <./coste-vs-evaluaciones.png (PNG copy)>]
+<poblacion-vs-coste.png, id=197, 602.25pt x 372.39125pt>
+File: poblacion-vs-coste.png Graphic file (type png)
+<use poblacion-vs-coste.png>
+Package pdftex.def Info: poblacion-vs-coste.png  used on input line 1222.
+(pdftex.def)             Requested size: 301.12425pt x 186.19516pt.
+ [40 <./coste-vs-evaluaciones.png (PNG copy)> <./poblacion-vs-coste.png (PNG co
+py)>]
 runsystem(makeindex memoria.idx)...executed safely (allowed).
 
- (./memoria.ind)
-(./memoria.aux
+ (./memoria.ind) (./memoria.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 )
@@ -1208,10 +1213,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8444 strings out of 494747
- 119764 string characters out of 6176208
+ 8449 strings out of 494747
+ 119893 string characters out of 6176208
  222598 words of memory out of 5000000
- 11616 multiletter control sequences out of 15000+600000
+ 11620 multiletter control sequences out of 15000+600000
  12711 words of font info for 45 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
  53i,24n,99p,641b,1165s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1232,10 +1237,10 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (40 pages, 609095 bytes).
+Output written on memoria.pdf (40 pages, 638644 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
+ 261 PDF objects out of 1000 (max. 8388607)
  146 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 136 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
