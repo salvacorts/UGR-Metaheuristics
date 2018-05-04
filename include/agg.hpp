@@ -5,8 +5,11 @@
 
 class AGG : public GeneticAlg {
 protected:
+   Solution* bestFromLastGeneration;
+
    Population Replace(const Population& originalP, Population& toReplaceP) override;
    Population Select(const Population& originalP) override;
+   Solution Evaluate(Population& population) override;
 
 public:
    AGG(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)

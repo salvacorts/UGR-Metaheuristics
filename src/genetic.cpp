@@ -15,7 +15,7 @@ Population GeneticAlg::CreateRandomPopulation() {
    return population;
 }
 
-pair<int, Solution> GeneticAlg::Evaluate(Population& population) {
+Solution GeneticAlg::Evaluate(Population& population) {
    int bestScore = INT_MAX;
    Solution bestSolution;
 
@@ -31,13 +31,14 @@ pair<int, Solution> GeneticAlg::Evaluate(Population& population) {
       }
    }
 
-   return make_pair(bestScore, bestSolution);
+   return bestSolution;
 }
 
 Solution GeneticAlg::Solve() {
    Population population = CreateRandomPopulation();
-   pair<int, Solution> evaluateResult = Evaluate(population);
-   this->bestSolution = new Solution(evaluateResult.second);
+   Solution evaluateResult = Evaluate(population);
+   this->bestSolution = new Solution(evaluateResult);
+   int iter = 0;
 
    while (this->evals <= this->maxIters ) {
       Population newPopulation = Select(population);
@@ -46,9 +47,9 @@ Solution GeneticAlg::Solve() {
       population = Replace(population, newPopulation);
       evaluateResult = Evaluate(population);
 
-      if (evaluateResult.second.score < this->bestSolution->score) {
+      if (evaluateResult.score < this->bestSolution->score) {
          delete this->bestSolution;
-         this->bestSolution = new Solution(evaluateResult.second);
+         this->bestSolution = new Solution(evaluateResult);
       }
    }
 

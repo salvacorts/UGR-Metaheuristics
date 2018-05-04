@@ -55,8 +55,15 @@ Population AGG::Replace(const Population& originalP, Population& toReplaceP) {
       }
    }
 
-   newP[worst_index] = *(this->bestSolution);
+   newP[worst_index] = *this->bestFromLastGeneration;
 
    return newP;
 }
+
+Solution AGG::Evaluate(Population& population) {
+      delete this->bestFromLastGeneration;
+      this->bestFromLastGeneration = new Solution(GeneticAlg::Evaluate(population));
+      
+      return *this->bestFromLastGeneration;
+   }
 

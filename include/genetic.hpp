@@ -21,9 +21,9 @@ protected:
    virtual Population Select(const Population& originalP) = 0;
    virtual Population Mutate(const Population& originalP);
    virtual Population Cross(const Population& originalP);
+   virtual Solution Evaluate(Population& population);   
 
    Population CreateRandomPopulation();
-   pair<int, Solution> Evaluate(Population& population);   
 
 public:
    GeneticAlg(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize,  double pCross, double pMutate, int maxIters)

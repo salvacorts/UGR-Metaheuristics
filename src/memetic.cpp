@@ -5,8 +5,8 @@
 
 Solution MemeticAlg::Solve() {
    Population population = CreateRandomPopulation();
-   pair<int, Solution> evaluateResult = Evaluate(population);
-   this->bestSolution = new Solution(evaluateResult.second);
+   Solution evaluateResult = Evaluate(population);
+   this->bestSolution = new Solution(evaluateResult);
    int blExecN = ceil(this->blProb * population.size());
    int generations = 0;
 
@@ -86,9 +86,9 @@ Solution MemeticAlg::Solve() {
 
       evaluateResult = Evaluate(population);
 
-      if (evaluateResult.second.score < this->bestSolution->score) {
+      if (evaluateResult.score < this->bestSolution->score) {
          delete this->bestSolution;
-         this->bestSolution = new Solution(evaluateResult.second);
+         this->bestSolution = new Solution(evaluateResult);
       }
    }
 

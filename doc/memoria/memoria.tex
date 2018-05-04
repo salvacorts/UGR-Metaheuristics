@@ -567,7 +567,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
       
       \newpage
       \subsubsection*{Operador de Remplazo}
-      Se remplaza la anterior población por la nueva manteniendo la mejor solución obtenida hasta el momento. El pseudocódigo que implementa dicha funcionalidad es:\\
+      Se remplaza la anterior población por la nueva remplazando la peor solución de esta por la mejor de la generación anterior. El pseudocódigo que implementa dicha funcionalidad es:\\
       
       \begin{algorithm}[H]
        	\caption{\textit{agg.cpp} - AGG::Replace}
@@ -590,7 +590,7 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
             		}
          		}
          		
-         		$P''_{peor\_indice} = \pi_{best}$\\
+         		$P''_{peor\_indice} = \pi_{bestAnterior}$\\
          	}
                     
             
@@ -1214,13 +1214,12 @@ algoritmo para resolver cada caso del problema.
 \end{tabular}
 \end{table}
 
-\begin{center}
-         \includegraphics[scale=0.5]{coste-vs-evaluaciones}
+	\begin{center}
+         \includegraphics[scale=0.7]{evals-vs-coste}
       \end{center}
       
-      \begin{center}
-         \includegraphics[scale=0.5]{poblacion-vs-coste}
-      \end{center}
+      
+      
    
 \printindex
 \end{document}
