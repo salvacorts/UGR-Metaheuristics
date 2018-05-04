@@ -10,7 +10,7 @@ Solution MemeticAlg::Solve() {
    int blExecN = ceil(this->blProb * population.size());
    int generations = 0;
 
-   while (this->evals <= this->maxIters ) {
+   while (this->evals <= this->maxEvals ) {
       Population newPopulation = Select(population);
       newPopulation = Cross(newPopulation);
       newPopulation = Mutate(newPopulation);

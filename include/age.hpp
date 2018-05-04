@@ -9,8 +9,8 @@ private:
    Population Select(const Population& originalP) override;
 
 public:
-   AGE(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pMutate, int maxIters)
-   : GeneticAlg(distances, frequencies, populationSize, 1, pMutate, maxIters){}
+   AGE(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pMutate, int maxEvals)
+   : GeneticAlg(distances, frequencies, populationSize, 1, pMutate, maxEvals){}
 };
 
 class AGE_OX : public AGE {
@@ -18,8 +18,8 @@ protected:
    Population Cross(const Population& originalP) override { return CrossOX(originalP, this->crossProb);}
 
 public:
-   AGE_OX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pMutate, int maxIters)
-   : AGE(distances, frequencies, populationSize, pMutate, maxIters){}
+   AGE_OX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pMutate, int maxEvals)
+   : AGE(distances, frequencies, populationSize, pMutate, maxEvals){}
 };
 
 class AGE_PMX : public AGE {
@@ -27,8 +27,8 @@ protected:
    Population Cross(const Population& originalP) override { return CrossPMX(originalP, this->crossProb);}
 
 public:
-   AGE_PMX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pMutate, int maxIters)
-   : AGE(distances, frequencies, populationSize, pMutate, maxIters){}
+   AGE_PMX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pMutate, int maxEvals)
+   : AGE(distances, frequencies, populationSize, pMutate, maxEvals){}
 };
 
 #endif

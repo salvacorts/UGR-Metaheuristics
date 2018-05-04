@@ -82,10 +82,11 @@ min\\
    \vspace*{0cm}
    \begin{figure}[H]
       \centering
-      \includegraphics[scale=0.5]{clases}
+      \includegraphics[scale=0.4]{mhClassDiagram}
       \caption{Diagrama de clases}
    \end{figure}
    
+   \newpage
    \subsection{Clase Solver}
    Esta clase debe ser heredada por las metaheurísticas a implementar. Su representación consta de dos matrices:
    \begin{itemize}
@@ -94,8 +95,6 @@ min\\
    \end{itemize}
    Tiene una función virtual llamada \textit{Solve} que ha de ser implementada por los objetos que hereden de \textbf{Solver}. Es la interfaz común a todos los objetos de tipo Solver para obtener una Solución.
 
-   
-   \newpage
    \subsection{Clase Solution}
    Sirve para representar una solución, la cual, se implementa como un vector donde cada posición $i$ representa un objeto y alberga la localización $j$ donde debe ser colocado dicho objeto $i$. 
    
@@ -1236,7 +1235,7 @@ De nuevo, por las mismas razones que en apartado anterior, obtenemos mejores res
 \end{table}
 
 	Como podemos ver, aunque obtenemos resultados bastante buenos, ninguno mejora la búsqueda local. 
-	Si bien los algoritmos genéticos y los meméticos son planteamientos mucho más sofisticados que la búsqueda local, necesitan ser ajustando inteligentemente para su correcto funcionamiento:\\
+	Si bien los algoritmos genéticos y los meméticos son planteamientos mucho más sofisticados que la búsqueda local, necesitan ser ajustandos correctamente para su correcto funcionamiento:\\
 	
 	\begin{itemize}
 		\item En el caso de los genéticos, podemos jugar con el tamaño de la población y el número máximo de evaluaciones.\\
@@ -1244,7 +1243,7 @@ De nuevo, por las mismas razones que en apartado anterior, obtenemos mejores res
 		\item En el caso de los meméticos, podemos ajustar los mismo parámetros que en los genéticos y, además, cada cuanto ejecutar la búsqueda local y sobre que cromosomas.\\
 	\end{itemize}
 	
-	Hay que tener muy en cuenta el tiempo a la hora de ajustar estos parámetros pues por ejemplo ejecutar una búsqueda local sobre todos los cromosomas de una población de 100 cromosomas es muy costoso y podemos conseguir el mismo resultado calibrando el porcentaje sobre los que ejecutar la búsqueda y el número máximo de evaluaciones.\\
+	Hay que tener muy en cuenta el tiempo a la hora de ajustar estos parámetros pues por ejemplo ejecutar una búsqueda local sobre todos los cromosomas de una población de tamaño 100 es muy costoso y podemos conseguir el mismo resultado calibrando el porcentaje sobre los que ejecutar la búsqueda y el número máximo de evaluaciones.\\
 	
 	\newpage
 	En el siguiente gráfico, podemos ver como evolucionan los algoritmos en función del número máximo de evaluaciones. Sobra decir que a mayor límite de evaluaciones mayor tiempo se necesita.\\
@@ -1254,6 +1253,8 @@ De nuevo, por las mismas razones que en apartado anterior, obtenemos mejores res
       \end{center}
       
       Como vemos a mayor número de evaluaciones máximas, mejores resultados. Con un número de evaluaciones máximas los suficientemente grandes, los meméticos funcionan mejor que los genéticos pero se quedan estancados. Esto hace que para un número de evaluaciones aún mayor, los AGE obtengan (en un tiempo menor) mejores resultados que los AGG y parecidos al memetico que aplica BL sobre toda la población.\\
+      
+      Como conclusión final sobre los algorítmos genéticos y meméticos, cabe destacar que para el problema de QAP, los resultados que obtenemos con los genéticos al incrementar el número de evaluaciones máximas respecto del tiempo no son buenas. Esto se debe a que estos algoritmos no se comportan bien con codificaciones de orden. Aunque localizan zonas prometedoras, no son capaces de explorarlas bien; es por esto que los meméticos permiten obtener los mejores resultados en estos problemas. Un memético bien afinado, con un número suficiente de evaluaciones máximas y un buen equilibrio con la búsqueda local es una solucion muy buena para este tipo de problemas. 
       
       
 	

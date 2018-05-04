@@ -8,7 +8,6 @@ Para compilar con optimización
 	cmake -D CMAKE_BUILD_TYPE=Release ..
 	make
 
-
 Para ejecutar:
 	./bin/practica1 <problema> <semilla (opcional)>
 Ej:

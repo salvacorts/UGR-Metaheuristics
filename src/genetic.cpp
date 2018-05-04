@@ -40,7 +40,7 @@ Solution GeneticAlg::Solve() {
    this->bestSolution = new Solution(evaluateResult);
    int iter = 0;
 
-   while (this->evals <= this->maxIters ) {
+   while (this->evals <= this->maxEvals ) {
       Population newPopulation = Select(population);
       newPopulation = Cross(newPopulation);
       newPopulation = Mutate(newPopulation);

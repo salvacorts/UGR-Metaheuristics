@@ -14,7 +14,7 @@ protected:
    double crossProb;
    double mutationProb;
    int populationSize;
-   int maxIters;
+   int maxEvals;
    int evals;
 
    virtual Population Replace(const Population& originalP, Population& toReplaceP) = 0;
@@ -26,12 +26,12 @@ protected:
    Population CreateRandomPopulation();
 
 public:
-   GeneticAlg(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize,  double pCross, double pMutate, int maxIters)
+   GeneticAlg(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize,  double pCross, double pMutate, int maxEvals)
    : Solver(distances, frequencies) {
       this->populationSize = populationSize;
       this->mutationProb = pMutate;
       this->crossProb = pCross;
-      this->maxIters = maxIters;
+      this->maxEvals = maxEvals;
       this->bestSolution = NULL;
       this->evals = 0;
    }

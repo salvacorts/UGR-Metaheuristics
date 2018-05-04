@@ -12,8 +12,8 @@ protected:
    Solution Evaluate(Population& population) override;
 
 public:
-   AGG(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)
-   : GeneticAlg(distances, frequencies, populationSize, pCross, pMutate, maxIters){
+   AGG(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxEvals)
+   : GeneticAlg(distances, frequencies, populationSize, pCross, pMutate, maxEvals){
       this->bestFromLastGeneration = NULL;
    }
 };
@@ -23,8 +23,8 @@ protected:
    Population Cross(const Population& originalP) override { return CrossOX(originalP, this->crossProb);}
 
 public:
-   AGG_OX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)
-   : AGG(distances, frequencies, populationSize, pCross, pMutate, maxIters){}
+   AGG_OX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxEvals)
+   : AGG(distances, frequencies, populationSize, pCross, pMutate, maxEvals){}
 };
 
 class AGG_PMX : public AGG {
@@ -32,8 +32,8 @@ protected:
    Population Cross(const Population& originalP) override { return CrossPMX(originalP, this->crossProb);}
 
 public:
-   AGG_PMX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)
-   : AGG(distances, frequencies, populationSize, pCross, pMutate, maxIters){}
+   AGG_PMX(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxEvals)
+   : AGG(distances, frequencies, populationSize, pCross, pMutate, maxEvals){}
 };
 
 #endif
