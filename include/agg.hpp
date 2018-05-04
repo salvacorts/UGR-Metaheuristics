@@ -13,7 +13,9 @@ protected:
 
 public:
    AGG(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int populationSize, double pCross, double pMutate, int maxIters)
-   : GeneticAlg(distances, frequencies, populationSize, pCross, pMutate, maxIters){}
+   : GeneticAlg(distances, frequencies, populationSize, pCross, pMutate, maxIters){
+      this->bestFromLastGeneration = NULL;
+   }
 };
 
 class AGG_OX : public AGG {

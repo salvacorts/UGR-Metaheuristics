@@ -2,7 +2,7 @@
 
 echo > bench-$2.out
 
-for (( amount=100; amount<=1638400; amount*=2 )); do
+for (( amount=10; amount<=100; amount+=10 )); do
 	out=`./bin/main $1 $amount`
 	printf "$amount\t$out\n"
 	printf "$amount\t$out\n" >> bench-$2.out

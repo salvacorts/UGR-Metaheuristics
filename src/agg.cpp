@@ -61,7 +61,8 @@ Population AGG::Replace(const Population& originalP, Population& toReplaceP) {
 }
 
 Solution AGG::Evaluate(Population& population) {
-      delete this->bestFromLastGeneration;
+      if (this->bestFromLastGeneration != NULL) delete this->bestFromLastGeneration;
+      
       this->bestFromLastGeneration = new Solution(GeneticAlg::Evaluate(population));
       
       return *this->bestFromLastGeneration;
