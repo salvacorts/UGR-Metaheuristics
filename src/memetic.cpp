@@ -44,17 +44,16 @@ Solution MemeticAlg::Solve() {
 
             for (int i = 0, j = 0; i < blExecN && j < copy.size(); i++) {
                int evals = 0;
-               Solution blSolution = this->localSearch->GenerateBestNeighbour(copy[j], evals, this->maxNeighbourEvals);
+               Solution* blSolution = this->localSearch->GenerateBestNeighbour(copy[j], evals, this->maxNeighbourEvals);
                this->evals += evals;
                
                // If no better neighbour, exit
-               if (blSolution.n == 0) {
-                  continue;
-               }
+               if (blSolution == NULL) continue;
 
                int appliedTo = copy[j].score;
-               pair<int, Solution> aux = make_pair(appliedTo, blSolution);
+               pair<int, Solution> aux = make_pair(appliedTo, *blSolution);
                blApplied.push_front(aux);
+               delete blSolution;
 
                // Find next different best solution
                while (j < copy.size() && copy[j].score == appliedTo) {
@@ -76,10 +75,12 @@ Solution MemeticAlg::Solve() {
          } else {
             for (int i = 0; i < blExecN; i++) {
                int evals = 0;
-               Solution blSolution = this->localSearch->GenerateBestNeighbour(population[i], evals, this->maxNeighbourEvals);
-               this->evals += evals;
+               Solution* blSolution = this->localSearch->GenerateBestNeighbour(population[i], evals, this->maxNeighbourEvals);
                
-               if (blSolution.n != 0) population[i] = blSolution;
+               if (blSolution != NULL) population[i] = *blSolution;
+
+               this->evals += evals;
+               delete blSolution;
             }
          }
       }

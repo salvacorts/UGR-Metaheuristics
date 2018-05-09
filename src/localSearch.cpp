@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Solution LocalSearchSolver::GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals) {
+Solution* LocalSearchSolver::GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals) {
    // Size is (n*(n-1))/2
    int n = fatherSolution.n;
    int evals = 0;
@@ -24,32 +24,33 @@ Solution LocalSearchSolver::GenerateBestNeighbour(const Solution& fatherSolution
          if (evals++ == maxNeighbourEvals) break;
 
          // If the diference is negative, then the cost of the neighbour is lower
-         if (movementCost < 0) return neighbour; 
+         if (movementCost < 0) return new Solution(neighbour); 
       }
    }
 
    evalsCounter = evals;
-   return Solution();
+   return NULL;
 }
 
 Solution LocalSearchSolver::Solve() {
    Solution finalSolution = Solution::GenerateRandomSolution(this->distances, this->frequencies);
-   Solution nextBestSolution;
+   Solution* nextBestSolution;
    int dummy;
 
    do {
       nextBestSolution = GenerateBestNeighbour(finalSolution, dummy);
 
-      if (nextBestSolution.n != 0) finalSolution = nextBestSolution;
+      if (nextBestSolution != NULL) finalSolution = *nextBestSolution;
 
-   } while(nextBestSolution.n != 0);
+   } while(nextBestSolution != NULL);
 
    finalSolution.CalcCost(this->distances, this->frequencies);
+   delete nextBestSolution;
 
    return finalSolution;
 }
 
-Solution LocalSearchSolverDLB::GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals) {
+Solution* LocalSearchSolverDLB::GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals) {
    // Size is (n*(n-1))/2
    int n = fatherSolution.n;
    int evals = 0;
@@ -69,7 +70,7 @@ Solution LocalSearchSolverDLB::GenerateBestNeighbour(const Solution& fatherSolut
          // If the diference is negative, then the cost of the neighbour is lower
          if (movementCost < 0) {
             this->dlbMask[r] = this->dlbMask[s] = false;            
-            return neighbour;
+            return new Solution(neighbour);
          } 
       }
 
@@ -78,5 +79,5 @@ Solution LocalSearchSolverDLB::GenerateBestNeighbour(const Solution& fatherSolut
    }
 
    evalsCounter = evals;
-   return Solution();
+   return NULL;
 }

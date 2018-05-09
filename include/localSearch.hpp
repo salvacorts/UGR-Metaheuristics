@@ -9,7 +9,7 @@ public:
    LocalSearchSolver(vector<vector<int> >& distances, vector<vector<int> >& frequencies)
    : Solver(distances, frequencies){}
 
-   virtual Solution GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals=-1);
+   virtual Solution* GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals=-1);
    Solution Solve() override;
 };
 
@@ -25,7 +25,7 @@ public:
       for (int i = 0; i < distances.size(); i++) this->dlbMask[i] = false;
    }
 
-   Solution GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals=-1) override;
+   Solution* GenerateBestNeighbour(const Solution& fatherSolution, int& evalsCounter, int maxNeighbourEvals=-1) override;
 };
 
 #endif
