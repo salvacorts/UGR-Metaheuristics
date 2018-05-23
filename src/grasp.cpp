@@ -105,3 +105,21 @@ Solution RandomizedGreedy::Solve() {
 
    return solution;
 }
+
+Solution GRASP::Solve() {
+   Solution* bestSolution = NULL;
+   Solution* lsSolution = NULL;
+   int evaluations = 0;
+
+   for (int i = 0; i < this->maxIterations; i++) {
+      Solution greedySolution = this->randomGreedy->Solve();
+      lsSolution = this->LocalSearch->GenerateBestNeighbour(greedySolution, evaluations, this->maxLocalSearchEvals);
+
+      // If there is not bestSolution assigned 
+      if (lsSolution != NULL && (bestSolution == NULL || lsSolution->score < bestSolution->score)) {
+         bestSolution = lsSolution;
+      }
+   }
+
+   return *bestSolution;
+}

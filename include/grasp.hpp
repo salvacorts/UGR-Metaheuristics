@@ -1,4 +1,5 @@
 #include "solver.hpp"
+#include "localSearch.hpp"
 #include <vector>
 #include <set>
 
@@ -39,12 +40,18 @@ public:
 
 class GRASP : public Solver {
 protected:
-   RandomizedGreedy* rndGreedy;
+   RandomizedGreedy* randomGreedy;
+   LocalSearchSolverDLB* LocalSearch;
+   int maxLocalSearchEvals;
+   int maxIterations;
 
 public:
-   GRASP(vector<vector<int> >& distances, vector<vector<int> >& frequencies, double alpha)
+   GRASP(vector<vector<int> >& distances, vector<vector<int> >& frequencies, double alpha, int maxIterations, int maxLocalSearchEvals)
    : Solver(distances, frequencies) {
-      this->rndGreedy = new RandomizedGreedy(distances, frequencies, alpha);
+      this->randomGreedy = new RandomizedGreedy(distances, frequencies, alpha);
+      this->LocalSearch = new LocalSearchSolverDLB(distances, frequencies);
+      this->maxLocalSearchEvals = maxLocalSearchEvals;
+      this->maxIterations = maxIterations;
    }
 
    Solution Solve() override;

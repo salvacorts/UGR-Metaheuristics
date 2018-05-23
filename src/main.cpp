@@ -125,7 +125,8 @@ int main(int argc, char const* argv[]) {
         // make_pair("AM(10, 0.1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400)),
         // make_pair("AM(10, 0.1mej)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400, true)),
 
-        make_pair("Randomized Greedy", new RandomizedGreedy(distances, frequencies, 0.3))
+        make_pair("Randomized Greedy", new RandomizedGreedy(distances, frequencies, 0.3)),
+        make_pair("GRASP", new GRASP(distances, frequencies, 0.3, 25, 50000)),
     };
 
     for (auto& solver : solvers) {
