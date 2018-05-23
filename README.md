@@ -1,14 +1,29 @@
-Para compilar con opciones de depuración:
-	cd build/
-	cmake -D CMAKE_BUILD_TYPE=Debug ..
-	make
+### Compilation
+In order to compile with debug symbols:
+```bash
+cd build/
+cmake -D CMAKE_BUILD_TYPE=Debug ..
+make
+```
 
-Para compilar con optimización
-	cd build/
-	cmake -D CMAKE_BUILD_TYPE=Release ..
-	make
+To compile with optimization:
+```bash
+cd build/
+cmake -D CMAKE_BUILD_TYPE=Release ..
+make
+```
 
-Para ejecutar:
-	./bin/practica1 <problema> <semilla (opcional)>
-Ej:
-	./bin/practica1 ./instancias/chr22a.dat 7
+### Execution
+
+```bash
+./bin/main <problem> <random_seed>
+```
+
+Parameters:
+- Problem: QAP problem definition, you can find some of them in ***instancias/***
+- Random Seed: Seed for random numbers generator, default is 7
+
+Example:
+```bash
+./bin/main ./instancias/chr22a.dat 7
+```
