@@ -6,7 +6,7 @@
 #ifndef GRASP__H
 #define GRASP__H
 
-class RandomizedGreedy : public  Solver {
+class RandomizedGreedy : public Solver {
 protected:
    vector<pair<int, int> > clFrequencies;
    vector<pair<int, int> > clDistances;
@@ -41,7 +41,7 @@ public:
 class GRASP : public Solver {
 protected:
    RandomizedGreedy* randomGreedy;
-   LocalSearchSolverDLB* LocalSearch;
+   LocalSearchSolver* LocalSearch;
    int maxLocalSearchEvals;
    int maxIterations;
 

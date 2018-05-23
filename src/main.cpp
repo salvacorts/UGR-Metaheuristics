@@ -10,6 +10,7 @@
 #include "agg.hpp"
 #include "age.hpp"
 #include "grasp.hpp"
+#include "ils.hpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -127,6 +128,7 @@ int main(int argc, char const* argv[]) {
 
         make_pair("Randomized Greedy", new RandomizedGreedy(distances, frequencies, 0.3)),
         make_pair("GRASP", new GRASP(distances, frequencies, 0.3, 25, 50000)),
+        make_pair("Reiterated Local Search (ILS)", new ILS(distances, frequencies, 0.25, 25, 50000)),
     };
 
     for (auto& solver : solvers) {

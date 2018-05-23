@@ -115,7 +115,6 @@ Solution GRASP::Solve() {
       Solution greedySolution = this->randomGreedy->Solve();
       lsSolution = this->LocalSearch->GenerateBestNeighbour(greedySolution, evaluations, this->maxLocalSearchEvals);
 
-      // If there is not bestSolution assigned 
       if (lsSolution != NULL && (bestSolution == NULL || lsSolution->score < bestSolution->score)) {
          bestSolution = lsSolution;
       }
