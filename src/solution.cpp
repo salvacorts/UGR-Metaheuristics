@@ -3,7 +3,7 @@
 Solution::Solution(int n) {
    this->n = n;
    this->score = -1;
-   this->solutionRep.resize(n);
+   this->solutionRep.resize(n, -1);
 }
 
 Solution::Solution(const Solution& copy) {
