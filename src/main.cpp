@@ -11,6 +11,7 @@
 #include "age.hpp"
 #include "grasp.hpp"
 #include "ils.hpp"
+#include "multiStart.hpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -85,7 +86,7 @@ int main(int argc, char const* argv[]) {
     vector<vector<int> > distances;
     vector<vector<int> > frequencies;
     string line;
-    int n;
+    int n, seed;
 
     if (argc < 2) {
         cerr << "[!] Missing parameter" << endl;
@@ -95,8 +96,8 @@ int main(int argc, char const* argv[]) {
     }
 
     // Initialize seed from parameter
-    if (argc == 3) srand(atoi(argv[2]));
-    else srand(7);
+    if (argc == 3) seed = atoi(argv[2]);
+    else seed = 7;
 
     // Open input file
     ifstream inputFile(argv[1]);
@@ -109,10 +110,10 @@ int main(int argc, char const* argv[]) {
     inputFile.close();
 
     vector<pair<string, Solver*> > solvers = {
-        // make_pair("Greedy", new GreedySolver(distances, frequencies)),
+        make_pair("Greedy", new GreedySolver(distances, frequencies)),
 
-        // make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
-        // make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
+        //make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
+        make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
 
         // make_pair("AGG", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),
         // make_pair("AGG OX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
@@ -129,9 +130,11 @@ int main(int argc, char const* argv[]) {
         make_pair("Randomized Greedy", new RandomizedGreedy(distances, frequencies, 0.3)),
         make_pair("GRASP", new GRASP(distances, frequencies, 0.3, 25, 50000)),
         make_pair("Reiterated Local Search (ILS)", new ILS(distances, frequencies, 0.25, 25, 50000)),
+        make_pair("Basic Multistart search", new MultiStartSearch(distances, frequencies, 25, 50000)),
     };
 
     for (auto& solver : solvers) {
+        srand(seed);
         auto start = high_resolution_clock::now();
         Solution solution = solver.second->Solve();
         auto finish = high_resolution_clock::now();

@@ -20,7 +20,6 @@ Solution RandomizedGreedy::Solve() {
       return val <= p.second;
    };
 
-
    // Sort both candidates lists. O(nlogn)
    sort(this->clDistances.begin(), this->clDistances.end(), pairCmp);
    sort(this->clFrequencies.begin(), this->clFrequencies.end(), pairCmp);
@@ -116,6 +115,7 @@ Solution GRASP::Solve() {
       lsSolution = this->LocalSearch->GenerateBestNeighbour(greedySolution, evaluations, this->maxLocalSearchEvals);
 
       if (lsSolution != NULL && (bestSolution == NULL || lsSolution->score < bestSolution->score)) {
+         delete bestSolution;
          bestSolution = lsSolution;
       }
    }

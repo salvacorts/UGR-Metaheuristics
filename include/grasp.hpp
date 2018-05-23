@@ -1,7 +1,6 @@
 #include "solver.hpp"
 #include "localSearch.hpp"
 #include <vector>
-#include <set>
 
 #ifndef GRASP__H
 #define GRASP__H
@@ -10,8 +9,6 @@ class RandomizedGreedy : public Solver {
 protected:
    vector<pair<int, int> > clFrequencies;
    vector<pair<int, int> > clDistances;
-   vector<pair<int, int> > rclFrequencies;
-   vector<pair<int, int> > rclDistances;  
    double alpha; 
    
 public:
