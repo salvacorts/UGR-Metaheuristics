@@ -7,23 +7,17 @@
 
 class RandomizedGreedy : public  Solver {
 protected:
-   struct PairComparer {
-      inline bool operator()(pair<int, int>& a, pair<int, int>& b) {
-         return a.second < b.second;
-      }
-   };
-
-   multiset<pair<int, int>, PairComparer> clFrequencies;
-   multiset<pair<int, int>, PairComparer> clDistances;
-   multiset<pair<int, int>, PairComparer > rclFrequencies;
-   multiset<pair<int, int>, PairComparer > rclDistances;  
+   vector<pair<int, int> > clFrequencies;
+   vector<pair<int, int> > clDistances;
+   vector<pair<int, int> > rclFrequencies;
+   vector<pair<int, int> > rclDistances;  
    double alpha; 
    
-
 public:
-
    RandomizedGreedy(vector<vector<int> >& distances, vector<vector<int> >& frequencies, double alpha)
    : Solver(distances, frequencies) {
+      this->clFrequencies.resize(frequencies.size());   
+      this->clDistances.resize(distances.size());
       this->alpha = alpha;
 
       // Calc potentials
@@ -35,8 +29,8 @@ public:
             di += this->distances[i][j];
          }
 
-         this->clFrequencies.insert(make_pair(i, fi));
-         this->clDistances.insert(make_pair(i, fi));
+         this->clFrequencies[i] = make_pair(i, fi);
+         this->clDistances[i] = make_pair(i, fi);
       } 
    }
 
