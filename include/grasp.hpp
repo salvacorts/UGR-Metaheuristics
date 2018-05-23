@@ -30,7 +30,7 @@ public:
          }
 
          this->clFrequencies[i] = make_pair(i, fi);
-         this->clDistances[i] = make_pair(i, fi);
+         this->clDistances[i] = make_pair(i, di);
       } 
    }
 

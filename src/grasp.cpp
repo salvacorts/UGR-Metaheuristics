@@ -17,15 +17,16 @@ Solution RandomizedGreedy::Solve() {
    };
 
    auto pairCmpBound = [](int val, pair<int, int> p) {
-      return val < p.second;
+      return val <= p.second;
    };
+
 
    // Sort both candidates lists. O(nlogn)
    sort(this->clDistances.begin(), this->clDistances.end(), pairCmp);
    sort(this->clFrequencies.begin(), this->clFrequencies.end(), pairCmp);
 
    // th = d_min - alpha · (d_max – d_min)   Higher is better
-   int frequenciesThreshold = ceil(this->clDistances.begin()->second - this->alpha * (this->clDistances.rbegin()->second - this->clDistances.begin()->second));
+   int frequenciesThreshold = floor(this->clFrequencies.begin()->second - this->alpha * (this->clFrequencies.rbegin()->second - this->clFrequencies.begin()->second));
    
    // th = d_max - alpha · (d_max – d_min)   Less is better
    int distancesThreshold = floor(this->clDistances.rbegin()->second - this->alpha * (this->clDistances.rbegin()->second - this->clDistances.begin()->second));
@@ -49,6 +50,7 @@ Solution RandomizedGreedy::Solve() {
    do {
       lrnd2 = randInRange(0, distancesThresholdIndex);
    } while (lrnd2 == lrnd1);
+
 
    // Add random selected to the partial solution and blacklist them
    partialSolution.push_back(make_pair(this->clFrequencies[urnd1].first, this->clDistances[lrnd1].first));
