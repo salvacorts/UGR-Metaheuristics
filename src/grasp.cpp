@@ -107,18 +107,18 @@ Solution RandomizedGreedy::Solve() {
 
 Solution GRASP::Solve() {
    Solution* bestSolution = NULL;
-   Solution* lsSolution = NULL;
    int evaluations = 0;
 
    for (int i = 0; i < this->maxIterations; i++) {
       Solution greedySolution = this->randomGreedy->Solve();
-      lsSolution = this->LocalSearch->GenerateBestNeighbour(greedySolution, evaluations, this->maxLocalSearchEvals);
+      Solution lsSolution = this->LocalSearch->Solve(greedySolution);
 
-      if (lsSolution != NULL && (bestSolution == NULL || lsSolution->score < bestSolution->score)) {
+      if (bestSolution == NULL || lsSolution.score < bestSolution->score) {
          delete bestSolution;
-         bestSolution = lsSolution;
+         bestSolution = new Solution(lsSolution);
       }
    }
 
+   bestSolution->CalcCost(distances, frequencies);
    return *bestSolution;
 }

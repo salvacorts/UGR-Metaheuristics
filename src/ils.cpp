@@ -16,19 +16,17 @@ Solution ILS::Mutate(const Solution& originalSolution) {
 }
 
 Solution ILS::Solve() {
-   int evaluations = 0;
-   Solution initialsolution = Solution::GenerateRandomSolution(distances, frequencies);
-   Solution* bestSolution = this->localSearch->GenerateBestNeighbour(initialsolution, evaluations, this->maxLocalSearchEvals);
-
-   if (bestSolution == NULL) bestSolution = &initialsolution;
+   Solution initialsolution = this->localSearch->Solve();
+   Solution* bestSolution = &initialsolution;
 
    for (int i = 1; i < this->maxIterations; i++) {
+      int evaluations = 0;
       Solution mutatedSolution = Mutate(*bestSolution);
-      Solution* lsSolution = this->localSearch->GenerateBestNeighbour(mutatedSolution, evaluations, this->maxLocalSearchEvals);
+      Solution lsSolution = this->localSearch->Solve(mutatedSolution);
 
-      if (lsSolution != NULL && lsSolution->score < bestSolution->score) {
+      if (lsSolution.score < bestSolution->score) {
          delete bestSolution;
-         bestSolution = new Solution(*lsSolution);
+         bestSolution = new Solution(lsSolution);
       }
    }
 

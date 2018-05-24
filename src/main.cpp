@@ -112,7 +112,7 @@ int main(int argc, char const* argv[]) {
     vector<pair<string, Solver*> > solvers = {
         make_pair("Greedy", new GreedySolver(distances, frequencies)),
 
-        //make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
+        make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
         make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
 
         // make_pair("AGG", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),

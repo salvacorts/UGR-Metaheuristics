@@ -32,20 +32,32 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(const Solution& fatherSolutio
    return NULL;
 }
 
-Solution LocalSearchSolver::Solve() {
-   Solution finalSolution = Solution::GenerateRandomSolution(this->distances, this->frequencies);
+Solution LocalSearchSolver::Solve(Solution initialSolution) {
+   Solution finalSolution = initialSolution;
    Solution* nextBestSolution;
-   int dummy;
+   bool countevals = true;
+   int evals = 0;
+
+   if (this->maxEvals == -1) countevals = false;
 
    do {
-      nextBestSolution = GenerateBestNeighbour(finalSolution, dummy);
+      nextBestSolution = GenerateBestNeighbour(finalSolution, evals, this->maxEvals);
 
       if (nextBestSolution != NULL) finalSolution = *nextBestSolution;
 
+      if (countevals && evals == this->maxEvals) break;
+      
    } while(nextBestSolution != NULL);
 
    finalSolution.CalcCost(this->distances, this->frequencies);
    delete nextBestSolution;
+
+   return finalSolution;
+}
+
+Solution LocalSearchSolver::Solve() {
+   Solution initialSolution = Solution::GenerateRandomSolution(this->distances, this->frequencies);
+   Solution finalSolution = Solve(initialSolution);
 
    return finalSolution;
 }

@@ -9,7 +9,6 @@ class ILS : public Solver {
 protected:
    LocalSearchSolver* localSearch;
    double mutationSublistSize;
-   int maxLocalSearchEvals;
    int maxIterations;
 
    Solution Mutate(const Solution& originalSolution);
@@ -17,8 +16,7 @@ protected:
 public:
    ILS(vector<vector<int> >& distances, vector<vector<int> >& frequencies, double mutationSublistSize, int maxIterations, int maxLocalSearchEvals)
    : Solver(distances, frequencies) {
-      this->localSearch = new LocalSearchSolverDLB(distances, frequencies);
-      this->maxLocalSearchEvals = maxLocalSearchEvals;
+      this->localSearch = new LocalSearchSolverDLB(distances, frequencies, maxLocalSearchEvals);
       this->mutationSublistSize = mutationSublistSize; 
       this->maxIterations = maxIterations;
    }
