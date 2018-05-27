@@ -35,17 +35,17 @@ Solution* LocalSearchSolver::GenerateBestNeighbour(const Solution& fatherSolutio
 Solution LocalSearchSolver::Solve(Solution initialSolution) {
    Solution finalSolution = initialSolution;
    Solution* nextBestSolution;
-   bool countevals = true;
+   bool countEvals = true;
    int evals = 0;
 
-   if (this->maxEvals == -1) countevals = false;
+   if (this->maxEvals == -1) countEvals = false;
 
    do {
       nextBestSolution = GenerateBestNeighbour(finalSolution, evals, this->maxEvals);
 
       if (nextBestSolution != NULL) finalSolution = *nextBestSolution;
 
-      if (countevals && evals == this->maxEvals) break;
+      if (countEvals && evals == this->maxEvals) break;
       
    } while(nextBestSolution != NULL);
 

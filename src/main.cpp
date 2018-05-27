@@ -12,6 +12,7 @@
 #include "grasp.hpp"
 #include "ils.hpp"
 #include "multiStart.hpp"
+#include "simAnealing.hpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -131,6 +132,8 @@ int main(int argc, char const* argv[]) {
         make_pair("GRASP", new GRASP(distances, frequencies, 0.3, 25, 50000)),
         make_pair("Reiterated Local Search (ILS)", new ILS(distances, frequencies, 0.25, 25, 50000)),
         make_pair("Basic Multistart search", new MultiStartSearch(distances, frequencies, 25, 50000)),
+        make_pair("Simulated Anealing (Cauchy)", new SimulatedAnealing(distances, frequencies, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Cauchy, 50000)),
+        make_pair("Simulated Anealing (Proportional)", new SimulatedAnealing(distances, frequencies, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Proportional, 50000)),
     };
 
     for (auto& solver : solvers) {
