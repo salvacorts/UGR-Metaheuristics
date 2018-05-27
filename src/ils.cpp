@@ -17,19 +17,37 @@ Solution ILS::Mutate(const Solution& originalSolution) {
 
 Solution ILS::Solve() {
    Solution initialsolution = this->localSearch->Solve();
-   Solution* bestSolution = &initialsolution;
+   Solution bestSolution = initialsolution;
 
    for (int i = 1; i < this->maxIterations; i++) {
       int evaluations = 0;
-      Solution mutatedSolution = Mutate(*bestSolution);
+      Solution mutatedSolution = Mutate(bestSolution);
       Solution lsSolution = this->localSearch->Solve(mutatedSolution);
 
-      if (lsSolution.score < bestSolution->score) {
-         delete bestSolution;
-         bestSolution = new Solution(lsSolution);
+      if (lsSolution.score < bestSolution.score) {
+         bestSolution = lsSolution;
       }
    }
 
-   bestSolution->CalcCost(distances, frequencies);
-   return *bestSolution;
+   bestSolution.CalcCost(distances, frequencies);
+   return bestSolution;
+}
+
+
+Solution ILS_SA::Solve() {
+   Solution initialsolution = this->simAnealing->Solve();
+   Solution bestSolution = initialsolution;
+
+   for (int i = 1; i < this->maxIterations; i++) {
+      int evaluations = 0;
+      Solution mutatedSolution = Mutate(bestSolution);
+      Solution lsSolution = this->simAnealing->Solve(mutatedSolution);
+
+      if (lsSolution.score < bestSolution.score) {
+         bestSolution = lsSolution;
+      }
+   }
+
+   bestSolution.CalcCost(distances, frequencies);
+   return bestSolution;
 }

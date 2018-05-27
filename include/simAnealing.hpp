@@ -27,10 +27,10 @@ protected:
    bool MetroposilAcceptCriteria(double scoreDifference, double temperature);
 
 public:
-   SimulatedAnealing(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int maxNeighbours, int maxSuccess, double finalTemp, double acceptProb, double mu, CoolingTechnique ct, int maxEvals=-1, double alpha = 0.55)
+   SimulatedAnealing(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int maxNeighbours, double maxSuccess, double finalTemp, double acceptProb, double mu, CoolingTechnique ct, int maxEvals=-1, double alpha=0.99)
    : Solver(distances, frequencies){
       this->maxNeighbours = maxNeighbours * distances.size();
-      this->maxSuccess = maxSuccess * this->maxSuccess;
+      this->maxSuccess = maxSuccess * this->maxNeighbours;
       this->acceptProb = acceptProb;
       this->coolingTechnique = ct;
       this->finalTemp = finalTemp;
