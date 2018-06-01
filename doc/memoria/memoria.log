@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.1)  1 JUN 2018 13:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.1)  1 JUN 2018 19:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -864,14 +864,14 @@ Overfull \hbox (3.00272pt too wide) detected at line 36
 \openout4 = `memoria.toc'.
 
  [3] [4]
-<mhClassDiagram.png, id=25, 1038.88126pt x 839.135pt>
+<mhClassDiagram.png, id=25, 1476.51625pt x 839.135pt>
 File: mhClassDiagram.png Graphic file (type png)
 <use mhClassDiagram.png>
 Package pdftex.def Info: mhClassDiagram.png  used on input line 85.
-(pdftex.def)             Requested size: 415.54514pt x 335.64804pt.
+(pdftex.def)             Requested size: 590.59604pt x 335.64804pt.
 
-Overfull \hbox (25.54514pt too wide) in paragraph at lines 85--86
- [][] 
+Overfull \hbox (101.0114pt too wide) in paragraph at lines 85--86
+ []| [] 
  []
 
 [5 <./mhClassDiagram.png>]
@@ -1238,75 +1238,157 @@ File: boxplot-am(1-01mej)-time.png Graphic file (type png)
 Package pdftex.def Info: boxplot-am(1-01mej)-time.png  used on input line 1419.
 
 (pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
- [46 <./boxplot-am(1-01mej)-desv.png> <./boxplot-am(1-01mej)-time.png>] [47] [4
-8] [49] [50] [51]
-Underfull \hbox (badness 10000) in paragraph at lines 1456--1457
+ [46 <./boxplot-am(1-01mej)-desv.png> <./boxplot-am(1-01mej)-time.png>]
+<desv-esCauchy.png, id=218, 451.6875pt x 195.73125pt>
+File: desv-esCauchy.png Graphic file (type png)
+<use desv-esCauchy.png>
+Package pdftex.def Info: desv-esCauchy.png  used on input line 1446.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+<time-esCauchy.png, id=219, 451.6875pt x 195.73125pt>
+File: time-esCauchy.png Graphic file (type png)
+<use time-esCauchy.png>
+Package pdftex.def Info: time-esCauchy.png  used on input line 1447.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+ [47 <./desv-esCauchy.png> <./time-esCauchy.png>]
+<desv-esProp.png, id=225, 451.6875pt x 195.73125pt>
+File: desv-esProp.png Graphic file (type png)
+<use desv-esProp.png>
+Package pdftex.def Info: desv-esProp.png  used on input line 1472.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+<time-esProp.png, id=226, 451.6875pt x 195.73125pt>
+File: time-esProp.png Graphic file (type png)
+<use time-esProp.png>
+Package pdftex.def Info: time-esProp.png  used on input line 1473.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+ [48 <./desv-esProp.png> <./time-esProp.png>]
+<desv-bmb.png, id=232, 451.6875pt x 195.73125pt>
+File: desv-bmb.png Graphic file (type png)
+<use desv-bmb.png>
+Package pdftex.def Info: desv-bmb.png  used on input line 1502.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+<time-bmb.png, id=233, 451.6875pt x 195.73125pt>
+File: time-bmb.png Graphic file (type png)
+<use time-bmb.png>
+Package pdftex.def Info: time-bmb.png  used on input line 1503.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+ [49 <./desv-bmb.png> <./time-bmb.png>]
+<desv-grasp.png, id=240, 451.6875pt x 195.73125pt>
+File: desv-grasp.png Graphic file (type png)
+<use desv-grasp.png>
+Package pdftex.def Info: desv-grasp.png  used on input line 1530.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+<time-grasp.png, id=241, 451.6875pt x 195.73125pt>
+File: time-grasp.png Graphic file (type png)
+<use time-grasp.png>
+Package pdftex.def Info: time-grasp.png  used on input line 1531.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+ [50 <./desv-grasp.png> <./time-grasp.png>]
+<desv-ils.png, id=248, 451.6875pt x 195.73125pt>
+File: desv-ils.png Graphic file (type png)
+<use desv-ils.png>
+Package pdftex.def Info: desv-ils.png  used on input line 1558.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+<time-ils.png, id=249, 451.6875pt x 195.73125pt>
+File: time-ils.png Graphic file (type png)
+<use time-ils.png>
+Package pdftex.def Info: time-ils.png  used on input line 1559.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+ [51 <./desv-ils.png> <./time-ils.png>]
+<desv-ilsEsCauchy.png, id=255, 451.6875pt x 195.73125pt>
+File: desv-ilsEsCauchy.png Graphic file (type png)
+<use desv-ilsEsCauchy.png>
+Package pdftex.def Info: desv-ilsEsCauchy.png  used on input line 1587.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+<time-ilsEsCauchy.png, id=256, 451.6875pt x 195.73125pt>
+File: time-ilsEsCauchy.png Graphic file (type png)
+<use time-ilsEsCauchy.png>
+Package pdftex.def Info: time-ilsEsCauchy.png  used on input line 1588.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+ [52 <./desv-ilsEsCauchy.png> <./time-ilsEsCauchy.png>]
+<desv-ilsEsProp.png, id=262, 451.6875pt x 195.73125pt>
+File: desv-ilsEsProp.png Graphic file (type png)
+<use desv-ilsEsProp.png>
+Package pdftex.def Info: desv-ilsEsProp.png  used on input line 1613.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+<time-ilsEsProp.png, id=263, 451.6875pt x 195.73125pt>
+File: time-ilsEsProp.png Graphic file (type png)
+<use time-ilsEsProp.png>
+Package pdftex.def Info: time-ilsEsProp.png  used on input line 1614.
+(pdftex.def)             Requested size: 225.84319pt x 97.86537pt.
+
+[53 <./desv-ilsEsProp.png> <./time-ilsEsProp.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1634--1635
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1458--1459
+Underfull \hbox (badness 10000) in paragraph at lines 1636--1637
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1460--1461
+Underfull \hbox (badness 10000) in paragraph at lines 1638--1639
 
  []
 
 
-Overfull \hbox (2.2913pt too wide) in paragraph at lines 1462--1463
+Overfull \hbox (2.2913pt too wide) in paragraph at lines 1640--1641
 \OT1/cmr/m/n/12 (\OT1/cmr/bx/it/12 Debug\OT1/cmr/m/n/12 ). La reali-dad es que 
 con un ni-vel m^^Saxi-mo de op-ti-mi-za-ci^^Son (\OT1/cmr/bx/it/12 Release\OT1/
 cmr/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1462--1463
+Underfull \hbox (badness 10000) in paragraph at lines 1640--1641
 
  []
 
-[52]
-Underfull \hbox (badness 10000) in paragraph at lines 1498--1500
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1502--1503
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 1676--1678
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1504--1505
+Underfull \hbox (badness 10000) in paragraph at lines 1680--1681
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1507--1508
+Underfull \hbox (badness 10000) in paragraph at lines 1682--1683
 
  []
 
-[53]
-Underfull \hbox (badness 10000) in paragraph at lines 1510--1511
+
+Underfull \hbox (badness 10000) in paragraph at lines 1685--1686
 
  []
 
-<evals-vs-coste.png, id=241, 602.25pt x 372.39125pt>
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 1688--1689
+
+ []
+
+<evals-vs-coste.png, id=276, 602.25pt x 372.39125pt>
 File: evals-vs-coste.png Graphic file (type png)
 <use evals-vs-coste.png>
-Package pdftex.def Info: evals-vs-coste.png  used on input line 1513.
+Package pdftex.def Info: evals-vs-coste.png  used on input line 1691.
 (pdftex.def)             Requested size: 421.57211pt x 260.67209pt.
 
-Overfull \hbox (31.57211pt too wide) in paragraph at lines 1513--1514
+Overfull \hbox (31.57211pt too wide) in paragraph at lines 1691--1692
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1516--1517
+Underfull \hbox (badness 10000) in paragraph at lines 1694--1695
 
  []
 
-[54 <./evals-vs-coste.png (PNG copy)>]
+[56 <./evals-vs-coste.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1714--1715
+
+ []
+
+[57]
 runsystem(makeindex memoria.idx)...executed safely (allowed).
 
  (./memoria.ind) (./memoria.aux
@@ -1318,10 +1400,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8447 strings out of 494747
- 119819 string characters out of 6176208
- 223817 words of memory out of 5000000
- 11619 multiletter control sequences out of 15000+600000
+ 8517 strings out of 494747
+ 121165 string characters out of 6176208
+ 229817 words of memory out of 5000000
+ 11675 multiletter control sequences out of 15000+600000
  12711 words of font info for 45 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
  53i,24n,99p,703b,1165s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1342,10 +1424,10 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (54 pages, 671110 bytes).
+Output written on memoria.pdf (57 pages, 780028 bytes).
 PDF statistics:
- 304 PDF objects out of 1000 (max. 8388607)
- 176 compressed objects within 2 object streams
+ 342 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 136 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
 

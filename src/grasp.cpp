@@ -38,6 +38,10 @@ Solution RandomizedGreedy::Solve() {
    int frequenciesThresholdIndex = ubFreq - clFrequencies.begin();
    int distancesThresholdIndex = ubDist - clDistances.begin();
 
+   // In case of threshold just gives one element to select from
+   if (frequenciesThresholdIndex == clFrequencies.size()-1) frequenciesThresholdIndex--;
+   if (distancesThresholdIndex == 0) distancesThresholdIndex++;
+
    // Select two diferent items in each candidates lists
    int urnd1 = randInRange(frequenciesThresholdIndex, clFrequencies.size());
    int lrnd1 = randInRange(0, distancesThresholdIndex);
@@ -111,7 +115,7 @@ Solution GRASP::Solve() {
 
    for (int i = 0; i < this->maxIterations; i++) {
       Solution greedySolution = this->randomGreedy->Solve();
-      Solution lsSolution = this->LocalSearch->Solve(greedySolution);
+      Solution lsSolution = this->localSearch->Solve(greedySolution);
 
       if (bestSolution == NULL || lsSolution.score < bestSolution->score) {
          delete bestSolution;

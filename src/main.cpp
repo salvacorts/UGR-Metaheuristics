@@ -116,26 +116,26 @@ int main(int argc, char const* argv[]) {
         make_pair("Local Search", new LocalSearchSolver(distances, frequencies)),
         make_pair("Local Search (Dont Look Bit)", new LocalSearchSolverDLB(distances, frequencies)),
 
-        // make_pair("AGG", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),
-        // make_pair("AGG OX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
-        // make_pair("AGG PMX", new AGG_PMX(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        make_pair("AGG", new AGG(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        make_pair("AGG OX", new AGG_OX(distances, frequencies, 50, 0.7, 0.001, 50000)),
+        make_pair("AGG PMX", new AGG_PMX(distances, frequencies, 50, 0.7, 0.001, 50000)),
         
-        // make_pair("AGE", new AGE(distances, frequencies, 50, 0.001, 50000)),
-        // make_pair("AGE OX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
-        // make_pair("AGE PMX", new AGE_PMX(distances, frequencies, 50, 0.001, 50000)),
+        make_pair("AGE", new AGE(distances, frequencies, 50, 0.001, 50000)),
+        make_pair("AGE OX", new AGE_OX(distances, frequencies, 50, 0.001, 50000)),
+        make_pair("AGE PMX", new AGE_PMX(distances, frequencies, 50, 0.001, 50000)),
 
-        // make_pair("AM(10, 1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 1, 400)),
-        // make_pair("AM(10, 0.1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400)),
-        // make_pair("AM(10, 0.1mej)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400, true)),
+        make_pair("AM(10, 1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 1, 400)),
+        make_pair("AM(10, 0.1)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400)),
+        make_pair("AM(10, 0.1mej)", new MemeticAlg(distances, frequencies, 10, 0.7, 0.001, 50000, 10, 0.1, 400, true)),
 
+        make_pair("Simulated Anealing (Cauchy)", new SimulatedAnnealing(distances, frequencies, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Cauchy, 50000)),
+        make_pair("Simulated Anealing (Proportional)", new SimulatedAnnealing(distances, frequencies, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Proportional, 50000)),
+        
         make_pair("Randomized Greedy", new RandomizedGreedy(distances, frequencies, 0.3)),
         make_pair("GRASP", new GRASP(distances, frequencies, 0.3, 25, 50000)),
         make_pair("Basic Multistart search", new MultiStartSearch(distances, frequencies, 25, 50000)),
 
-        make_pair("Simulated Anealing (Cauchy)", new SimulatedAnealing(distances, frequencies, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Cauchy, 50000)),
-        make_pair("Simulated Anealing (Proportional)", new SimulatedAnealing(distances, frequencies, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Proportional, 50000)),
-
-        make_pair("Reiterated Local Search (ILS)", new ILS(distances, frequencies, 0.25, 25, 50000)),
+         make_pair("Reiterated Local Search (ILS)", new ILS(distances, frequencies, 0.25, 25, 50000)),
         make_pair("ILS ES (Cauchy)", new ILS_SA(distances, frequencies, 0.25, 50, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Cauchy, 50000)),
         make_pair("ILS ES (Proportional)", new ILS_SA(distances, frequencies, 0.25, 50, 10, 0.1, 10e-3, 0.3, 0.3, CoolingTechnique::Proportional, 50000)),
     };
@@ -156,6 +156,7 @@ int main(int argc, char const* argv[]) {
         }
 
         cout << endl;
+
     }
 
     return 0;

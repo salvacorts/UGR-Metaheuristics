@@ -1,3 +1,20 @@
+A collection of different metaheuristics written in C++ to solve QAP problems.
+
+### Available Algorithms
+- Greedy
+- Randomized Greedy
+- Local Search
+- Local Search with Don't loock Bits mask
+- Genetic (Generational and Estacionary)
+- Memetic (Based on Generational Genetic Algorithm)
+- Simulated Annealing
+- Basic Multistart Search
+- GRASP
+- Iterated Local Search
+- Iterated Local Search using Simulated Annealing instead of Local search
+
+![alt text](./doc/memoria/mhClassDiagram.png "Class Diagram")
+
 ### Compilation
 In order to compile with debug symbols:
 ```bash

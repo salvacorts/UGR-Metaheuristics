@@ -38,14 +38,14 @@ public:
 class GRASP : public Solver {
 protected:
    RandomizedGreedy* randomGreedy;
-   LocalSearchSolver* LocalSearch;
+   LocalSearchSolver* localSearch;
    int maxIterations;
 
 public:
    GRASP(vector<vector<int> >& distances, vector<vector<int> >& frequencies, double alpha, int maxIterations, int maxLocalSearchEvals)
    : Solver(distances, frequencies) {
       this->randomGreedy = new RandomizedGreedy(distances, frequencies, alpha);
-      this->LocalSearch = new LocalSearchSolverDLB(distances, frequencies, maxLocalSearchEvals);
+      this->localSearch = new LocalSearchSolverDLB(distances, frequencies, maxLocalSearchEvals);
       this->maxIterations = maxIterations;
    }
 

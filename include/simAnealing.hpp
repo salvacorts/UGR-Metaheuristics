@@ -5,7 +5,7 @@
 
 enum CoolingTechnique {Cauchy, Proportional};
 
-class SimulatedAnealing : public Solver {
+class SimulatedAnnealing : public Solver {
 private:
    double CauchyCooling(double originalTemperature);
    double ProportionalCooling(double originalTemperature);
@@ -27,7 +27,7 @@ protected:
    bool MetroposilAcceptCriteria(double scoreDifference, double temperature);
 
 public:
-   SimulatedAnealing(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int maxNeighbours, double maxSuccess, double finalTemp, double acceptProb, double mu, CoolingTechnique ct, int maxEvals=-1, double alpha=0.99)
+   SimulatedAnnealing(vector<vector<int> >& distances, vector<vector<int> >& frequencies, int maxNeighbours, double maxSuccess, double finalTemp, double acceptProb, double mu, CoolingTechnique ct, int maxEvals=-1, double alpha=0.99)
    : Solver(distances, frequencies){
       this->maxNeighbours = maxNeighbours * distances.size();
       this->maxSuccess = maxSuccess * this->maxNeighbours;

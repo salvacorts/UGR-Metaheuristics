@@ -27,13 +27,13 @@ public:
 
 class ILS_SA : public ILS {
 protected:
-   SimulatedAnealing* simAnealing;
+   SimulatedAnnealing* simAnealing;
 public:
    ILS_SA(vector<vector<int> >& distances, vector<vector<int> >& frequencies, double mutationSublistSize, 
             int maxIterations, int maxNeighbours, double maxSuccess, double finalTemp, double acceptProb, 
             double mu, CoolingTechnique ct, int maxEvals=-1, double alpha=0.99)
    : ILS(distances, frequencies, mutationSublistSize, maxIterations, 0) {
-      this->simAnealing = new SimulatedAnealing(distances, frequencies, maxNeighbours, maxSuccess, finalTemp, acceptProb, mu, ct, maxEvals, alpha);
+      this->simAnealing = new SimulatedAnnealing(distances, frequencies, maxNeighbours, maxSuccess, finalTemp, acceptProb, mu, ct, maxEvals, alpha);
    }
 
    Solution Solve() override;

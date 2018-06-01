@@ -29,8 +29,8 @@
 \contentsline {subsection}{\numberline {12.9}Resultados Mem\IeC {\'e}tico (10, 0.1)}{45}
 \contentsline {subsection}{\numberline {12.10}Resultados Mem\IeC {\'e}tico (10, 0.1 mejores)}{46}
 \contentsline {subsection}{\numberline {12.11}Resultados Enfriamiento Simulado}{47}
-\contentsline {subsection}{\numberline {12.12}Resultados B\IeC {\'u}squeda Multiarranque B\IeC {\'a}sica}{48}
-\contentsline {subsection}{\numberline {12.13}Resultados GRASP}{49}
-\contentsline {subsection}{\numberline {12.14}Resultados ILS}{50}
-\contentsline {subsection}{\numberline {12.15}Resultados ILS-ES}{51}
-\contentsline {subsection}{\numberline {12.16}Comparaci\IeC {\'o}n de los resultados. Conclusiones.}{52}
+\contentsline {subsection}{\numberline {12.12}Resultados B\IeC {\'u}squeda Multiarranque B\IeC {\'a}sica}{49}
+\contentsline {subsection}{\numberline {12.13}Resultados GRASP}{50}
+\contentsline {subsection}{\numberline {12.14}Resultados ILS}{51}
+\contentsline {subsection}{\numberline {12.15}Resultados ILS-ES}{52}
+\contentsline {subsection}{\numberline {12.16}Comparaci\IeC {\'o}n de los resultados. Conclusiones.}{54}

@@ -2,7 +2,7 @@
 #include <cmath>
 #include <random>
 
-double SimulatedAnealing::CalculateInitialTemperature(Solution& initialSolution) {
+double SimulatedAnnealing::CalculateInitialTemperature(Solution& initialSolution) {
    double initialTemperature;
    
    if (initialSolution.score == -1) {
@@ -15,7 +15,7 @@ double SimulatedAnealing::CalculateInitialTemperature(Solution& initialSolution)
    return initialTemperature;
 }
 
-bool SimulatedAnealing::MetroposilAcceptCriteria(double scoreDifference, double temperature) {
+bool SimulatedAnnealing::MetroposilAcceptCriteria(double scoreDifference, double temperature) {
    int rnd = ((double) rand() / RAND_MAX);
 
    if (rnd <= exp(scoreDifference / (temperature))) {   // TODO: Add k*T
@@ -25,15 +25,15 @@ bool SimulatedAnealing::MetroposilAcceptCriteria(double scoreDifference, double 
    return false;
 }
 
-double SimulatedAnealing::ProportionalCooling(double originalTemperature) {
+double SimulatedAnnealing::ProportionalCooling(double originalTemperature) {
    return this->alpha * originalTemperature;
 }
 
-double SimulatedAnealing::CauchyCooling(double originalTemperature) {
+double SimulatedAnnealing::CauchyCooling(double originalTemperature) {
    return originalTemperature / (1 + this->beta * originalTemperature);
 }
 
-double SimulatedAnealing::ApplyCooling(double originalTemperature) {
+double SimulatedAnnealing::ApplyCooling(double originalTemperature) {
    double temperature;
 
    switch (this->coolingTechnique) {
@@ -51,7 +51,7 @@ double SimulatedAnealing::ApplyCooling(double originalTemperature) {
    return temperature;
 }
 
-Solution SimulatedAnealing::RandomNeighbour(Solution& originalSolution) {
+Solution SimulatedAnnealing::RandomNeighbour(Solution& originalSolution) {
    Solution neighbour = originalSolution;
    int r1, r2;
 
@@ -70,7 +70,7 @@ Solution SimulatedAnealing::RandomNeighbour(Solution& originalSolution) {
    return neighbour;
 }
 
-Solution SimulatedAnealing::Solve(Solution initialSolution) {
+Solution SimulatedAnnealing::Solve(Solution initialSolution) {
    double temperature = CalculateInitialTemperature(initialSolution);
    Solution bestSolution = initialSolution;
    Solution solution = initialSolution;
@@ -102,7 +102,7 @@ Solution SimulatedAnealing::Solve(Solution initialSolution) {
    return bestSolution;
 }
 
-Solution SimulatedAnealing::Solve() {
+Solution SimulatedAnnealing::Solve() {
    Solution initialSolution = Solution::GenerateRandomSolution(distances, frequencies);
    return Solve(initialSolution);
 }
