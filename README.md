@@ -1,5 +1,7 @@
 A collection of different metaheuristics written in C++ to solve QAP problems.
 
+**[Technical Paper comparing and explaining them (PDF in Spanish)](https://github.com/salvacorts/UGR-Metaheuristica/blob/P3/doc/memoria/memoria.pdf "PDF paper")**
+
 ### Available Algorithms
 - Greedy
 - Randomized Greedy
