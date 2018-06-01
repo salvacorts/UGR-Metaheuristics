@@ -2,7 +2,6 @@
 
 Solution MultiStartSearch::Solve() {
    Solution* bestSolution = NULL;
-   int evaluations = 0;
 
    for (int i = 0; i < this->maxIterations; i++) {
       Solution randomSolution = Solution::GenerateRandomSolution(distances, frequencies);

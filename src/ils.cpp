@@ -20,7 +20,6 @@ Solution ILS::Solve() {
    Solution bestSolution = initialsolution;
 
    for (int i = 1; i < this->maxIterations; i++) {
-      int evaluations = 0;
       Solution mutatedSolution = Mutate(bestSolution);
       Solution lsSolution = this->localSearch->Solve(mutatedSolution);
 
@@ -39,7 +38,6 @@ Solution ILS_SA::Solve() {
    Solution bestSolution = initialsolution;
 
    for (int i = 1; i < this->maxIterations; i++) {
-      int evaluations = 0;
       Solution mutatedSolution = Mutate(bestSolution);
       Solution lsSolution = this->simAnealing->Solve(mutatedSolution);
 

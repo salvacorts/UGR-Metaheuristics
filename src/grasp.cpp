@@ -9,7 +9,8 @@ Solution RandomizedGreedy::Solve() {
    bool locaAsigned[frequencies.size()] = {false};
 
    auto randInRange = [](int min, int max) {
-      return min + (rand() % (max - min - 1));
+      int rnd = rand();
+      return min + (rnd % (max - min));
    };
 
    auto pairCmp = [](pair<int, int>& a, pair<int, int>& b) {
@@ -24,11 +25,11 @@ Solution RandomizedGreedy::Solve() {
    sort(this->clDistances.begin(), this->clDistances.end(), pairCmp);
    sort(this->clFrequencies.begin(), this->clFrequencies.end(), pairCmp);
 
-   // th = d_min - alpha · (d_max – d_min)   Higher is better
-   int frequenciesThreshold = floor(this->clFrequencies.begin()->second - this->alpha * (this->clFrequencies.rbegin()->second - this->clFrequencies.begin()->second));
+   // th = d_max - alpha · (d_max – d_min)   Higher is better
+   int frequenciesThreshold = floor(this->clFrequencies.rbegin()->second - this->alpha * (this->clFrequencies.rbegin()->second - this->clFrequencies.begin()->second));
    
-   // th = d_max - alpha · (d_max – d_min)   Less is better
-   int distancesThreshold = floor(this->clDistances.rbegin()->second - this->alpha * (this->clDistances.rbegin()->second - this->clDistances.begin()->second));
+   // th = d_min + alpha · (d_max – d_min)   Less is better
+   int distancesThreshold = floor(this->clDistances.begin()->second + this->alpha * (this->clDistances.rbegin()->second - this->clDistances.begin()->second));
    
    // find upper bound index for frequencies threshold
    auto ubFreq = upper_bound(this->clFrequencies.begin(), this->clFrequencies.end(), frequenciesThreshold, pairCmpBound);
@@ -107,7 +108,6 @@ Solution RandomizedGreedy::Solve() {
 
 Solution GRASP::Solve() {
    Solution* bestSolution = NULL;
-   int evaluations = 0;
 
    for (int i = 0; i < this->maxIterations; i++) {
       Solution greedySolution = this->randomGreedy->Solve();

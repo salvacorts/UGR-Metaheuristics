@@ -23,8 +23,8 @@
 
 
 \title{
-\textbf{Metaheurística - Práctica 2.a} \\
-Técnicas de Búsqueda basadas en Poblaciones para el Problema de la Asignación Cuadrática
+\textbf{Metaheurística - Práctica 3.a} \\
+Búsquedas por Trayectorias para el Problema de la Asignación Cuadrática
 }
 
 \author{
@@ -36,7 +36,7 @@ salvacorts@correo.ugr.es
 \date{}
 
 \fancyhead[LE,RO]{Salvador Corts Sánchez, 75935233C}
-\fancyhead[RE,LO]{QAP: Práctica 2}
+\fancyhead[RE,LO]{QAP: Práctica 3}
 \pagestyle{fancy}
 
 \setcounter{tocdepth}{4}
@@ -770,6 +770,247 @@ f_{kr}(d_{\pi(k)\pi(s)} - d_{\pi(k)\pi(r)}) + f_{ks}(d_{\pi(k)\pi(r)} - d_{\pi(k
          }
       \end{algorithm}
       
+     	\newpage
+     	\section{Enfriamiento Simulado}
+     	El Enfriamiento simulado es un algoritmo de búsqueda por entornos con un criterio probabilístico de aceptación de soluciones basado en Termodinámica. Con el fin de evitar que el algoritmo termine en un óptimo local como en la Búsqueda Local, se permiten movimientos hacia soluciones peores.\\
+     	
+     	Sin embargo, esto debe hacerse de una manera controlada. En el enfriamiento simulado esto se realiza controlando la frecuencias con la que aceptamos soluciones perores a la actual mediante una función de probabilidad que hará disminuir la probabilidad de dichos movimientos. Es decir, primero diversificamos para luego finalmente intensificar la búsqueda. Sus funciones claves son las siguientes:
+     	\begin{itemize}
+     		\item \textbf{Operador de vecino:} Para crear un vecino aleatorio a partir de la solución actual, se intercambian dos posiciones de la representación de la solución aleatoriamente.
+     		
+     		\item \textbf{Temperatura inicial:} Se calculará en función de la siguiente fórmula.
+     		$$T_{o} = \frac{\mu C(S_o)}{-ln(\phi)}$$
+     		
+     		Donde $T_o$ es la temperatura inicial, $C(S_o)$ el coste de la solución inicial, y $\phi \in [0,1]$ es la probabilidad de aceptar una solución un $\mu$ por 1 peor que la inicial. También se ha experimentado con un esquema proporcional dado por $T_{k+1} = \alpha T_k$ donde $\alpha \in [0.9, 0.99]$
+     		
+     		\item \textbf{Esquema de enfriamiento:} Se empleará el esquema de Cauchy modificado.
+     		$$T_{k+1} = \frac{T_k}{1 + \beta T_k} \quad \quad \quad \beta = \frac{T_o - T_f}{MT_oT_f}$$
+     		
+     		Donde $M$ es el número de enfriamientos a realizar ($ \frac{\text{n maximo de evaluaciones}}{\text{n maximo de vecinos}}$), $T_o$ es la temperatura inicial y $T_f$ es la temperatura final cuyo valor será cercano a 0.
+     		
+     		\item \textbf{Condición de enfriamiento L(T):} Se enfría la temperatura bien cuando se genere un número máximo de vecinos, o cuando se acepte un número máximo de los vecinos generados.
+     		
+     		\item \textbf{Condición de parada:} Cuando se alcance un número máximo de iteraciones o cuando el número de éxitos en el enfriamiento actual sea 0.
+     	\end{itemize}
+     	
+     	Todo las funciones anteriores se combinan para implementar el algoritmo que parte de una solución creada aleatoriamente como se explicó en la búsqueda local de la siguiente manera:\\
+     	\begin{algorithm}[H]
+       	\caption{\textit{simAnealing.cpp} - SimulatedAnealing::Solve}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Solve}{
+         	$\pi$ = $\pi_{best}$ = GenerateRandomSolution()\\
+         	$T = \frac{\mu C(\pi)}{-ln(\phi)} \quad \quad \beta = \frac{T - T_f}{MT_oT_f}$ \\
+         	evals = 0\\
+         	
+         	\Do{$evals \leq maxEvals$ \textbf{and} $successes > 0$}{
+               successes = neighGenerated = 0\\
+               
+               \While{$neighGenerated \leq maxNeighbours$ \textbf{and} $successes \leq maxSuccess$}{
+               		$\pi'$ = intercambia dos posiciones (r, s) aleatorias de $\pi$\\
+               		Calcular coste de $pi'$ con $\Delta C(\pi,r,s)$ \\
+               		$neighGenerated = neighGenerated + 1$\\
+               		$evals = evals + 1$\\
+               		
+               		\If{$C(\pi') < C(\pi)$ \textbf{or} $U(0,1) \leq e^{C(\pi,r,s)/T}$ }{
+               			$\pi = \pi'$;\quad$successes = successes + 1$\\
+               			
+               			\If{$C(\pi) < C(\pi_{best})$}{
+               				$\pi_{best} = \pi$\\
+               			}
+               		}
+               }
+               
+               $T = \frac{T}{1 + \beta T}$\\
+             }
+             
+             \textbf{return} $\pi_{best}$\\
+         }
+      \end{algorithm}
+     	
+     	
+     	
+     	
+     	\newpage
+     	\section{Búsqueda Multiarranque Básica}
+     	Este algoritmo es muy sencillo, se basa en crear $n$ soluciones aleatorias a las que aplicar una búsqueda local y devolver la mejor solución obtenida. Dichas soluciones aleatorias se crean como se describió en la Búsqueda Local.\\
+     	
+     	A continuación se muestra el pseudocódigo que implementa este algoritmo:\\
+     	\begin{algorithm}[H]
+       	\caption{\textit{multistart.cpp} - MultiStartSearch::Solve}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Solve}{
+         	$\pi_{best} = \emptyset$ \\
+         	
+         	\For{$i=1$ \KwTo $n$}{
+         		$\pi$ = GenerateRandomSolution()\\
+         		$\pi$ = aplicar busqueda local sobre $\pi$\\
+         		
+         		\If{$\pi_{best} == \emptyset$ \textbf{or} $C(\pi) < C(\pi_{best})$}{
+         			$\pi_{best} = \pi$\\
+         		}
+         	}
+         	
+         	\textbf{return} $\pi_{best}$\\
+         }
+      \end{algorithm}
+     	
+     	
+     	\newpage
+     	\section{GRASP}
+     	Un algoritmo GRASP es un método multiarranque, en el que cada iteración consiste en la construcción de una solución greedy aleatorizada y la aplicación de una búsqueda local que toma dicha solución como punto inicial de la búsqueda.\\
+     	
+     	Este procedimiento se repite varias veces y la mejor solución encontrada sobre todas las iteraciones GRASP se devuelve como salida del algoritmo. Para ilustrar este comportamiento se ha compuesto el siguiente pseudocódigo:\\
+     	\begin{algorithm}[H]
+       	\caption{\textit{grasp.cpp} - GRASP::Solve}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Solve}{
+         	$\pi_{best} = \emptyset$ \\
+         	
+         	\For{$i=1$ \KwTo $n$}{
+         		$\pi$ = GenerateRandomGreedySolution()\\
+         		$\pi$ = aplicar busqueda local sobre $\pi$\\
+         		
+         		\If{$\pi_{best} == \emptyset$ \textbf{or} $C(\pi) < C(\pi_{best})$}{
+         			$\pi_{best} = \pi$\\
+         		}
+         	}
+         	
+         	\textbf{return} $\pi_{best}$\\
+         }
+      \end{algorithm}
+     	
+     	\newpage
+     	\subsection{Algoritmo Greedy Aleatoreizado}
+     	Es necesario explicar como funciona el greedy aleatorizado para el problema del QAP, pues su implementación no es la misma que la del greedy común.\\
+     	
+     	En cada iteración de su proceso constructivo de la solución, se construye una lista de candidatos factibles la cual se acota con un tamaño variable en función de un umbral de calidad. El elemento seleccionado se escoge aleatoriamente de esta lista acotada. Dicha cota se calcula como:
+     	\begin{itemize}
+     		\item \textbf{Para las unidades:} $\mu = d_{max} - \alpha(d_{max}-d_{min})$. Donde donde $d_{max}$ es el mayor valor de flujo potencial de los candidatos y $d_{min}$ el menor.
+     		
+     		\item \textbf{Para las localizaciones:} $\mu = d_{min} + \alpha(d_{max}-d_{min})$.
+     	\end{itemize}
+     	
+     	 Se pueden diferenciar dos etapas del proceso de creación de la solución:
+     	\begin{enumerate}
+     		\item Se asignan conjuntamente dos unidades a dos localizaciones. Se consideran los potenciales de flujo y distancia para escoger el par de asignaciones.
+     		
+     		\item Se toman las n-2 decisiones restantes asignando una unidad a una localización en cada paso. Se escoge la asignación factible con el mínimo coste de interacción con respecto a las asignaciones realizadas hasta ahora de acuerdo a una decisión greedy aleatorizada.
+     	\end{enumerate}
+     	
+     	A continuación se expone un pseudocódigo que lleva esto acabo:\\
+     	\begin{algorithm}[H]
+       	\caption{\textit{grasp.cpp} - RandomGreedy::Solve}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Solve}{
+         	clFrequencies = vector de parejas ($u_i$, $\hat{f}_i$)\\
+         	clDistances = vector de parejas ($l_i$, $\hat{d}_i$)\\
+         	unitAsigned = bool vector[len(clFrequencies)]\{0\}\\
+         	locAsigned = bool vector[len(clDistances)]\{0\}\\
+         	$\pi_p = \emptyset$\\
+         	
+         	\vspace*{0.1cm}
+         	ordenar clFrequencies por $\hat{f}_i$;\hspace*{0.2cm} ordenar clDistances por $\hat{d}_i$\\
+         	
+         	\vspace*{0.1cm}
+         	$\mu_u = clFrequencies_n - \alpha(clFrequencies_n - clFrequencies_0)$\\
+         	$\mu_l = clDistances_0 + \alpha(clDistances_n - clDistances_0)$\\
+         	
+         	\vspace*{0.1cm}
+         	$i_u$ = buscar el primer elemento que supera $\mu_u$\\
+         	$i_l$ = buscar el primer elemento que supera $\mu_l$\\
+         	
+         	\vspace*{0.1cm}
+         	$rnd_{u_1} = U(i_u, n)$; $\quad rnd_{l_1} = U(0, l_u)$\\
+         	$rnd_{u_2} = U(i_u, n) | rnd_{u_1} \neq rnd_{u_2}$; \hspace*{0.2cm}$rnd_{l_2} = U(0, l) | rnd_{l_1} \neq rnd_{l_2}$\\
+         	
+         	$\pi_p = \pi_p \cup (clFrequencies_{rnd_{u_{1_0}}}, clDistancess_{rnd_{l_{1_0}}})$\\
+         	$\pi_p = \pi_p \cup (clFrequencies_{rnd_{u_{2_0}}}, clDistancess_{rnd_{l_{2_0}}})$\\
+         	$unitAsigned_{clFrequencies_{rnd_{u_{1_0}}}} = unitAsigned_{clFrequencies_{rnd_{u_{2_0}}}} = 1$\\
+         	$locAsigned_{clDistances_{rnd_{l_{1_0}}}} = locAsigned_{clDistances_{rnd_{l_{2_0}}}} = 1$\\
+         	
+         	
+         	\For{$i=3$ \KwTo $len(clFrequencies)$}{
+         		$bestCost = \inf$; \hspace*{0.2cm} $bestPair = \emptyset$\\
+         		\For{$u=1$ \KwTo $len(clFrequencies)$}{
+         			\lIf{$unitAssigned_u == 1$}{\textbf{continue}}
+         			
+         			\For{$l=1$ \KwTo $len(clDistances)$}{
+         				\lIf{$locAssigned_l == 1$}{\textbf{continue}}
+         				
+         				$cost = \sum_{(j, k) \in \pi_p} f_{uj}d_{lk}$\\
+         				
+         				\If{$cost < bestCost$}{
+         					$bestCost = cost$\\
+         					$bestpair = (u, l)$\\
+         				}
+         			
+         			}
+         		}
+         		
+         		$\pi_p = \pi_p \cup bestPair$\\
+         		$unitAsigned_{bestPair_0} = locAsigned_{bestPair_1} = 1$\\
+         	}
+         	
+         	$\pi = $ solucion del tamaño de la solución parcial\\
+         	\For{$i=0$ \KwTo $len(\pi_p)$}{
+         		$\pi(\pi_{p_{i_0}}) = \pi_{p_{i_1}}$\\
+         	}
+         	
+         	\textbf{return} $\pi$\\
+         }
+      \end{algorithm}
+
+     	\newpage
+     	\section{Búsqueda Local Reiterada}
+     	También conocido como ILS (Iterated Local Search), está basado en la aplicación repetida de una búsqueda local sobre una solución inicial que se obtiene por mutación de un óptimo local previamente encontrado.\\
+     	
+     	Como operador de mutación usaremos el operador de vecino de sublista aleatoria de tamaño fijo t. Este consiste en seleccionar una cadena de asignaciones de tamaño t y barajarlas. Haremos que t sea un cuarto del tamaño de la solución para provocar cambios bruscos.\\
+     	\begin{algorithm}[H]
+       	\caption{\textit{ils.cpp} - ILS::Mutate}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Mutate($\pi_o$)}{
+         	$sliceSize = \lceil 0.4 \cdot len(\pi_o) \rceil$\\
+         	$start = U(0, len(\pi_o) - sliceSize)$\\
+         	$end = start + sliceSize$\\
+         	$\pi' = \pi$\\
+         	
+         	barajar las localizacion desde $\pi'(start)$ a $\pi'(end)$
+         	
+         	\textbf{return} $\pi'$\\
+         }
+      \end{algorithm}
+      
+      El pseudocódigo que ilustra el funcionamiento general de ILS es el siguiente:\\
+      \begin{algorithm}[H]
+       	\caption{\textit{ILS.cpp} - ILS::Solve}
+       	
+         \SetKwProg{Def}{def}{:}{end}
+         \Def{Solve}{
+         	$\pi_{best} = GenerateRandomsolution()$ \\
+         	$\pi_{best} = $ aplicar búsqueda local sobre $\pi_{best}$\\
+         	
+         	\For{$i=2$ \KwTo $n$}{
+         		$\pi$ = Mutar $\pi_{best}$\\
+         		$\pi$ = aplicar búsqueda local sobre $\pi$\\
+         		
+         		\If{$C(\pi) < C(\pi_{best})$}{
+         			$\pi_{best} = \pi$\\
+         		}
+         	}
+         	
+         	\textbf{return} $\pi_{best}$\\
+         }
+      \end{algorithm}
+      
+     	
+     	\subsection{Hibridación con Enfriamiento Simulado}
+     	Exactamente igual que el ILS clásico pero substituyendo la búsqueda local por un enfriamiento simulado.
+      
       
       \newpage
       \section{Procedimiento considerado para desarrollar la práctica}
@@ -1177,6 +1418,26 @@ De nuevo, por las mismas razones que en apartado anterior, obtenemos mejores res
          \includegraphics[scale=0.5]{boxplot-am(1-01mej)-desv}
          \includegraphics[scale=0.5]{boxplot-am(1-01mej)-time}
       \end{center}
+      
+      \newpage
+      \subsection{Resultados Enfriamiento Simulado}
+      a
+      
+      \newpage
+      \subsection{Resultados Búsqueda Multiarranque Básica}
+      a
+      
+      \newpage
+      \subsection{Resultados GRASP}
+      a
+      
+      \newpage
+      \subsection{Resultados ILS}
+      a
+      
+      \newpage
+      \subsection{Resultados ILS-ES}
+      a
       
       \newpage
       \subsection{Comparación de los resultados. Conclusiones.}
